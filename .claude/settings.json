@@ -4,7 +4,10 @@
       "Bash(Select-Object FullName)",
       "Bash(grep -v \"^\\\\s*//\")",
       "Bash(python3 -)",
-      "Bash(grep -v \"assets\\\\|fonts\\\\|//\")"
+      "Bash(grep -v \"assets\\\\|fonts\\\\|//\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
