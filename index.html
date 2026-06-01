@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -7,169 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- CSS dùng chung toàn site -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- CSS riêng trang chủ -->
   <style>
-    /* ===== RESET & BASE ===== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-size: 15px;
-      color: #1a2340;
-      background: #fff;
-      line-height: 1.6;
-    }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-
-    /* ===== VARIABLES ===== */
-    :root {
-      --primary:   #0a4c8a;
-      --primary-light: #1565c0;
-      --accent:    #e8a020;
-      --accent-dark: #c8820a;
-      --text-dark: #1a2340;
-      --text-gray: #5a6480;
-      --bg-light:  #f5f7fa;
-      --bg-section:#eef2f9;
-      --white:     #ffffff;
-      --border:    #dde3ef;
-      --radius:    8px;
-      --shadow:    0 4px 20px rgba(10,76,138,.10);
-      --transition: .25s ease;
-    }
-
-    /* ===== TOP BAR ===== */
-    .topbar {
-      background: var(--primary);
-      color: rgba(255,255,255,.85);
-      font-size: 13px;
-      padding: 6px 0;
-    }
-    .topbar-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-    .topbar a { color: rgba(255,255,255,.9); }
-    .topbar a:hover { color: var(--accent); }
-    .topbar-contact { display: flex; gap: 20px; align-items: center; }
-    .topbar-contact span { display: flex; align-items: center; gap: 6px; }
-    .topbar-social { display: flex; gap: 10px; }
-    .topbar-social a {
-      width: 26px; height: 26px;
-      background: rgba(255,255,255,.15);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; transition: var(--transition);
-    }
-    .topbar-social a:hover { background: var(--accent); color: var(--white); }
-
-    /* ===== HEADER / NAV ===== */
-    header {
-      position: sticky; top: 0; z-index: 1000;
-      background: var(--white);
-      box-shadow: 0 2px 12px rgba(10,76,138,.12);
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 70px;
-    }
-    .logo img { height: 50px; }
-    .logo span {
-      font-size: 22px; font-weight: 800;
-      color: var(--primary); letter-spacing: -0.5px;
-    }
-
-    /* NAV */
-    nav { display: flex; align-items: center; height: 100%; }
-    nav > ul { display: flex; align-items: center; height: 100%; gap: 2px; }
-    nav > ul > li {
-      position: relative; height: 100%;
-      display: flex; align-items: center;
-    }
-    nav > ul > li > a {
-      padding: 0 14px;
-      font-size: 14px; font-weight: 600;
-      color: var(--text-dark);
-      height: 100%; display: flex; align-items: center;
-      transition: var(--transition);
-      white-space: nowrap;
-      border-bottom: 3px solid transparent;
-    }
-    nav > ul > li > a:hover,
-    nav > ul > li.active > a {
-      color: var(--primary);
-      border-bottom-color: var(--accent);
-    }
-    nav > ul > li > a .caret {
-      margin-left: 4px; font-size: 10px;
-      transition: var(--transition);
-    }
-    nav > ul > li:hover > a .caret { transform: rotate(180deg); }
-
-    /* DROPDOWN */
-    .dropdown {
-      position: absolute; top: 100%; left: 0;
-      min-width: 250px;
-      background: var(--white);
-      border-top: 3px solid var(--primary);
-      box-shadow: 0 8px 30px rgba(10,76,138,.15);
-      border-radius: 0 0 var(--radius) var(--radius);
-      opacity: 0; visibility: hidden;
-      transform: translateY(8px);
-      transition: all var(--transition);
-      z-index: 999;
-    }
-    nav > ul > li:hover .dropdown {
-      opacity: 1; visibility: visible; transform: translateY(0);
-    }
-    .dropdown li a {
-      display: block;
-      padding: 10px 18px;
-      font-size: 13.5px;
-      color: var(--text-dark);
-      border-bottom: 1px solid var(--border);
-      transition: var(--transition);
-    }
-    .dropdown li:last-child a { border-bottom: none; }
-    .dropdown li a:hover {
-      background: var(--bg-light);
-      color: var(--primary);
-      padding-left: 24px;
-    }
-    /* Sub-group headers */
-    .dropdown .sub-group-title {
-      padding: 10px 18px 4px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: .8px;
-      background: var(--bg-section);
-    }
-
-    /* HAMBURGER */
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; padding: 6px;
-    }
-    .hamburger span {
-      width: 24px; height: 2px;
-      background: var(--primary);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-
     /* ===== HERO SLIDER ===== */
     .hero {
       position: relative;
@@ -224,26 +65,7 @@
       line-height: 1.7;
     }
     .slide-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--accent);
-      color: var(--white);
-      padding: 12px 28px;
-      border-radius: 6px;
-      font-size: 14px; font-weight: 700;
-      transition: var(--transition);
-      border: 2px solid transparent;
-    }
-    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      padding: 12px 28px;
-      border-radius: 6px;
-      font-size: 14px; font-weight: 600;
-      border: 2px solid rgba(255,255,255,.6);
-      transition: var(--transition);
-    }
-    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+    /* (btn-primary, btn-outline đã có trong style.css) */
 
     /* SLIDER CONTROLS */
     .hero-prev, .hero-next {
@@ -272,37 +94,7 @@
     }
     .hero-dot.active { background: var(--accent); width: 24px; border-radius: 4px; }
 
-    /* ===== SECTION COMMONS ===== */
-    section { padding: 72px 0; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .section-header { text-align: center; margin-bottom: 48px; }
-    .section-tag {
-      display: inline-block;
-      background: var(--bg-section);
-      color: var(--primary);
-      font-size: 12px; font-weight: 700;
-      padding: 4px 14px; border-radius: 30px;
-      letter-spacing: .8px; margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-    .section-title {
-      font-size: clamp(22px, 3vw, 34px);
-      font-weight: 800;
-      color: var(--text-dark);
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-    .section-desc {
-      font-size: 15px;
-      color: var(--text-gray);
-      max-width: 620px; margin: 0 auto;
-      line-height: 1.8;
-    }
-    .divider {
-      width: 50px; height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      border-radius: 2px; margin: 16px auto 0;
-    }
+    /* (section, container, section-header... đã có trong style.css) */
 
     /* ===== STATS BAR ===== */
     .stats-bar {
@@ -368,16 +160,7 @@
     }
     .feature-title { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
     .feature-desc { font-size: 13px; color: var(--text-gray); }
-    .btn-solid {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--primary);
-      color: var(--white);
-      padding: 13px 28px;
-      border-radius: 6px;
-      font-size: 14px; font-weight: 700;
-      transition: var(--transition);
-    }
-    .btn-solid:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(10,76,138,.25); }
+    /* (btn-solid đã có trong style.css) */
 
     /* ===== COURSES ===== */
     .courses { background: var(--bg-light); }
@@ -517,66 +300,94 @@
       margin: 0 auto;
     }
 
-    /* ===== TRAINING CARDS ===== */
+    /* ===== TRAINING TAB PPT-STYLE ===== */
     .training { background: var(--bg-light); }
-    .training-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
+
+    /* Tab selectors */
+    .training-tabs { display: flex; gap: 16px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+    .tr-tab {
+      flex: 1; min-width: 200px; max-width: 280px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative; overflow: hidden;
     }
-    .training-card {
+    .tr-tab::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      transition: var(--transition);
+    }
+    .tr-tab.t-inhouse::before { background: var(--primary); }
+    .tr-tab.t-public::before  { background: #0d5c3a; }
+    .tr-tab.t-outsource::before { background: #6b3a8f; }
+    .tr-tab:hover, .tr-tab.active { box-shadow: 0 8px 28px rgba(10,76,138,.15); transform: translateY(-3px); }
+    .tr-tab.t-inhouse.active  { border-color: var(--primary); }
+    .tr-tab.t-public.active   { border-color: #0d5c3a; }
+    .tr-tab.t-outsource.active { border-color: #6b3a8f; }
+    .tr-tab-icon { font-size: 40px; margin-bottom: 10px; }
+    .tr-tab-title { font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 4px; }
+    .tr-tab-sub   { font-size: 12px; color: var(--text-gray); line-height: 1.5; }
+    .tr-tab.active .tr-tab-title.t-inhouse-txt  { color: var(--primary); }
+    .tr-tab.t-inhouse.active .tr-tab-title  { color: var(--primary); }
+    .tr-tab.t-public.active   .tr-tab-title { color: #0d5c3a; }
+    .tr-tab.t-outsource.active .tr-tab-title { color: #6b3a8f; }
+
+    /* Tab panels */
+    .tr-panel { display: none; animation: fadeIn .3s ease; }
+    .tr-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+    .tr-panel-inner {
       background: var(--white);
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 4px 24px rgba(10,76,138,.1);
-      transition: var(--transition);
-      border: 1.5px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1fr;
     }
-    .training-card:hover { transform: translateY(-6px); box-shadow: 0 14px 44px rgba(10,76,138,.18); }
-    .training-card-banner {
-      height: 180px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 12px; text-align: center; padding: 20px;
-      position: relative;
+    .tr-panel-banner {
+      padding: 48px 36px;
+      display: flex; flex-direction: column; justify-content: center; gap: 16px;
     }
-    .tc-inhouse .training-card-banner { background: linear-gradient(135deg, #0a4c8a 0%, #1565c0 100%); }
-    .tc-public .training-card-banner { background: linear-gradient(135deg, #0d5c3a 0%, #1a8c5a 100%); }
-    .training-card-banner-icon { font-size: 56px; }
-    .training-card-banner-title { font-size: 22px; font-weight: 800; color: #fff; }
-    .training-card-banner-sub { font-size: 13px; color: rgba(255,255,255,.85); }
-    .training-card-body { padding: 24px; }
-    .training-card-desc { color: var(--text-gray); font-size: 14px; line-height: 1.8; margin-bottom: 20px; }
-    .training-card-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-    .training-card-feature {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 14px; color: var(--text-dark);
+    .tr-panel.p-inhouse  .tr-panel-banner { background: linear-gradient(135deg,#0a4c8a 0%,#1565c0 100%); }
+    .tr-panel.p-public   .tr-panel-banner { background: linear-gradient(135deg,#0d5c3a 0%,#1a8c5a 100%); }
+    .tr-panel.p-outsource .tr-panel-banner { background: linear-gradient(135deg,#6b3a8f 0%,#9b59b6 100%); }
+    .tr-panel-banner-icon  { font-size: 64px; }
+    .tr-panel-banner-title { font-size: 24px; font-weight: 800; color: #fff; line-height: 1.3; }
+    .tr-panel-banner-sub   { font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.6; }
+    .tr-panel-content { padding: 36px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+    .tr-item { display: flex; align-items: flex-start; gap: 12px; }
+    .tr-item-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px;
     }
-    .training-card-feature-icon {
-      width: 32px; height: 32px; flex-shrink: 0;
-      border-radius: 8px; background: var(--bg-section);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
+    .p-inhouse  .tr-item-dot { background: var(--primary); }
+    .p-public   .tr-item-dot { background: #0d5c3a; }
+    .p-outsource .tr-item-dot { background: #6b3a8f; }
+    .tr-item-text { font-size: 14px; color: var(--text-dark); line-height: 1.6; }
+    .tr-item-text strong { font-weight: 700; }
+    .tr-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tr-badge {
+      font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
     }
-    .training-card-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .training-badge {
-      background: var(--bg-section);
-      color: var(--primary);
-      font-size: 12px; font-weight: 600;
-      padding: 4px 12px; border-radius: 20px;
+    .p-inhouse  .tr-badge { background: var(--bg-section); color: var(--primary); }
+    .p-public   .tr-badge { background: #e8f5ee; color: #0d5c3a; }
+    .p-outsource .tr-badge { background: #f3e8ff; color: #6b3a8f; }
+    .tr-cta {
+      display: inline-block; padding: 12px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 700; transition: var(--transition); align-self: flex-start;
     }
-    .tc-public .training-badge { background: #e8f5ee; color: #0d5c3a; }
-    .btn-training {
-      display: block; text-align: center;
-      padding: 13px 24px;
-      border-radius: 8px;
-      font-size: 14px; font-weight: 700;
-      transition: var(--transition);
+    .p-inhouse  .tr-cta { background: var(--primary); color:#fff; }
+    .p-inhouse  .tr-cta:hover { background: var(--primary-light); }
+    .p-public   .tr-cta { background: #0d5c3a; color:#fff; }
+    .p-public   .tr-cta:hover { background: #1a8c5a; }
+    .p-outsource .tr-cta { background: #6b3a8f; color:#fff; }
+    .p-outsource .tr-cta:hover { background: #9b59b6; }
+
+    @media(max-width:768px) {
+      .tr-panel-inner { grid-template-columns: 1fr; }
+      .tr-panel-banner { padding: 32px 24px; }
     }
-    .tc-inhouse .btn-training { background: var(--primary); color: var(--white); }
-    .tc-inhouse .btn-training:hover { background: var(--primary-light); }
-    .tc-public .btn-training { background: #0d5c3a; color: var(--white); }
-    .tc-public .btn-training:hover { background: #1a8c5a; }
 
     /* ===== HR RESOURCES ===== */
     .hr-resources { background: var(--white); }
@@ -663,84 +474,7 @@
     .news-link:hover { gap: 10px; color: var(--accent-dark); }
     .view-all-wrap { text-align: center; margin-top: 36px; }
 
-    /* ===== CTA BANNER ===== */
-    .cta-banner {
-      background: linear-gradient(135deg, var(--primary) 0%, #0d3a6b 100%);
-      padding: 72px 0;
-      text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .cta-banner::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .cta-inner { position: relative; z-index: 1; }
-    .cta-title {
-      font-size: clamp(22px, 3vw, 36px);
-      font-weight: 800; color: var(--white);
-      margin-bottom: 16px; line-height: 1.3;
-    }
-    .cta-desc { font-size: 16px; color: rgba(255,255,255,.8); margin-bottom: 32px; }
-    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #0d1e3a;
-      color: rgba(255,255,255,.75);
-      padding: 64px 0 0;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 40px;
-      margin-bottom: 48px;
-    }
-    .footer-brand .logo-text {
-      font-size: 26px; font-weight: 800;
-      color: var(--white); margin-bottom: 12px;
-    }
-    .footer-brand p {
-      font-size: 13px; line-height: 1.8; margin-bottom: 20px;
-      color: rgba(255,255,255,.65);
-    }
-    .footer-social { display: flex; gap: 10px; }
-    .footer-social a {
-      width: 36px; height: 36px;
-      background: rgba(255,255,255,.08);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.7); font-size: 14px;
-      transition: var(--transition);
-    }
-    .footer-social a:hover { background: var(--accent); color: var(--white); }
-    .footer-col h4 {
-      font-size: 14px; font-weight: 700;
-      color: var(--white);
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
-    .footer-col ul li a {
-      font-size: 13px; color: rgba(255,255,255,.65);
-      transition: var(--transition);
-      display: flex; align-items: center; gap: 6px;
-    }
-    .footer-col ul li a:hover { color: var(--accent); padding-left: 4px; }
-    .footer-contact { display: flex; flex-direction: column; gap: 12px; }
-    .contact-item { display: flex; gap: 10px; align-items: flex-start; }
-    .contact-icon { color: var(--accent); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
-    .contact-text { font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.5; }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding: 20px 0;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 16px; flex-wrap: wrap;
-    }
-    .footer-bottom-text { font-size: 12px; color: rgba(255,255,255,.45); }
-
-    /* ===== RESPONSIVE ===== */
+    /* ===== RESPONSIVE trang chủ ===== */
     @media (max-width: 1024px) {
       .about-grid { grid-template-columns: 1fr; }
       .about-img { display: none; }
@@ -749,55 +483,14 @@
       .training-cards { grid-template-columns: 1fr; }
       .resources-grid { grid-template-columns: repeat(3, 1fr); }
       .news-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 768px) {
-      nav { display: none; }
-      .hamburger { display: flex; }
       .solutions-visual-grid { grid-template-columns: 1fr; }
       .solutions-visual-row2 { grid-template-columns: 1fr; }
       .resources-grid { grid-template-columns: repeat(2, 1fr); }
       .news-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
       .hero-slide { height: 500px; }
-      section { padding: 52px 0; }
-      .topbar-contact span:not(:first-child) { display: none; }
-    }
-
-    /* ===== MOBILE NAV ===== */
-    .mobile-nav {
-      display: none;
-      position: fixed; inset: 0; z-index: 2000;
-      background: var(--white);
-      overflow-y: auto;
-      padding: 24px;
-      flex-direction: column;
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 24px;
-    }
-    .mobile-close {
-      background: none; border: none;
-      font-size: 24px; cursor: pointer; color: var(--text-dark);
-    }
-    .mobile-menu { display: flex; flex-direction: column; gap: 4px; }
-    .mobile-menu a {
-      padding: 12px 0; border-bottom: 1px solid var(--border);
-      font-size: 15px; color: var(--text-dark); font-weight: 600;
-      display: block;
-    }
-    .mobile-menu .sub-item {
-      padding-left: 20px; font-weight: 400; font-size: 14px;
-      color: var(--text-gray); border-bottom-color: transparent;
-    }
-    .mobile-menu .sub-group-label {
-      padding: 8px 20px 4px;
-      font-size: 11px; font-weight: 700; color: var(--primary);
-      text-transform: uppercase; letter-spacing: .5px;
     }
   </style>
 </head>
@@ -823,7 +516,7 @@
 <!-- HEADER -->
 <header>
   <div class="header-inner">
-    <a href="/" class="logo">
+    <a href="index.html" class="logo">
       <!-- Thay bằng thẻ img khi upload logo -->
       <!-- <img src="/wp-content/uploads/2025/09/logo-anpha-remove.png" alt="Anpha" /> -->
       <span>Anpha</span>
@@ -831,57 +524,57 @@
 
     <nav>
       <ul>
-        <li class="active"><a href="/">Trang chủ</a></li>
+        <li class="active"><a href="index.html">Trang chủ</a></li>
 
         <li>
-          <a href="/gioi-thieu/">Giới thiệu <span class="caret">▾</span></a>
+          <a href="gioi-thieu.html">Giới thiệu <span class="caret">▾</span></a>
           <ul class="dropdown">
-            <li><a href="/gioi-thieu/">Giới thiệu chung</a></li>
-            <li><a href="/gioi-thieu/doi-ngu/">Đội ngũ</a></li>
+            <li><a href="gioi-thieu.html">Giới thiệu chung</a></li>
+            <li><a href="gioi-thieu.html#doi-ngu">Đội ngũ</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="/giai-phap/">Giải pháp <span class="caret">▾</span></a>
+          <a href="giai-phap.html">Giải pháp <span class="caret">▾</span></a>
           <ul class="dropdown">
-            <li><a href="/giai-phap/danh-gia-phat-trien-quan-ly-trung-gian/">Đánh giá &amp; Phát triển Quản lý Trung gian</a></li>
-            <li><a href="/giai-phap/tu-van-xay-dung-he-thong-hr/">Tư vấn Xây dựng Hệ thống HR</a></li>
-            <li><a href="/giai-phap/he-thong-luong-thuong/">Xây dựng Hệ thống Lương thưởng</a></li>
-            <li><a href="/giai-phap/quan-ly-hieu-suat-bsc-kpi/">Xây dựng Hệ thống Quản lý Hiệu suất</a></li>
-            <li><a href="/giai-phap/tu-van-chuyen-mon-hr/">Tư vấn Chuyên môn HR</a></li>
+            <li><a href="giai-phap.html">Đánh giá &amp; Phát triển Quản lý Trung gian</a></li>
+            <li><a href="giai-phap.html">Tư vấn Xây dựng Hệ thống HR</a></li>
+            <li><a href="giai-phap.html">Xây dựng Hệ thống Lương thưởng</a></li>
+            <li><a href="giai-phap.html">Xây dựng Hệ thống Quản lý Hiệu suất</a></li>
+            <li><a href="giai-phap.html">Tư vấn Chuyên môn HR</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="/dao-tao/">Đào tạo <span class="caret">▾</span></a>
+          <a href="dao-tao.html">Đào tạo <span class="caret">▾</span></a>
           <ul class="dropdown" style="min-width:280px">
             <li class="sub-group-title">Đào tạo Doanh nghiệp</li>
-            <li><a href="/dao-tao/nang-luc-quan-ly-trung-gian/">Năng lực Quản lý Trung gian</a></li>
-            <li><a href="/dao-tao/xay-dung-he-thong-bsc-kpi-inhouse/">Xây dựng Hệ thống BSC/KPI</a></li>
-            <li><a href="/dao-tao/moi-truong-lam-viec-tich-cuc/">Xây dựng Môi trường Làm việc Tích cực</a></li>
+            <li><a href="dao-tao.html#inhouse">Năng lực Quản lý Trung gian</a></li>
+            <li><a href="dao-tao.html#inhouse">Xây dựng Hệ thống BSC/KPI</a></li>
+            <li><a href="dao-tao.html#inhouse">Xây dựng Môi trường Làm việc Tích cực</a></li>
             <li class="sub-group-title">Đào tạo Mở</li>
-            <li><a href="/dao-tao/bsc-kpi/">Xây dựng Hệ thống BSC/KPI</a></li>
-            <li><a href="/dao-tao/he-thong-luong-thuong/">Hệ thống Lương thưởng</a></li>
-            <li><a href="/dao-tao/truong-phong-hrbp/">Trưởng phòng Đối tác Nhân sự</a></li>
-            <li><a href="/dao-tao/phat-trien-nhan-tai/">Phát triển Nhân tài</a></li>
+            <li><a href="dao-tao.html">Xây dựng Hệ thống BSC/KPI</a></li>
+            <li><a href="dao-tao.html">Hệ thống Lương thưởng</a></li>
+            <li><a href="dao-tao.html">Trưởng phòng Đối tác Nhân sự</a></li>
+            <li><a href="dao-tao.html">Phát triển Nhân tài</a></li>
             <li class="sub-group-title">Dịch vụ Khác</li>
-            <li><a href="/dao-tao/thue-ngoai-dao-tao/">Thuê ngoài Đào tạo</a></li>
+            <li><a href="dao-tao.html#outsource">Thuê ngoài Đào tạo</a></li>
           </ul>
         </li>
 
         <li>
-          <a href="/tai-nguyen-hr/">Tài nguyên HR <span class="caret">▾</span></a>
+          <a href="tai-nguyen-hr.html">Tài nguyên HR <span class="caret">▾</span></a>
           <ul class="dropdown">
-            <li><a href="/tai-nguyen-hr/nen-tang-hr/">Nền tảng HR</a></li>
-            <li><a href="/tai-nguyen-hr/to-chuc/">Tổ chức</a></li>
-            <li><a href="/tai-nguyen-hr/chuyen-doanh-nghiep/">Chuyện Doanh nghiệp</a></li>
-            <li><a href="/tai-nguyen-hr/goc-nhin-hr-podcast/">Góc nhìn HR – Podcast</a></li>
-            <li><a href="/tai-nguyen-hr/video/">Video</a></li>
+            <li><a href="tai-nguyen-hr.html">Nền tảng HR</a></li>
+            <li><a href="tai-nguyen-hr.html">Tổ chức</a></li>
+            <li><a href="tai-nguyen-hr.html">Chuyện Doanh nghiệp</a></li>
+            <li><a href="tai-nguyen-hr.html">Góc nhìn HR – Podcast</a></li>
+            <li><a href="tai-nguyen-hr.html">Video</a></li>
           </ul>
         </li>
 
-        <li><a href="/tin-tuc/">Tin Tức</a></li>
-        <li><a href="/lien-he/">Liên hệ</a></li>
+        <li><a href="#">Tin Tức</a></li>
+        <li><a href="#">Liên hệ</a></li>
       </ul>
     </nav>
 
@@ -898,36 +591,36 @@
     <button class="mobile-close" onclick="closeMobileNav()">✕</button>
   </div>
   <nav class="mobile-menu">
-    <a href="/">Trang chủ</a>
-    <a href="/gioi-thieu/">Giới thiệu</a>
-    <a href="/gioi-thieu/" class="sub-item">— Giới thiệu chung</a>
-    <a href="/gioi-thieu/doi-ngu/" class="sub-item">— Đội ngũ</a>
-    <a href="/giai-phap/">Giải pháp</a>
+    <a href="index.html">Trang chủ</a>
+    <a href="gioi-thieu.html">Giới thiệu</a>
+    <a href="gioi-thieu.html" class="sub-item">— Giới thiệu chung</a>
+    <a href="gioi-thieu.html#doi-ngu" class="sub-item">— Đội ngũ</a>
+    <a href="giai-phap.html">Giải pháp</a>
     <div class="sub-group-label">Các giải pháp</div>
-    <a href="/giai-phap/danh-gia-phat-trien-quan-ly-trung-gian/" class="sub-item">— Đánh giá &amp; Phát triển Quản lý Trung gian</a>
-    <a href="/giai-phap/tu-van-xay-dung-he-thong-hr/" class="sub-item">— Tư vấn Xây dựng Hệ thống HR</a>
-    <a href="/giai-phap/he-thong-luong-thuong/" class="sub-item">— Xây dựng Hệ thống Lương thưởng</a>
-    <a href="/giai-phap/quan-ly-hieu-suat-bsc-kpi/" class="sub-item">— Xây dựng Hệ thống Quản lý Hiệu suất</a>
-    <a href="/giai-phap/tu-van-chuyen-mon-hr/" class="sub-item">— Tư vấn Chuyên môn HR</a>
-    <a href="/dao-tao/">Đào tạo</a>
+    <a href="giai-phap.html" class="sub-item">— Đánh giá &amp; Phát triển Quản lý Trung gian</a>
+    <a href="giai-phap.html" class="sub-item">— Tư vấn Xây dựng Hệ thống HR</a>
+    <a href="giai-phap.html" class="sub-item">— Xây dựng Hệ thống Lương thưởng</a>
+    <a href="giai-phap.html" class="sub-item">— Xây dựng Hệ thống Quản lý Hiệu suất</a>
+    <a href="giai-phap.html" class="sub-item">— Tư vấn Chuyên môn HR</a>
+    <a href="dao-tao.html">Đào tạo</a>
     <div class="sub-group-label">Đào tạo Doanh nghiệp</div>
-    <a href="/dao-tao/nang-luc-quan-ly-trung-gian/" class="sub-item">— Năng lực Quản lý Trung gian</a>
-    <a href="/dao-tao/xay-dung-he-thong-bsc-kpi-inhouse/" class="sub-item">— Xây dựng Hệ thống BSC/KPI</a>
-    <a href="/dao-tao/moi-truong-lam-viec-tich-cuc/" class="sub-item">— Môi trường Làm việc Tích cực</a>
+    <a href="dao-tao.html#inhouse" class="sub-item">— Năng lực Quản lý Trung gian</a>
+    <a href="dao-tao.html#inhouse" class="sub-item">— Xây dựng Hệ thống BSC/KPI</a>
+    <a href="dao-tao.html#inhouse" class="sub-item">— Môi trường Làm việc Tích cực</a>
     <div class="sub-group-label">Đào tạo Mở</div>
-    <a href="/dao-tao/bsc-kpi/" class="sub-item">— Xây dựng Hệ thống BSC/KPI</a>
-    <a href="/dao-tao/he-thong-luong-thuong/" class="sub-item">— Hệ thống Lương thưởng</a>
-    <a href="/dao-tao/truong-phong-hrbp/" class="sub-item">— Trưởng phòng Đối tác Nhân sự</a>
-    <a href="/dao-tao/phat-trien-nhan-tai/" class="sub-item">— Phát triển Nhân tài</a>
-    <a href="/dao-tao/thue-ngoai-dao-tao/" class="sub-item">— Thuê ngoài Đào tạo</a>
-    <a href="/tai-nguyen-hr/">Tài nguyên HR</a>
-    <a href="/tai-nguyen-hr/nen-tang-hr/" class="sub-item">— Nền tảng HR</a>
-    <a href="/tai-nguyen-hr/to-chuc/" class="sub-item">— Tổ chức</a>
-    <a href="/tai-nguyen-hr/chuyen-doanh-nghiep/" class="sub-item">— Chuyện Doanh nghiệp</a>
-    <a href="/tai-nguyen-hr/goc-nhin-hr-podcast/" class="sub-item">— Góc nhìn HR – Podcast</a>
-    <a href="/tai-nguyen-hr/video/" class="sub-item">— Video</a>
-    <a href="/tin-tuc/">Tin Tức</a>
-    <a href="/lien-he/">Liên hệ</a>
+    <a href="dao-tao.html" class="sub-item">— Xây dựng Hệ thống BSC/KPI</a>
+    <a href="dao-tao.html" class="sub-item">— Hệ thống Lương thưởng</a>
+    <a href="dao-tao.html" class="sub-item">— Trưởng phòng Đối tác Nhân sự</a>
+    <a href="dao-tao.html" class="sub-item">— Phát triển Nhân tài</a>
+    <a href="dao-tao.html#outsource" class="sub-item">— Thuê ngoài Đào tạo</a>
+    <a href="tai-nguyen-hr.html">Tài nguyên HR</a>
+    <a href="tai-nguyen-hr.html" class="sub-item">— Nền tảng HR</a>
+    <a href="tai-nguyen-hr.html" class="sub-item">— Tổ chức</a>
+    <a href="tai-nguyen-hr.html" class="sub-item">— Chuyện Doanh nghiệp</a>
+    <a href="tai-nguyen-hr.html" class="sub-item">— Góc nhìn HR – Podcast</a>
+    <a href="tai-nguyen-hr.html" class="sub-item">— Video</a>
+    <a href="#">Tin Tức</a>
+    <a href="#">Liên hệ</a>
   </nav>
 </div>
 
@@ -937,90 +630,90 @@
 
     <!-- SLIDE 1 – Tổng quan -->
     <div class="hero-slide">
-      <div class="slide-bg" style="background: linear-gradient(135deg,#0a4c8a 0%,#1565c0 100%);"></div>
-      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&q=80');background-size:cover;background-position:center;"></div>
+      <div class="slide-overlay"></div>
       <div class="slide-content">
         <span class="slide-tag">Giải pháp HR chiến lược</span>
         <h1 class="slide-title">Thay đổi vị thế Bộ phận Nhân sự trong doanh nghiệp</h1>
         <p class="slide-desc">Anpha cung cấp giải pháp HR toàn diện – từ tư vấn xây dựng hệ thống đến đào tạo chuyên sâu, giúp HR trở thành đối tác chiến lược của Ban lãnh đạo.</p>
         <div class="slide-btns">
-          <a href="/giai-phap/" class="btn-primary">Xem giải pháp</a>
-          <a href="/lien-he/" class="btn-outline">Liên hệ tư vấn</a>
+          <a href="giai-phap.html" class="btn-primary">Xem giải pháp</a>
+          <a href="#" class="btn-outline">Liên hệ tư vấn</a>
         </div>
       </div>
     </div>
 
     <!-- SLIDE 2 – Đào tạo mở: BSC/KPI -->
     <div class="hero-slide">
-      <div class="slide-bg" style="background: linear-gradient(135deg,#0d3a6b 0%,#0a4c8a 100%);"></div>
-      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1400&q=80');background-size:cover;background-position:center;"></div>
+      <div class="slide-overlay"></div>
       <div class="slide-content">
         <span class="slide-tag" style="background:#0d5c3a">Đào tạo mở</span>
         <h1 class="slide-title">Xây dựng Hệ thống Quản lý Hiệu suất BSC/KPI</h1>
         <p class="slide-desc">Khoá học thực chiến – xây dựng hệ thống BSC/KPI phù hợp thực tiễn doanh nghiệp, ứng dụng ngay sau khoá học.</p>
         <div class="slide-btns">
-          <a href="/dao-tao/bsc-kpi/" class="btn-primary">Đăng ký ngay</a>
-          <a href="/dao-tao/bsc-kpi/" class="btn-outline">Xem chi tiết</a>
+          <a href="dao-tao.html" class="btn-primary">Đăng ký ngay</a>
+          <a href="dao-tao.html" class="btn-outline">Xem chi tiết</a>
         </div>
       </div>
     </div>
 
     <!-- SLIDE 3 – Đào tạo mở: Lương thưởng -->
     <div class="hero-slide">
-      <div class="slide-bg" style="background: linear-gradient(135deg,#5b2d8f 0%,#7c3aed 100%);"></div>
-      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1400&q=80');background-size:cover;background-position:center;"></div>
+      <div class="slide-overlay"></div>
       <div class="slide-content">
         <span class="slide-tag" style="background:#e8a020">Đào tạo mở – Khai giảng 04, 11/07/2026</span>
         <h1 class="slide-title">Xây dựng Hệ thống Lương thưởng</h1>
         <p class="slide-desc">Thiết kế cơ cấu lương 3P, xây dựng hệ thống thưởng hiệu suất gắn kết nhân viên và thúc đẩy kết quả kinh doanh.</p>
         <div class="slide-btns">
-          <a href="/dao-tao/he-thong-luong-thuong/" class="btn-primary">Đăng ký khoá học</a>
-          <a href="/dao-tao/he-thong-luong-thuong/" class="btn-outline">Xem chương trình</a>
+          <a href="dao-tao.html" class="btn-primary">Đăng ký khoá học</a>
+          <a href="dao-tao.html" class="btn-outline">Xem chương trình</a>
         </div>
       </div>
     </div>
 
     <!-- SLIDE 4 – HRBP Manager -->
     <div class="hero-slide">
-      <div class="slide-bg" style="background: linear-gradient(135deg,#0d5c3a 0%,#1a8c5a 100%);"></div>
-      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1400&q=80');background-size:cover;background-position:center;"></div>
+      <div class="slide-overlay"></div>
       <div class="slide-content">
         <span class="slide-tag" style="background:#e8a020">Đào tạo mở – Khai giảng 20, 27/06/2026</span>
         <h1 class="slide-title">HRBP Manager – Trưởng phòng Đối tác Nhân sự</h1>
         <p class="slide-desc">Chương trình đào tạo chuyên sâu cho HR Manager sẵn sàng chuyển đổi vai trò thành đối tác chiến lược trong tổ chức.</p>
         <div class="slide-btns">
-          <a href="/dao-tao/truong-phong-hrbp/" class="btn-primary">Đăng ký khoá học</a>
-          <a href="/dao-tao/truong-phong-hrbp/" class="btn-outline">Xem chương trình</a>
+          <a href="dao-tao.html" class="btn-primary">Đăng ký khoá học</a>
+          <a href="dao-tao.html" class="btn-outline">Xem chương trình</a>
         </div>
       </div>
     </div>
 
     <!-- SLIDE 5 – Inhouse: Quản lý Trung gian -->
     <div class="hero-slide">
-      <div class="slide-bg" style="background: linear-gradient(135deg,#1a2340 0%,#2a3a60 100%);"></div>
-      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1400&q=80');background-size:cover;background-position:center;"></div>
+      <div class="slide-overlay"></div>
       <div class="slide-content">
         <span class="slide-tag" style="background:#c8820a">Đào tạo Doanh nghiệp</span>
         <h1 class="slide-title">Phát triển Năng lực Quản lý Trung gian</h1>
         <p class="slide-desc">Chương trình đào tạo nội bộ được thiết kế riêng – giúp đội ngũ quản lý cấp trung nắm vững kỹ năng lãnh đạo, quản lý hiệu suất và phát triển nhân tài.</p>
         <div class="slide-btns">
-          <a href="/dao-tao/nang-luc-quan-ly-trung-gian/" class="btn-primary">Tìm hiểu thêm</a>
-          <a href="/lien-he/" class="btn-outline">Liên hệ nhận báo giá</a>
+          <a href="dao-tao.html#inhouse" class="btn-primary">Tìm hiểu thêm</a>
+          <a href="#" class="btn-outline">Liên hệ nhận báo giá</a>
         </div>
       </div>
     </div>
 
     <!-- SLIDE 6 – Tư vấn Hệ thống HR -->
     <div class="hero-slide">
-      <div class="slide-bg" style="background: linear-gradient(135deg,#7c2d12 0%,#c2410c 100%);"></div>
-      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80');background-size:cover;background-position:center;"></div>
+      <div class="slide-overlay"></div>
       <div class="slide-content">
         <span class="slide-tag" style="background:var(--primary)">Tư vấn Giải pháp</span>
         <h1 class="slide-title">Tư vấn Xây dựng Hệ thống HR Toàn diện</h1>
         <p class="slide-desc">Từ phân tích hiện trạng đến triển khai hệ thống HR phù hợp chiến lược doanh nghiệp – Anpha đồng hành cùng bạn từng bước.</p>
         <div class="slide-btns">
-          <a href="/giai-phap/tu-van-xay-dung-he-thong-hr/" class="btn-primary">Xem giải pháp</a>
-          <a href="/lien-he/" class="btn-outline">Đặt lịch tư vấn</a>
+          <a href="giai-phap.html" class="btn-primary">Xem giải pháp</a>
+          <a href="#" class="btn-outline">Đặt lịch tư vấn</a>
         </div>
       </div>
     </div>
@@ -1087,30 +780,7 @@
         <p class="about-text">
           Đội ngũ chuyên gia Anpha từng giữ vị trí lãnh đạo tại các tập đoàn đa quốc gia trong nhiều lĩnh vực: bán lẻ, thương mại điện tử, FMCG, bảo hiểm, giáo dục và sản xuất.
         </p>
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="feature-icon">🎯</div>
-            <div>
-              <div class="feature-title">Giải pháp thực chiến</div>
-              <div class="feature-desc">Linh hoạt, gọn nhẹ, ứng dụng cao – phù hợp đặc thù từng doanh nghiệp.</div>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="feature-icon">🤝</div>
-            <div>
-              <div class="feature-title">Đồng hành triển khai</div>
-              <div class="feature-desc">Không chỉ tư vấn – Anpha đồng hành cùng doanh nghiệp xuyên suốt quá trình.</div>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="feature-icon">📊</div>
-            <div>
-              <div class="feature-title">Gắn kết chiến lược</div>
-              <div class="feature-desc">Giải pháp HR phản ánh định hướng chiến lược của Ban lãnh đạo.</div>
-            </div>
-          </div>
-        </div>
-        <a href="/gioi-thieu/" class="btn-solid">Tìm hiểu về Anpha ›</a>
+        <a href="gioi-thieu.html" class="btn-solid" style="margin-top:8px">Tìm hiểu về Anpha ›</a>
       </div>
     </div>
   </div>
@@ -1127,7 +797,7 @@
     </div>
 
     <div class="solutions-visual-grid">
-      <a href="/giai-phap/danh-gia-phat-trien-quan-ly-trung-gian/" class="sol-card s1">
+      <a href="giai-phap.html" class="sol-card s1">
         <div class="sol-card-img">
           <div class="sol-card-icon-big">📈</div>
         </div>
@@ -1138,7 +808,7 @@
           <span class="sol-link">Tìm hiểu thêm →</span>
         </div>
       </a>
-      <a href="/giai-phap/tu-van-xay-dung-he-thong-hr/" class="sol-card s2">
+      <a href="giai-phap.html" class="sol-card s2">
         <div class="sol-card-img">
           <div class="sol-card-icon-big">🏗️</div>
         </div>
@@ -1149,7 +819,7 @@
           <span class="sol-link">Tìm hiểu thêm →</span>
         </div>
       </a>
-      <a href="/giai-phap/he-thong-luong-thuong/" class="sol-card s3">
+      <a href="giai-phap.html" class="sol-card s3">
         <div class="sol-card-img">
           <div class="sol-card-icon-big">💰</div>
         </div>
@@ -1161,113 +831,107 @@
         </div>
       </a>
     </div>
-    <div class="solutions-visual-row2">
-      <a href="/giai-phap/quan-ly-hieu-suat-bsc-kpi/" class="sol-card s4">
-        <div class="sol-card-img">
-          <div class="sol-card-icon-big">🎯</div>
-        </div>
-        <div class="sol-card-body">
-          <div class="sol-num">Giải pháp 04</div>
-          <div class="sol-title">Xây dựng Hệ thống Quản lý Hiệu suất</div>
-          <div class="sol-desc">Triển khai BSC/KPI gắn kết mục tiêu cá nhân với chiến lược tổ chức, tạo văn hoá hiệu suất cao.</div>
-          <span class="sol-link">Tìm hiểu thêm →</span>
-        </div>
-      </a>
-      <a href="/giai-phap/tu-van-chuyen-mon-hr/" class="sol-card s5">
-        <div class="sol-card-img">
-          <div class="sol-card-icon-big">🧑‍💼</div>
-        </div>
-        <div class="sol-card-body">
-          <div class="sol-num">Giải pháp 05</div>
-          <div class="sol-title">Tư vấn Chuyên môn HR</div>
-          <div class="sol-desc">Hỗ trợ chuyên sâu các vấn đề HR đặc thù: tuyển dụng, đào tạo, văn hoá tổ chức, pháp lý lao động.</div>
-          <span class="sol-link">Tìm hiểu thêm →</span>
-        </div>
-      </a>
-    </div>
     <div class="solutions-cta-row">
-      <a href="/giai-phap/" class="btn-solid">Xem tất cả giải pháp →</a>
+      <a href="giai-phap.html" class="btn-solid">Xem tất cả giải pháp →</a>
     </div>
   </div>
 </section>
 
-<!-- ==================== TRAINING CARDS ==================== -->
+<!-- ==================== TRAINING TAB ==================== -->
 <section class="training">
   <div class="container">
     <div class="section-header">
       <span class="section-tag">Đào tạo</span>
       <h2 class="section-title">Chương trình Đào tạo HR Chuyên nghiệp</h2>
       <div class="divider"></div>
-      <p class="section-desc">Anpha thiết kế chương trình phù hợp từng nhu cầu – đào tạo nội bộ riêng cho doanh nghiệp hoặc lớp học mở đăng ký cá nhân.</p>
+      <p class="section-desc">Chọn hình thức đào tạo phù hợp – nội bộ doanh nghiệp, lớp mở cá nhân, hoặc thuê ngoài toàn bộ L&D.</p>
     </div>
 
-    <div class="training-cards">
+    <!-- TAB SELECTOR -->
+    <div class="training-tabs">
+      <div class="tr-tab t-inhouse active" onclick="switchTraining('inhouse')">
+        <div class="tr-tab-icon">🏢</div>
+        <div class="tr-tab-title">Inhouse</div>
+        <div class="tr-tab-sub">Thiết kế riêng cho doanh nghiệp</div>
+      </div>
+      <div class="tr-tab t-public" onclick="switchTraining('public')">
+        <div class="tr-tab-icon">🎓</div>
+        <div class="tr-tab-title">Đào tạo Mở</div>
+        <div class="tr-tab-sub">Lớp học cá nhân – đang tuyển sinh</div>
+      </div>
+      <div class="tr-tab t-outsource" onclick="switchTraining('outsource')">
+        <div class="tr-tab-icon">🤝</div>
+        <div class="tr-tab-title">Thuê ngoài L&amp;D</div>
+        <div class="tr-tab-sub">Outsource toàn bộ chức năng đào tạo</div>
+      </div>
+    </div>
 
-      <!-- INHOUSE -->
-      <div class="training-card tc-inhouse">
-        <div class="training-card-banner">
-          <div class="training-card-banner-icon">🏢</div>
-          <div class="training-card-banner-title">Đào tạo Doanh nghiệp</div>
-          <div class="training-card-banner-sub">Chương trình thiết kế riêng theo yêu cầu tổ chức</div>
+    <!-- PANEL: INHOUSE -->
+    <div class="tr-panel p-inhouse active" id="tr-inhouse">
+      <div class="tr-panel-inner">
+        <div class="tr-panel-banner">
+          <div class="tr-panel-banner-icon">🏢</div>
+          <div class="tr-panel-banner-title">Đào tạo Doanh nghiệp (Inhouse)</div>
+          <div class="tr-panel-banner-sub">Chương trình được thiết kế riêng theo văn hoá, quy mô và chiến lược của từng tổ chức.</div>
         </div>
-        <div class="training-card-body">
-          <p class="training-card-desc">Anpha thiết kế chương trình đào tạo nội bộ phù hợp với văn hoá, quy mô và chiến lược riêng của từng doanh nghiệp.</p>
-          <div class="training-card-features">
-            <div class="training-card-feature">
-              <div class="training-card-feature-icon">📋</div>
-              <span>Phát triển Năng lực Quản lý Trung gian</span>
-            </div>
-            <div class="training-card-feature">
-              <div class="training-card-feature-icon">🎯</div>
-              <span>Xây dựng Hệ thống BSC/KPI Inhouse</span>
-            </div>
-            <div class="training-card-feature">
-              <div class="training-card-feature-icon">🌟</div>
-              <span>Môi trường Làm việc Tích cực</span>
-            </div>
+        <div class="tr-panel-content">
+          <div class="tr-item"><div class="tr-item-dot"></div><div class="tr-item-text"><strong>Phát triển Năng lực Quản lý Trung gian</strong> – kỹ năng lãnh đạo, quản lý hiệu suất, phát triển đội nhóm</div></div>
+          <div class="tr-item"><div class="tr-item-dot"></div><div class="tr-item-text"><strong>Xây dựng Hệ thống BSC/KPI Inhouse</strong> – triển khai nội bộ phù hợp chiến lược công ty</div></div>
+          <div class="tr-item"><div class="tr-item-dot"></div><div class="tr-item-text"><strong>Môi trường Làm việc Tích cực</strong> – văn hoá tổ chức, gắn kết nhân viên</div></div>
+          <div class="tr-badges">
+            <span class="tr-badge">Thiết kế riêng</span>
+            <span class="tr-badge">Tại doanh nghiệp</span>
+            <span class="tr-badge">Linh hoạt lịch</span>
           </div>
-          <div class="training-card-badges">
-            <span class="training-badge">Thiết kế riêng</span>
-            <span class="training-badge">Tại doanh nghiệp</span>
-            <span class="training-badge">Linh hoạt lịch học</span>
-          </div>
-          <a href="dao-tao.html#inhouse" class="btn-training">Yêu cầu báo giá Inhouse →</a>
+          <a href="dao-tao.html#inhouse" class="tr-cta">Yêu cầu báo giá →</a>
         </div>
       </div>
+    </div>
 
-      <!-- PUBLIC -->
-      <div class="training-card tc-public">
-        <div class="training-card-banner">
-          <div class="training-card-banner-icon">🎓</div>
-          <div class="training-card-banner-title">Đào tạo Mở</div>
-          <div class="training-card-banner-sub">Lớp học công khai – đăng ký theo từng cá nhân</div>
+    <!-- PANEL: PUBLIC -->
+    <div class="tr-panel p-public" id="tr-public">
+      <div class="tr-panel-inner">
+        <div class="tr-panel-banner">
+          <div class="tr-panel-banner-icon">🎓</div>
+          <div class="tr-panel-banner-title">Đào tạo Mở (Public)</div>
+          <div class="tr-panel-banner-sub">Lớp học công khai – đăng ký theo từng cá nhân. Quy mô nhỏ, học cuối tuần.</div>
         </div>
-        <div class="training-card-body">
-          <p class="training-card-desc">Các lớp đào tạo mở đang tuyển sinh và sắp khai giảng – cơ hội nâng cao chuyên môn HR ngay hôm nay.</p>
-          <div class="training-card-features">
-            <div class="training-card-feature">
-              <div class="training-card-feature-icon">🔥</div>
-              <span><strong>Đang tuyển sinh:</strong> Lương thưởng – 04 &amp; 11/07/2026</span>
-            </div>
-            <div class="training-card-feature">
-              <div class="training-card-feature-icon">🔥</div>
-              <span><strong>Đang tuyển sinh:</strong> HRBP Manager – 20 &amp; 27/06/2026</span>
-            </div>
-            <div class="training-card-feature">
-              <div class="training-card-feature-icon">📋</div>
-              <span>Sắp khai giảng: BSC/KPI &amp; Phát triển Nhân tài</span>
-            </div>
+        <div class="tr-panel-content">
+          <div class="tr-item"><div class="tr-item-dot"></div><div class="tr-item-text">🔥 <strong>Đang tuyển sinh:</strong> Xây dựng Hệ thống Lương thưởng – 04 &amp; 11/07/2026</div></div>
+          <div class="tr-item"><div class="tr-item-dot"></div><div class="tr-item-text">🔥 <strong>Đang tuyển sinh:</strong> HRBP Manager – 20 &amp; 27/06/2026</div></div>
+          <div class="tr-item"><div class="tr-item-dot"></div><div class="tr-item-text">📋 Sắp khai giảng: BSC/KPI &amp; Phát triển Nhân tài</div></div>
+          <div class="tr-badges">
+            <span class="tr-badge">15–20 học viên</span>
+            <span class="tr-badge">TP.HCM &amp; Online</span>
+            <span class="tr-badge">Cuối tuần</span>
           </div>
-          <div class="training-card-badges">
-            <span class="training-badge">Lớp quy mô nhỏ</span>
-            <span class="training-badge">TP.HCM &amp; Online</span>
-            <span class="training-badge">Cuối tuần</span>
-          </div>
-          <a href="dao-tao.html" class="btn-training">Xem các lớp đang hoạt động →</a>
+          <a href="dao-tao.html" class="tr-cta">Xem các lớp đang mở →</a>
         </div>
       </div>
+    </div>
 
-    </div><!-- /training-cards -->
+    <!-- PANEL: OUTSOURCE -->
+    <div class="tr-panel p-outsource" id="tr-outsource">
+      <div class="tr-panel-inner">
+        <div class="tr-panel-banner">
+          <div class="tr-panel-banner-icon">🤝</div>
+          <div class="tr-panel-banner-title">Thuê ngoài Đào tạo (L&amp;D Outsource)</div>
+          <div class="tr-panel-banner-sub">Anpha đảm nhận toàn bộ hoặc một phần chức năng L&D cho doanh nghiệp.</div>
+        </div>
+        <div class="tr-panel-content">
+          <div class="tr-item"><div class="tr-item-dot"></div><div class="tr-item-text">Phân tích Nhu cầu Đào tạo (TNA) &amp; Thiết kế chương trình</div></div>
+          <div class="tr-item"><div class="tr-item-dot"></div><div class="tr-item-text">Triển khai &amp; Quản lý LMS (Learning Management System)</div></div>
+          <div class="tr-item"><div class="tr-item-dot"></div><div class="tr-item-text">Đánh giá hiệu quả đào tạo (ROI) &amp; Tư vấn chiến lược L&amp;D</div></div>
+          <div class="tr-badges">
+            <span class="tr-badge">Toàn diện</span>
+            <span class="tr-badge">Tiết kiệm chi phí</span>
+            <span class="tr-badge">Chuyên nghiệp</span>
+          </div>
+          <a href="dao-tao.html#outsource" class="tr-cta">Tìm hiểu thêm →</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1282,27 +946,27 @@
     </div>
 
     <div class="resources-grid">
-      <a href="/tai-nguyen-hr/nen-tang-hr/" class="res-card">
+      <a href="tai-nguyen-hr.html" class="res-card">
         <div class="res-icon">📚</div>
         <div class="res-title">Nền tảng HR</div>
         <div class="res-desc">Kiến thức HR cơ bản đến nâng cao</div>
       </a>
-      <a href="/tai-nguyen-hr/to-chuc/" class="res-card">
+      <a href="tai-nguyen-hr.html" class="res-card">
         <div class="res-icon">🏛️</div>
         <div class="res-title">Tổ chức</div>
         <div class="res-desc">Thiết kế cơ cấu &amp; văn hoá tổ chức</div>
       </a>
-      <a href="/tai-nguyen-hr/chuyen-doanh-nghiep/" class="res-card">
+      <a href="tai-nguyen-hr.html" class="res-card">
         <div class="res-icon">💬</div>
         <div class="res-title">Chuyện Doanh nghiệp</div>
         <div class="res-desc">Case study thực tế từ doanh nghiệp</div>
       </a>
-      <a href="/tai-nguyen-hr/goc-nhin-hr-podcast/" class="res-card">
+      <a href="tai-nguyen-hr.html" class="res-card">
         <div class="res-icon">🎙️</div>
         <div class="res-title">Góc nhìn HR – Podcast</div>
         <div class="res-desc">Phỏng vấn chuyên gia &amp; lãnh đạo HR</div>
       </a>
-      <a href="/tai-nguyen-hr/video/" class="res-card">
+      <a href="tai-nguyen-hr.html" class="res-card">
         <div class="res-icon">▶️</div>
         <div class="res-title">Video</div>
         <div class="res-desc">Bài giảng &amp; chia sẻ ngắn trên YouTube</div>
@@ -1332,7 +996,7 @@
           <div class="news-title">Phát triển Middle Manager – Chìa khoá tăng trưởng bền vững cho doanh nghiệp</div>
           <div class="news-excerpt">Quản lý cấp trung đóng vai trò then chốt trong việc hiện thực hoá chiến lược công ty. Vậy doanh nghiệp cần làm gì để phát triển đội ngũ này?</div>
         </div>
-        <div class="news-footer"><a href="/tin-tuc/" class="news-link">Đọc thêm →</a></div>
+        <div class="news-footer"><a href="#" class="news-link">Đọc thêm →</a></div>
       </div>
 
       <div class="news-card">
@@ -1345,7 +1009,7 @@
           <div class="news-title">Thiếu hụt Quản lý Trung gian – Bài toán nan giải của doanh nghiệp Việt</div>
           <div class="news-excerpt">Nhiều doanh nghiệp đang gặp phải tình trạng "khoảng trống quản lý" khi thiếu đội ngũ trung gian đủ năng lực đảm nhận vai trò cầu nối.</div>
         </div>
-        <div class="news-footer"><a href="/tin-tuc/" class="news-link">Đọc thêm →</a></div>
+        <div class="news-footer"><a href="#" class="news-link">Đọc thêm →</a></div>
       </div>
 
       <div class="news-card">
@@ -1358,13 +1022,13 @@
           <div class="news-title">Tư duy Hệ thống trong Quản trị Nhân sự – Nhìn xa hơn từng vấn đề đơn lẻ</div>
           <div class="news-excerpt">Áp dụng tư duy hệ thống giúp HR nhìn nhận toàn cảnh tổ chức, từ đó đưa ra quyết định chính xác và bền vững hơn.</div>
         </div>
-        <div class="news-footer"><a href="/tin-tuc/" class="news-link">Đọc thêm →</a></div>
+        <div class="news-footer"><a href="#" class="news-link">Đọc thêm →</a></div>
       </div>
 
     </div>
 
     <div class="view-all-wrap">
-      <a href="/tin-tuc/" class="btn-solid">Xem tất cả bài viết →</a>
+      <a href="#" class="btn-solid">Xem tất cả bài viết →</a>
     </div>
   </div>
 </section>
@@ -1375,8 +1039,8 @@
     <h2 class="cta-title">Sẵn sàng nâng tầm Bộ phận Nhân sự của bạn?</h2>
     <p class="cta-desc">Hãy để Anpha đồng hành cùng bạn trên hành trình xây dựng HR chiến lược.</p>
     <div class="cta-btns">
-      <a href="/lien-he/" class="btn-primary">Đặt lịch tư vấn miễn phí</a>
-      <a href="/dao-tao/" class="btn-outline">Xem khoá học</a>
+      <a href="#" class="btn-primary">Đặt lịch tư vấn miễn phí</a>
+      <a href="dao-tao.html" class="btn-outline">Xem khoá học</a>
     </div>
   </div>
 </div>
@@ -1400,22 +1064,22 @@
       <div class="footer-col">
         <h4>Giải pháp</h4>
         <ul>
-          <li><a href="/giai-phap/danh-gia-phat-trien-quan-ly-trung-gian/">› Đánh giá &amp; Phát triển QL Trung gian</a></li>
-          <li><a href="/giai-phap/tu-van-xay-dung-he-thong-hr/">› Tư vấn Xây dựng Hệ thống HR</a></li>
-          <li><a href="/giai-phap/he-thong-luong-thuong/">› Hệ thống Lương thưởng</a></li>
-          <li><a href="/giai-phap/quan-ly-hieu-suat-bsc-kpi/">› Quản lý Hiệu suất BSC/KPI</a></li>
-          <li><a href="/giai-phap/tu-van-chuyen-mon-hr/">› Tư vấn Chuyên môn HR</a></li>
+          <li><a href="giai-phap.html">› Đánh giá &amp; Phát triển QL Trung gian</a></li>
+          <li><a href="giai-phap.html">› Tư vấn Xây dựng Hệ thống HR</a></li>
+          <li><a href="giai-phap.html">› Hệ thống Lương thưởng</a></li>
+          <li><a href="giai-phap.html">› Quản lý Hiệu suất BSC/KPI</a></li>
+          <li><a href="giai-phap.html">› Tư vấn Chuyên môn HR</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Đào tạo</h4>
         <ul>
-          <li><a href="/dao-tao/bsc-kpi/">› Xây dựng BSC/KPI</a></li>
-          <li><a href="/dao-tao/he-thong-luong-thuong/">› Hệ thống Lương thưởng</a></li>
-          <li><a href="/dao-tao/truong-phong-hrbp/">› HRBP Manager</a></li>
-          <li><a href="/dao-tao/phat-trien-nhan-tai/">› Phát triển Nhân tài</a></li>
-          <li><a href="/dao-tao/thue-ngoai-dao-tao/">› Thuê ngoài Đào tạo</a></li>
+          <li><a href="dao-tao.html">› Xây dựng BSC/KPI</a></li>
+          <li><a href="dao-tao.html">› Hệ thống Lương thưởng</a></li>
+          <li><a href="dao-tao.html">› HRBP Manager</a></li>
+          <li><a href="dao-tao.html">› Phát triển Nhân tài</a></li>
+          <li><a href="dao-tao.html#outsource">› Thuê ngoài Đào tạo</a></li>
         </ul>
       </div>
 
@@ -1450,56 +1114,46 @@
   </div>
 </footer>
 
-<!-- ==================== JAVASCRIPT ==================== -->
+<!-- JS dùng chung -->
+<script src="assets/js/main.js" defer></script>
+<!-- JS riêng trang chủ: Hero Slider -->
 <script>
-  /* ====== HERO SLIDER ====== */
-  let currentSlide = 0;
-  const totalSlides = 6;
-  let autoSlideTimer;
-
-  function updateSlider() {
-    const slider = document.getElementById('heroSlider');
-    slider.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
-    const dots = document.querySelectorAll('.hero-dot');
-    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  /* Training tab switcher */
+  function switchTraining(tab) {
+    document.querySelectorAll('.tr-tab').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelectorAll('.tr-panel').forEach(function(p){ p.classList.remove('active'); });
+    document.querySelector('.tr-tab.t-' + tab).classList.add('active');
+    document.getElementById('tr-' + tab).classList.add('active');
   }
 
-  function slideChange(dir) {
-    currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
-    updateSlider();
+  (function () {
+    var currentSlide = 0;
+    var totalSlides = 6;
+    var autoSlideTimer;
+
+    function updateSlider() {
+      var slider = document.getElementById('heroSlider');
+      if (!slider) return;
+      slider.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+      document.querySelectorAll('.hero-dot').forEach(function (d, i) {
+        d.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    window.slideChange = function (dir) {
+      currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+      updateSlider(); resetAutoSlide();
+    };
+    window.goToSlide = function (idx) {
+      currentSlide = idx; updateSlider(); resetAutoSlide();
+    };
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideTimer);
+      autoSlideTimer = setInterval(function () { window.slideChange(1); }, 5000);
+    }
     resetAutoSlide();
-  }
-
-  function goToSlide(idx) {
-    currentSlide = idx;
-    updateSlider();
-    resetAutoSlide();
-  }
-
-  function resetAutoSlide() {
-    clearInterval(autoSlideTimer);
-    autoSlideTimer = setInterval(() => slideChange(1), 5000);
-  }
-
-  resetAutoSlide();
-
-  /* ====== MOBILE NAV ====== */
-  function openMobileNav() {
-    document.getElementById('mobileNav').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMobileNav() {
-    document.getElementById('mobileNav').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  /* ====== STICKY HEADER SHADOW ====== */
-  window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    header.style.boxShadow = window.scrollY > 10
-      ? '0 4px 20px rgba(10,76,138,.18)'
-      : '0 2px 12px rgba(10,76,138,.12)';
-  });
+  })();
 </script>
 
 </body>

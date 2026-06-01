@@ -1,54 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Giới thiệu – Anpha Giải Pháp &amp; Đào Tạo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- CSS dùng chung toàn site -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- CSS riêng trang Giới thiệu -->
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'Be Vietnam Pro',sans-serif;font-size:15px;color:#1a2340;background:#fff;line-height:1.6}
-    img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
-    ul{list-style:none}
-    :root{
-      --primary:#0a4c8a;--primary-light:#1565c0;--accent:#e8a020;--accent-dark:#c8820a;
-      --text-dark:#1a2340;--text-gray:#5a6480;--bg-light:#f5f7fa;--bg-section:#eef2f9;
-      --white:#fff;--border:#dde3ef;--radius:8px;--shadow:0 4px 20px rgba(10,76,138,.10);
-      --transition:.25s ease;
-    }
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-
-    /* TOPBAR */
-    .topbar{background:var(--primary);color:rgba(255,255,255,.85);font-size:13px;padding:6px 0}
-    .topbar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
-    .topbar a{color:rgba(255,255,255,.9)}.topbar a:hover{color:var(--accent)}
-    .topbar-contact{display:flex;gap:20px}
-    .topbar-social{display:flex;gap:10px}
-    .topbar-social a{width:26px;height:26px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;transition:var(--transition)}
-    .topbar-social a:hover{background:var(--accent)}
-
-    /* HEADER */
-    header{position:sticky;top:0;z-index:1000;background:var(--white);box-shadow:0 2px 12px rgba(10,76,138,.12)}
-    .header-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:70px}
-    .logo span{font-size:22px;font-weight:800;color:var(--primary)}
-    nav{display:flex;align-items:center;height:100%}
-    nav>ul{display:flex;align-items:center;height:100%;gap:2px}
-    nav>ul>li{position:relative;height:100%;display:flex;align-items:center}
-    nav>ul>li>a{padding:0 14px;font-size:14px;font-weight:600;color:var(--text-dark);height:100%;display:flex;align-items:center;transition:var(--transition);white-space:nowrap;border-bottom:3px solid transparent}
-    nav>ul>li>a:hover,nav>ul>li.active>a{color:var(--primary);border-bottom-color:var(--accent)}
-    .caret{margin-left:4px;font-size:10px;transition:var(--transition)}
-    nav>ul>li:hover>a .caret{transform:rotate(180deg)}
-    .dropdown{position:absolute;top:100%;left:0;min-width:250px;background:var(--white);border-top:3px solid var(--primary);box-shadow:0 8px 30px rgba(10,76,138,.15);border-radius:0 0 var(--radius) var(--radius);opacity:0;visibility:hidden;transform:translateY(8px);transition:all var(--transition);z-index:999}
-    nav>ul>li:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
-    .dropdown li a{display:block;padding:10px 18px;font-size:13.5px;color:var(--text-dark);border-bottom:1px solid var(--border);transition:var(--transition)}
-    .dropdown li:last-child a{border-bottom:none}
-    .dropdown li a:hover{background:var(--bg-light);color:var(--primary);padding-left:24px}
-    .dropdown .sub-group-title{padding:10px 18px 4px;font-size:11px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.8px;background:var(--bg-section)}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
-    .hamburger span{width:24px;height:2px;background:var(--primary);border-radius:2px;transition:var(--transition)}
-
     /* ===== HERO BANNER WITH SLOGAN ===== */
     .hero-banner{
       background:linear-gradient(135deg,#0a2a5e 0%,#0a4c8a 50%,#1565c0 100%);
@@ -96,13 +58,9 @@
     .hero-visual-title{font-size:20px;font-weight:800;margin-bottom:8px}
     .hero-visual-desc{font-size:14px;opacity:.85;line-height:1.7}
 
-    /* SECTION COMMONS */
-    section{padding:80px 0}
-    .section-header{text-align:center;margin-bottom:56px}
-    .section-tag{display:inline-block;background:var(--bg-section);color:var(--primary);font-size:12px;font-weight:700;padding:4px 14px;border-radius:30px;letter-spacing:.8px;margin-bottom:12px;text-transform:uppercase}
-    .section-title{font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--text-dark);margin-bottom:12px;line-height:1.3}
-    .section-desc{font-size:15px;color:var(--text-gray);max-width:620px;margin:0 auto;line-height:1.8}
-    .divider{width:50px;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px;margin:16px auto 0}
+    /* (section, section-header, divider... đã có trong style.css) */
+    section { padding: 80px 0; }
+    .section-header { margin-bottom: 56px; }
 
     /* ===== VIDEO SECTION ===== */
     .video-section{background:var(--bg-section)}
@@ -129,23 +87,38 @@
     .vh-icon{width:40px;height:40px;border-radius:10px;background:var(--bg-section);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
     .vh-text{font-size:14px;color:var(--text-dark);font-weight:600}
 
-    /* ===== CORE VALUES ===== */
-    .values-section{background:var(--white)}
-    .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-    .value-card{
-      background:var(--white);border-radius:16px;padding:32px 24px;
-      border:1.5px solid var(--border);text-align:center;
-      transition:var(--transition);position:relative;overflow:hidden;
+    /* ===== CORE VALUES – HONEYCOMB ===== */
+    .values-section{background:var(--bg-section)}
+    .honeycomb-wrap{display:flex;flex-direction:column;align-items:center;gap:0;max-width:900px;margin:0 auto}
+    .honeycomb-row{display:flex;justify-content:center;gap:20px;margin-top:-22px}
+    .honeycomb-row:first-child{margin-top:0}
+    .hex-cell{
+      width:200px;height:220px;
+      clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;padding:20px 16px;cursor:default;
+      transition:var(--transition);position:relative;
     }
-    .value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;transition:var(--transition)}
-    .value-card.v1::before{background:linear-gradient(90deg,#0a4c8a,#1565c0)}
-    .value-card.v2::before{background:linear-gradient(90deg,#e8a020,#c8820a)}
-    .value-card.v3::before{background:linear-gradient(90deg,#0d5c3a,#1a8c5a)}
-    .value-card.v4::before{background:linear-gradient(90deg,#6b3a8f,#9b59b6)}
-    .value-card:hover{transform:translateY(-6px);box-shadow:0 14px 44px rgba(10,76,138,.14)}
-    .value-icon{font-size:52px;margin-bottom:16px}
-    .value-title{font-size:17px;font-weight:800;color:var(--text-dark);margin-bottom:10px}
-    .value-desc{font-size:13px;color:var(--text-gray);line-height:1.7}
+    .hex-cell:hover{transform:scale(1.05);filter:brightness(1.1)}
+    .hex-cell.hc1{background:linear-gradient(160deg,#0a4c8a,#1565c0)}
+    .hex-cell.hc2{background:linear-gradient(160deg,#e8a020,#c8820a)}
+    .hex-cell.hc3{background:linear-gradient(160deg,#0d5c3a,#1a8c5a)}
+    .hex-cell.hc4{background:linear-gradient(160deg,#6b3a8f,#9b59b6)}
+    .hex-cell.hc5{background:linear-gradient(160deg,#1a2340,#2a3a60)}
+    .hex-icon{font-size:36px;margin-bottom:8px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.2))}
+    .hex-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.2}
+    .hex-desc{font-size:11px;color:rgba(255,255,255,.88);line-height:1.5}
+    @media(max-width:768px){
+      .hex-cell{width:150px;height:165px}
+      .hex-icon{font-size:28px}
+      .hex-title{font-size:13px}
+      .hex-desc{display:none}
+      .honeycomb-row{gap:12px}
+    }
+    @media(max-width:480px){
+      .honeycomb-row{flex-wrap:wrap}
+      .hex-cell{width:130px;height:143px}
+    }
 
     /* ===== FOUNDER ===== */
     .founder-section{background:linear-gradient(135deg,#0a2a5e 0%,#0a4c8a 100%);color:#fff}
@@ -217,36 +190,51 @@
     .academic-type{font-size:12px;color:var(--text-gray)}
     .academic-row2{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
 
-    /* ===== CTA ===== */
-    .cta-banner{background:linear-gradient(135deg,var(--primary) 0%,#0d3a6b 100%);padding:72px 0;text-align:center;color:#fff;position:relative;overflow:hidden}
-    .cta-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/svg%3E")}
-    .cta-inner{position:relative;z-index:1}
-    .cta-title{font-size:clamp(22px,3vw,36px);font-weight:800;margin-bottom:16px;line-height:1.3}
-    .cta-desc{font-size:16px;color:rgba(255,255,255,.8);margin-bottom:32px}
-    .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-    .btn-cta-primary{background:var(--accent);color:#fff;padding:13px 28px;border-radius:6px;font-size:15px;font-weight:700;transition:var(--transition)}
-    .btn-cta-primary:hover{background:var(--accent-dark)}
-    .btn-cta-outline{background:transparent;color:#fff;padding:13px 28px;border-radius:6px;font-size:15px;font-weight:600;border:2px solid rgba(255,255,255,.6);transition:var(--transition)}
-    .btn-cta-outline:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+    /* ===== VIỆN IDEA ===== */
+    .idea-banner{
+      background:linear-gradient(135deg,#0a4c8a 0%,#1565c0 100%);
+      border-radius:16px;padding:36px 40px;margin-bottom:40px;
+      display:flex;align-items:center;gap:28px;color:#fff;
+    }
+    .idea-banner-logo{font-size:56px;flex-shrink:0}
+    .idea-banner-name{font-size:20px;font-weight:800;margin-bottom:10px}
+    .idea-banner-desc{font-size:14px;line-height:1.8;opacity:.9}
+    .idea-courses-title{font-size:18px;font-weight:700;color:var(--text-dark);margin-bottom:20px;text-align:center}
+    .idea-courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px}
+    .idea-course-card{
+      background:var(--white);border-radius:12px;padding:24px;
+      border:1.5px solid var(--border);transition:var(--transition);
+    }
+    .idea-course-card:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-4px)}
+    .idea-course-icon{font-size:36px;margin-bottom:12px}
+    .idea-course-name{font-size:15px;font-weight:700;color:var(--text-dark);margin-bottom:8px;line-height:1.4}
+    .idea-course-desc{font-size:13px;color:var(--text-gray);line-height:1.7;margin-bottom:10px}
+    .idea-course-type{font-size:12px;color:var(--primary);font-weight:600}
+    .idea-register-wrap{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;background:var(--bg-section);border-radius:16px;overflow:hidden}
+    .idea-register-option{padding:36px 32px;display:flex;flex-direction:column;gap:12px}
+    .idea-register-divider{padding:24px;font-size:14px;font-weight:700;color:var(--text-gray);text-align:center;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+    .idea-reg-icon{font-size:40px}
+    .idea-reg-title{font-size:17px;font-weight:800;color:var(--text-dark)}
+    .idea-reg-desc{font-size:13px;color:var(--text-gray);line-height:1.7}
+    .idea-reg-btn{display:inline-block;padding:12px 22px;border-radius:8px;font-size:14px;font-weight:700;transition:var(--transition);text-align:center}
+    .btn-idea{background:var(--primary);color:#fff}.btn-idea:hover{background:var(--primary-light)}
+    .btn-fanpage{background:#1877f2;color:#fff}.btn-fanpage:hover{background:#1565d8}
 
-    /* FOOTER */
-    footer{background:#0d1e3a;color:rgba(255,255,255,.75);padding:64px 0 0}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:48px}
-    .footer-brand .logo-text{font-size:26px;font-weight:800;color:#fff;margin-bottom:12px}
-    .footer-brand p{font-size:13px;line-height:1.8;margin-bottom:20px;color:rgba(255,255,255,.65)}
-    .footer-social{display:flex;gap:10px}
-    .footer-social a{width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;transition:var(--transition)}
-    .footer-social a:hover{background:var(--accent);color:#fff}
-    .footer-col h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08)}
-    .footer-col ul{display:flex;flex-direction:column;gap:8px}
-    .footer-col ul li a{font-size:13px;color:rgba(255,255,255,.65);transition:var(--transition)}
-    .footer-col ul li a:hover{color:var(--accent)}
-    .footer-contact{display:flex;flex-direction:column;gap:12px}
-    .contact-item{display:flex;gap:10px;align-items:flex-start}
-    .contact-icon{color:var(--accent);font-size:14px;flex-shrink:0}
-    .contact-text{font-size:13px;color:rgba(255,255,255,.7);line-height:1.5}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-    .footer-bottom-text{font-size:12px;color:rgba(255,255,255,.45)}
+    @media(max-width:1024px){
+      .idea-courses-grid{grid-template-columns:repeat(2,1fr)}
+      .idea-register-wrap{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+      .idea-register-divider{border:none;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px}
+    }
+    @media(max-width:768px){
+      .idea-banner{flex-direction:column;text-align:center;padding:28px}
+      .idea-courses-grid{grid-template-columns:1fr}
+    }
+
+    /* (cta-banner, footer... đã có trong style.css) */
+    .btn-cta-primary{background:var(--accent);color:#fff;padding:13px 28px;border-radius:6px;font-size:15px;font-weight:700;transition:var(--transition);display:inline-block}
+    .btn-cta-primary:hover{background:var(--accent-dark)}
+    .btn-cta-outline{background:transparent;color:#fff;padding:13px 28px;border-radius:6px;font-size:15px;font-weight:600;border:2px solid rgba(255,255,255,.6);transition:var(--transition);display:inline-block}
+    .btn-cta-outline:hover{border-color:#fff;background:rgba(255,255,255,.1)}
 
     @media(max-width:1024px){
       .hero-banner-inner{grid-template-columns:1fr}
@@ -258,17 +246,13 @@
       .team-grid{grid-template-columns:repeat(2,1fr)}
       .academic-grid{grid-template-columns:repeat(2,1fr)}
       .academic-row2{grid-template-columns:repeat(2,1fr)}
-      .footer-grid{grid-template-columns:1fr 1fr}
     }
     @media(max-width:768px){
-      nav{display:none}
-      .hamburger{display:flex}
       .hero-banner-inner{padding:60px 20px}
       .values-grid{grid-template-columns:1fr 1fr}
       .team-grid{grid-template-columns:1fr 1fr}
       .academic-grid{grid-template-columns:1fr 1fr}
       .academic-row2{grid-template-columns:1fr 1fr}
-      .footer-grid{grid-template-columns:1fr}
       section{padding:56px 0}
     }
     @media(max-width:480px){
@@ -347,24 +331,6 @@
         Nâng tầm<br/><em>Bộ phận Nhân sự</em><br/>trong mỗi doanh nghiệp
       </h1>
       <p class="hero-sub">Anpha đồng hành cùng HR Manager và doanh nghiệp Việt Nam xây dựng hệ thống quản trị nhân sự chiến lược, chuyên nghiệp và bền vững.</p>
-      <div class="hero-cta-group">
-        <a href="dao-tao.html" class="btn-hero-primary">Xem chương trình đào tạo</a>
-        <a href="giai-phap.html" class="btn-hero-outline">Khám phá giải pháp</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">500+</div>
-          <div class="hero-stat-label">Học viên tốt nghiệp</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">50+</div>
-          <div class="hero-stat-label">Doanh nghiệp được tư vấn</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">2023</div>
-          <div class="hero-stat-label">Năm thành lập</div>
-        </div>
-      </div>
     </div>
     <div class="hero-banner-visual">
       <div class="hero-visual-card">
@@ -388,61 +354,56 @@
         </div>
       </div>
       <div class="video-content">
-        <h2>Câu chuyện của Anpha – Vì sao chúng tôi làm điều này?</h2>
-        <p>Anpha được thành lập bởi những chuyên gia HR từng giữ vị trí lãnh đạo tại các tập đoàn đa quốc gia. Chúng tôi hiểu sâu sắc những thách thức mà Bộ phận Nhân sự đang đối mặt – và cam kết đưa ra giải pháp thực sự hiệu quả.</p>
-        <p>Mỗi chương trình đào tạo, mỗi giải pháp tư vấn đều xuất phát từ thực tiễn – không phải lý thuyết suông.</p>
-        <div class="video-highlights">
-          <div class="video-highlight">
-            <div class="vh-icon">🎯</div>
-            <span class="vh-text">Giải pháp thực chiến – ứng dụng ngay</span>
-          </div>
-          <div class="video-highlight">
-            <div class="vh-icon">🤝</div>
-            <span class="vh-text">Đồng hành cùng doanh nghiệp từng bước</span>
-          </div>
-          <div class="video-highlight">
-            <div class="vh-icon">📊</div>
-            <span class="vh-text">Gắn kết HR với chiến lược kinh doanh</span>
-          </div>
-          <div class="video-highlight">
-            <div class="vh-icon">🌟</div>
-            <span class="vh-text">Đội ngũ kinh nghiệm tập đoàn đa quốc gia</span>
-          </div>
-        </div>
+        <h2>Về Anpha – Câu chuyện hình thành</h2>
+        <p>Anpha được thành lập bởi những chuyên gia HR từng giữ vị trí lãnh đạo tại các tập đoàn đa quốc gia trong nhiều lĩnh vực: bán lẻ, thương mại điện tử, FMCG, bảo hiểm, giáo dục và sản xuất.</p>
+        <p>Chúng tôi hiểu sâu sắc những thách thức mà Bộ phận Nhân sự đang đối mặt trong thực tiễn doanh nghiệp Việt Nam – và cam kết đưa ra những giải pháp thiết thực, gọn nhẹ, ứng dụng được ngay.</p>
+        <p>Mỗi chương trình đào tạo, mỗi dự án tư vấn đều xuất phát từ thực tiễn – không phải lý thuyết suông. Anpha không chỉ tư vấn rồi rút lui – chúng tôi đồng hành cùng khách hàng xuyên suốt quá trình triển khai cho đến khi tạo ra kết quả thực sự.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== GIÁ TRỊ CỐT LÕI ===================== -->
+<!-- ===================== GIÁ TRỊ CỐT LÕI – TỔ ONG ===================== -->
 <section class="values-section">
   <div class="container">
     <div class="section-header">
       <span class="section-tag">Giá trị cốt lõi</span>
       <h2 class="section-title">Những gì định hình Anpha</h2>
       <div class="divider"></div>
-      <p class="section-desc">Bốn giá trị cốt lõi là kim chỉ nam cho mọi hoạt động của chúng tôi – từ cách thiết kế chương trình đến cách phục vụ khách hàng.</p>
+      <p class="section-desc">Năm giá trị cốt lõi là kim chỉ nam cho mọi hoạt động – từ cách thiết kế chương trình đến cách đồng hành cùng khách hàng.</p>
     </div>
-    <div class="values-grid">
-      <div class="value-card v1">
-        <div class="value-icon">💡</div>
-        <div class="value-title">Thực chiến</div>
-        <div class="value-desc">Mọi giải pháp đều được kiểm nghiệm từ thực tế. Chúng tôi không bán lý thuyết – chúng tôi đưa ra những gì thực sự hoạt động trong môi trường doanh nghiệp Việt Nam.</div>
+
+    <div class="honeycomb-wrap">
+      <!-- Hàng trên: 3 ô -->
+      <div class="honeycomb-row">
+        <div class="hex-cell hc1">
+          <div class="hex-icon">💡</div>
+          <div class="hex-title">Thực chiến</div>
+          <div class="hex-desc">Mọi giải pháp đều kiểm nghiệm từ thực tế doanh nghiệp</div>
+        </div>
+        <div class="hex-cell hc2">
+          <div class="hex-icon">🌱</div>
+          <div class="hex-title">Phát triển bền vững</div>
+          <div class="hex-desc">Xây dựng năng lực nội tại để tự vận hành lâu dài</div>
+        </div>
+        <div class="hex-cell hc3">
+          <div class="hex-icon">🤝</div>
+          <div class="hex-title">Đồng hành</div>
+          <div class="hex-desc">Không chỉ tư vấn – ở lại đến khi có kết quả thực sự</div>
+        </div>
       </div>
-      <div class="value-card v2">
-        <div class="value-icon">🤝</div>
-        <div class="value-title">Đồng hành</div>
-        <div class="value-desc">Không phải tư vấn rồi bỏ đi. Anpha ở lại, đồng hành cùng khách hàng trong suốt quá trình triển khai và đảm bảo kết quả thực sự.</div>
-      </div>
-      <div class="value-card v3">
-        <div class="value-icon">🌱</div>
-        <div class="value-title">Phát triển bền vững</div>
-        <div class="value-desc">Chúng tôi xây dựng năng lực nội tại cho đội ngũ khách hàng – để họ có thể tự vận hành và phát triển lâu dài sau khi hợp tác kết thúc.</div>
-      </div>
-      <div class="value-card v4">
-        <div class="value-icon">🔬</div>
-        <div class="value-title">Khoa học &amp; Logic</div>
-        <div class="value-desc">Sử dụng các phương pháp có nền tảng khoa học, dữ liệu và logic rõ ràng – giúp doanh nghiệp đưa ra quyết định HR chính xác, tự tin.</div>
+      <!-- Hàng dưới: 2 ô căn giữa -->
+      <div class="honeycomb-row">
+        <div class="hex-cell hc4">
+          <div class="hex-icon">🔬</div>
+          <div class="hex-title">Khoa học &amp; Logic</div>
+          <div class="hex-desc">Phương pháp có nền tảng khoa học, dữ liệu rõ ràng</div>
+        </div>
+        <div class="hex-cell hc5">
+          <div class="hex-icon">🎯</div>
+          <div class="hex-title">Gắn kết chiến lược</div>
+          <div class="hex-desc">Giải pháp HR phản ánh định hướng của Ban lãnh đạo</div>
+        </div>
       </div>
     </div>
   </div>
@@ -482,10 +443,10 @@
 <section class="team-section" id="doi-ngu">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Đội ngũ</span>
-      <h2 class="section-title">Đội ngũ Chuyên gia Anpha</h2>
+      <span class="section-tag">Đội ngũ giảng viên</span>
+      <h2 class="section-title">Đội ngũ đang được phát triển</h2>
       <div class="divider"></div>
-      <p class="section-desc">Đội ngũ đang được mở rộng – tập hợp những chuyên gia HR có kinh nghiệm thực chiến trong nhiều ngành và quy mô doanh nghiệp khác nhau.</p>
+      <p class="section-desc">Tập hợp những chuyên gia HR có kinh nghiệm thực chiến trong nhiều ngành và quy mô doanh nghiệp khác nhau – đang không ngừng mở rộng.</p>
     </div>
 
     <div class="team-grid">
@@ -533,73 +494,66 @@
   </div>
 </section>
 
-<!-- ===================== LIÊN KẾT HỌC THUẬT ===================== -->
+<!-- ===================== LIÊN KẾT HỌC THUẬT – VIỆN IDEA ===================== -->
 <section class="academic-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Liên kết học thuật</span>
-      <h2 class="section-title">Đối tác Giảng dạy &amp; Học thuật</h2>
+      <span class="section-tag">Liên kết giảng dạy</span>
+      <h2 class="section-title">Giảng dạy tại Viện Idea</h2>
       <div class="divider"></div>
     </div>
-    <p class="academic-intro">
-      Anpha duy trì mối quan hệ hợp tác với các trường đại học, trung tâm giảng dạy và tổ chức học thuật – nhằm đảm bảo chương trình đào tạo luôn được cập nhật kiến thức học thuật mới nhất và gắn kết với thực tiễn.
-    </p>
 
-    <div class="academic-grid">
-      <div class="academic-card">
-        <div class="academic-logo">🏛️</div>
-        <div class="academic-name">Đại học Kinh tế TP.HCM</div>
-        <div class="academic-type">Trường đại học</div>
-      </div>
-      <div class="academic-card">
-        <div class="academic-logo">🎓</div>
-        <div class="academic-name">Trường Đại học Ngoại thương</div>
-        <div class="academic-type">Trường đại học</div>
-      </div>
-      <div class="academic-card">
-        <div class="academic-logo">📚</div>
-        <div class="academic-name">SHRM Vietnam</div>
-        <div class="academic-type">Tổ chức chuyên ngành HR</div>
-      </div>
-      <div class="academic-card">
-        <div class="academic-logo">🏫</div>
-        <div class="academic-name">Học viện Cán bộ TP.HCM</div>
-        <div class="academic-type">Trung tâm đào tạo</div>
+    <!-- Viện Idea banner -->
+    <div class="idea-banner">
+      <div class="idea-banner-logo">🏫</div>
+      <div class="idea-banner-content">
+        <div class="idea-banner-name">Viện Phát triển Năng lực Cán bộ – Viện IDEA</div>
+        <div class="idea-banner-desc">Chị Mai Anh hiện đang giảng dạy các chương trình HR chuyên sâu tại Viện Idea. Học viên có thể đăng ký trực tiếp qua Viện, hoặc liên hệ thỉnh giảng riêng 1-1 với chị Mai Anh thông qua Anpha.</div>
       </div>
     </div>
 
-    <div class="academic-row2">
-      <div class="academic-card">
-        <div class="academic-logo">🌐</div>
-        <div class="academic-name">CIPD – Chartered Institute of Personnel</div>
-        <div class="academic-type">Tổ chức quốc tế</div>
+    <!-- Các môn đang giảng dạy -->
+    <div class="idea-courses-title">Các môn đang giảng dạy tại Viện Idea</div>
+    <div class="idea-courses-grid">
+      <div class="idea-course-card">
+        <div class="idea-course-icon">💰</div>
+        <div class="idea-course-name">Xây dựng Hệ thống Lương thưởng</div>
+        <div class="idea-course-desc">Thiết kế cơ cấu lương 3P, hệ thống phúc lợi và thưởng hiệu suất phù hợp chiến lược doanh nghiệp.</div>
+        <div class="idea-course-type">📍 Tại Viện Idea &amp; 1-1 qua Anpha</div>
       </div>
-      <div class="academic-card">
-        <div class="academic-logo">📊</div>
-        <div class="academic-name">Viện Nghiên cứu Quản lý Kinh tế TW</div>
-        <div class="academic-type">Viện nghiên cứu</div>
+      <div class="idea-course-card">
+        <div class="idea-course-icon">🎯</div>
+        <div class="idea-course-name">Xây dựng Hệ thống BSC/KPI</div>
+        <div class="idea-course-desc">Triển khai Balanced Scorecard và KPI gắn kết mục tiêu cá nhân với chiến lược tổ chức.</div>
+        <div class="idea-course-type">📍 Tại Viện Idea &amp; 1-1 qua Anpha</div>
       </div>
-      <div class="academic-card">
-        <div class="academic-logo">🤝</div>
-        <div class="academic-name">Đối tác học thuật khác</div>
-        <div class="academic-type">Đang mở rộng hợp tác</div>
+      <div class="idea-course-card">
+        <div class="idea-course-icon">👥</div>
+        <div class="idea-course-name">Phát triển Năng lực Quản lý Trung gian</div>
+        <div class="idea-course-desc">Nâng cao kỹ năng lãnh đạo, quản lý hiệu suất và phát triển đội nhóm cho cấp quản lý trung gian.</div>
+        <div class="idea-course-type">📍 Tại Viện Idea &amp; 1-1 qua Anpha</div>
+      </div>
+    </div>
+
+    <!-- 2 cách đăng ký -->
+    <div class="idea-register-wrap">
+      <div class="idea-register-option">
+        <div class="idea-reg-icon">🏫</div>
+        <div class="idea-reg-title">Đăng ký qua Viện Idea</div>
+        <div class="idea-reg-desc">Tham gia lớp học theo lịch của Viện Idea – phù hợp học nhóm, chi phí tối ưu.</div>
+        <a href="#" class="idea-reg-btn btn-idea">Tới trang Viện Idea →</a>
+      </div>
+      <div class="idea-register-divider">hoặc</div>
+      <div class="idea-register-option">
+        <div class="idea-reg-icon">🧑‍🏫</div>
+        <div class="idea-reg-title">Thỉnh giảng riêng 1-1 với chị Mai Anh</div>
+        <div class="idea-reg-desc">Học theo lịch riêng, nội dung tuỳ chỉnh theo nhu cầu – liên hệ trực tiếp qua Anpha để được phản hồi nhanh nhất.</div>
+        <a href="https://www.facebook.com/anpha.co.vn" target="_blank" rel="noopener" class="idea-reg-btn btn-fanpage">💬 Liên hệ qua Fanpage Anpha →</a>
       </div>
     </div>
 
   </div>
 </section>
-
-<!-- CTA -->
-<div class="cta-banner">
-  <div class="container cta-inner">
-    <h2 class="cta-title">Sẵn sàng nâng tầm Bộ phận Nhân sự của bạn?</h2>
-    <p class="cta-desc">Hãy để Anpha đồng hành cùng bạn trên hành trình xây dựng HR chiến lược.</p>
-    <div class="cta-btns">
-      <a href="#" class="btn-cta-primary">Đặt lịch tư vấn miễn phí</a>
-      <a href="dao-tao.html" class="btn-cta-outline">Xem chương trình đào tạo</a>
-    </div>
-  </div>
-</div>
 
 <!-- FOOTER -->
 <footer>
@@ -646,15 +600,15 @@
   </div>
 </footer>
 
+<!-- JS dùng chung -->
+<script src="assets/js/main.js" defer></script>
+<!-- JS riêng trang Giới thiệu -->
 <script>
 function playVideo(el) {
   el.innerHTML = '<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;position:absolute;inset:0"></iframe>';
   el.style.padding = '0';
 }
-window.addEventListener('scroll', () => {
-  const h = document.querySelector('header');
-  h.style.boxShadow = window.scrollY > 10 ? '0 4px 20px rgba(10,76,138,.18)' : '0 2px 12px rgba(10,76,138,.12)';
-});
+/* (header scroll shadow xử lý bởi main.js) */
 </script>
 </body>
 </html>

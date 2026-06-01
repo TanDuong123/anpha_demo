@@ -1,0 +1,10 @@
+# Dev files
+.claude/
+.vscode/
+*.pdf
+pdf_content.txt
+pdf_full.txt
+
+# OS
+.DS_Store
+Thumbs.db
