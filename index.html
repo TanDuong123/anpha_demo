@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anpha – Thay đổi vị thế Bộ phận Nhân sự</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 15px;
+      color: #1a2340;
+      background: #fff;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===== VARIABLES ===== */
+    :root {
+      --primary:   #0a4c8a;
+      --primary-light: #1565c0;
+      --accent:    #e8a020;
+      --accent-dark: #c8820a;
+      --text-dark: #1a2340;
+      --text-gray: #5a6480;
+      --bg-light:  #f5f7fa;
+      --bg-section:#eef2f9;
+      --white:     #ffffff;
+      --border:    #dde3ef;
+      --radius:    8px;
+      --shadow:    0 4px 20px rgba(10,76,138,.10);
+      --transition: .25s ease;
+    }
+
+    /* ===== TOP BAR ===== */
+    .topbar {
+      background: var(--primary);
+      color: rgba(255,255,255,.85);
+      font-size: 13px;
+      padding: 6px 0;
+    }
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar a { color: rgba(255,255,255,.9); }
+    .topbar a:hover { color: var(--accent); }
+    .topbar-contact { display: flex; gap: 20px; align-items: center; }
+    .topbar-contact span { display: flex; align-items: center; gap: 6px; }
+    .topbar-social { display: flex; gap: 10px; }
+    .topbar-social a {
+      width: 26px; height: 26px;
+      background: rgba(255,255,255,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; transition: var(--transition);
+    }
+    .topbar-social a:hover { background: var(--accent); color: var(--white); }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(10,76,138,.12);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .logo img { height: 50px; }
+    .logo span {
+      font-size: 22px; font-weight: 800;
+      color: var(--primary); letter-spacing: -0.5px;
+    }
+
+    /* NAV */
+    nav { display: flex; align-items: center; height: 100%; }
+    nav > ul { display: flex; align-items: center; height: 100%; gap: 2px; }
+    nav > ul > li {
+      position: relative; height: 100%;
+      display: flex; align-items: center;
+    }
+    nav > ul > li > a {
+      padding: 0 14px;
+      font-size: 14px; font-weight: 600;
+      color: var(--text-dark);
+      height: 100%; display: flex; align-items: center;
+      transition: var(--transition);
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+    }
+    nav > ul > li > a:hover,
+    nav > ul > li.active > a {
+      color: var(--primary);
+      border-bottom-color: var(--accent);
+    }
+    nav > ul > li > a .caret {
+      margin-left: 4px; font-size: 10px;
+      transition: var(--transition);
+    }
+    nav > ul > li:hover > a .caret { transform: rotate(180deg); }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: absolute; top: 100%; left: 0;
+      min-width: 250px;
+      background: var(--white);
+      border-top: 3px solid var(--primary);
+      box-shadow: 0 8px 30px rgba(10,76,138,.15);
+      border-radius: 0 0 var(--radius) var(--radius);
+      opacity: 0; visibility: hidden;
+      transform: translateY(8px);
+      transition: all var(--transition);
+      z-index: 999;
+    }
+    nav > ul > li:hover .dropdown {
+      opacity: 1; visibility: visible; transform: translateY(0);
+    }
+    .dropdown li a {
+      display: block;
+      padding: 10px 18px;
+      font-size: 13.5px;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .dropdown li:last-child a { border-bottom: none; }
+    .dropdown li a:hover {
+      background: var(--bg-light);
+      color: var(--primary);
+      padding-left: 24px;
+    }
+    /* Sub-group headers */
+    .dropdown .sub-group-title {
+      padding: 10px 18px 4px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      background: var(--bg-section);
+    }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ===== HERO SLIDER ===== */
+    .hero {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: var(--primary);
+    }
+    .hero-slider { display: flex; transition: transform .6s cubic-bezier(.4,0,.2,1); }
+    .hero-slide {
+      min-width: 100%;
+      height: 640px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .slide-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      background-repeat: no-repeat;
+    }
+    .slide-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(10,76,138,.85) 0%, rgba(10,76,138,.4) 60%, transparent 100%);
+    }
+    .slide-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+      width: 100%;
+    }
+    .slide-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 12px; font-weight: 700;
+      padding: 4px 14px; border-radius: 30px;
+      letter-spacing: .5px; margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .slide-title {
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.25;
+      max-width: 600px;
+      margin-bottom: 16px;
+    }
+    .slide-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,.85);
+      max-width: 500px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .slide-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 14px; font-weight: 700;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 14px; font-weight: 600;
+      border: 2px solid rgba(255,255,255,.6);
+      transition: var(--transition);
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+
+    /* SLIDER CONTROLS */
+    .hero-prev, .hero-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 10;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,.2);
+      border: 2px solid rgba(255,255,255,.4);
+      color: white; font-size: 18px;
+      border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+    .hero-prev:hover, .hero-next:hover { background: var(--accent); border-color: var(--accent); }
+    .hero-prev { left: 16px; }
+    .hero-next { right: 16px; }
+    .hero-dots {
+      position: absolute; bottom: 18px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 10;
+    }
+    .hero-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%; background: rgba(255,255,255,.4);
+      cursor: pointer; transition: var(--transition);
+    }
+    .hero-dot.active { background: var(--accent); width: 24px; border-radius: 4px; }
+
+    /* ===== SECTION COMMONS ===== */
+    section { padding: 72px 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-tag {
+      display: inline-block;
+      background: var(--bg-section);
+      color: var(--primary);
+      font-size: 12px; font-weight: 700;
+      padding: 4px 14px; border-radius: 30px;
+      letter-spacing: .8px; margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .section-title {
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      max-width: 620px; margin: 0 auto;
+      line-height: 1.8;
+    }
+    .divider {
+      width: 50px; height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px; margin: 16px auto 0;
+    }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--primary);
+      padding: 32px 0;
+    }
+    .stats-grid {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .stat-item { text-align: center; color: var(--white); }
+    .stat-number {
+      font-size: 38px; font-weight: 800;
+      color: var(--accent); line-height: 1;
+    }
+    .stat-label { font-size: 13px; opacity: .85; margin-top: 6px; }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-img {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-img-placeholder {
+      height: 420px;
+      background: linear-gradient(135deg, var(--bg-section) 0%, var(--border) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-gray); font-size: 14px;
+    }
+    .about-badge {
+      position: absolute; bottom: -1px; right: -1px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 18px 24px;
+      border-radius: 12px 0 0 0;
+      text-align: center;
+    }
+    .about-badge-num { font-size: 32px; font-weight: 800; line-height: 1; }
+    .about-badge-text { font-size: 12px; opacity: .9; }
+    .about-content .section-header { text-align: left; margin-bottom: 24px; }
+    .about-content .section-header .divider { margin-left: 0; }
+    .about-text { color: var(--text-gray); line-height: 1.8; margin-bottom: 28px; }
+    .about-features { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+    .about-feature {
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .feature-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--bg-section);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 18px;
+    }
+    .feature-title { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+    .feature-desc { font-size: 13px; color: var(--text-gray); }
+    .btn-solid {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 13px 28px;
+      border-radius: 6px;
+      font-size: 14px; font-weight: 700;
+      transition: var(--transition);
+    }
+    .btn-solid:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(10,76,138,.25); }
+
+    /* ===== COURSES ===== */
+    .courses { background: var(--bg-light); }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .course-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+    .course-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(10,76,138,.15); }
+    .course-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 20px;
+      color: var(--white);
+    }
+    .course-type {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      color: var(--white);
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase; letter-spacing: .5px;
+    }
+    .course-card.inhouse .course-header {
+      background: linear-gradient(135deg, #1a4f7a 0%, #2a6496 100%);
+    }
+    .course-card.open .course-header {
+      background: linear-gradient(135deg, #0d5c3a 0%, #1a8c5a 100%);
+    }
+    .course-name { font-size: 17px; font-weight: 700; line-height: 1.4; }
+    .course-body { padding: 20px; }
+    .course-meta { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .course-meta-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-gray);
+    }
+    .meta-icon { color: var(--primary); font-size: 14px; }
+    .course-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .course-tag {
+      background: var(--bg-section);
+      color: var(--primary);
+      font-size: 11px; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .course-cta {
+      display: flex; gap: 8px;
+    }
+    .btn-sm {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px; font-weight: 600;
+      transition: var(--transition);
+      flex: 1; text-align: center;
+    }
+    .btn-sm-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-sm-primary:hover { background: var(--primary-light); }
+    .btn-sm-outline {
+      border: 1.5px solid var(--border);
+      color: var(--text-gray);
+    }
+    .btn-sm-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ===== SOLUTIONS ===== */
+    .solutions { background: var(--white); }
+
+    .solutions-visual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+    .solutions-visual-row2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 820px;
+      margin: 0 auto 40px;
+    }
+    .sol-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(10,76,138,.09);
+      border: 1.5px solid var(--border);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .sol-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(10,76,138,.16);
+      border-color: var(--primary);
+    }
+    .sol-card-img {
+      height: 120px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .sol-card.s1 .sol-card-img { background: linear-gradient(135deg, #0a4c8a 0%, #1565c0 100%); }
+    .sol-card.s2 .sol-card-img { background: linear-gradient(135deg, #0d3a6b 0%, #1a5fa8 100%); }
+    .sol-card.s3 .sol-card-img { background: linear-gradient(135deg, #0d5c3a 0%, #1a8c5a 100%); }
+    .sol-card.s4 .sol-card-img { background: linear-gradient(135deg, #6b3a8f 0%, #9b59b6 100%); }
+    .sol-card.s5 .sol-card-img { background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%); }
+    .sol-card-icon-big {
+      font-size: 52px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,.2));
+    }
+    .sol-card-body { padding: 22px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+    .sol-num { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 6px; }
+    .sol-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; line-height: 1.4; }
+    .sol-desc { font-size: 13px; color: var(--text-gray); line-height: 1.7; flex: 1; margin-bottom: 16px; }
+    .sol-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--primary); font-size: 13px; font-weight: 600;
+      transition: var(--transition);
+    }
+    .sol-link:hover { gap: 10px; color: var(--accent-dark); }
+    .solutions-cta-row { text-align: center; }
+
+    /* Row for last 2 cards centered */
+    .sol-row-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* ===== TRAINING CARDS ===== */
+    .training { background: var(--bg-light); }
+    .training-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .training-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(10,76,138,.1);
+      transition: var(--transition);
+      border: 1.5px solid var(--border);
+    }
+    .training-card:hover { transform: translateY(-6px); box-shadow: 0 14px 44px rgba(10,76,138,.18); }
+    .training-card-banner {
+      height: 180px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; text-align: center; padding: 20px;
+      position: relative;
+    }
+    .tc-inhouse .training-card-banner { background: linear-gradient(135deg, #0a4c8a 0%, #1565c0 100%); }
+    .tc-public .training-card-banner { background: linear-gradient(135deg, #0d5c3a 0%, #1a8c5a 100%); }
+    .training-card-banner-icon { font-size: 56px; }
+    .training-card-banner-title { font-size: 22px; font-weight: 800; color: #fff; }
+    .training-card-banner-sub { font-size: 13px; color: rgba(255,255,255,.85); }
+    .training-card-body { padding: 24px; }
+    .training-card-desc { color: var(--text-gray); font-size: 14px; line-height: 1.8; margin-bottom: 20px; }
+    .training-card-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .training-card-feature {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: var(--text-dark);
+    }
+    .training-card-feature-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border-radius: 8px; background: var(--bg-section);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .training-card-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .training-badge {
+      background: var(--bg-section);
+      color: var(--primary);
+      font-size: 12px; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .tc-public .training-badge { background: #e8f5ee; color: #0d5c3a; }
+    .btn-training {
+      display: block; text-align: center;
+      padding: 13px 24px;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 700;
+      transition: var(--transition);
+    }
+    .tc-inhouse .btn-training { background: var(--primary); color: var(--white); }
+    .tc-inhouse .btn-training:hover { background: var(--primary-light); }
+    .tc-public .btn-training { background: #0d5c3a; color: var(--white); }
+    .tc-public .btn-training:hover { background: #1a8c5a; }
+
+    /* ===== HR RESOURCES ===== */
+    .hr-resources { background: var(--white); }
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .res-card {
+      background: var(--bg-section);
+      border-radius: 12px;
+      padding: 24px 16px;
+      text-align: center;
+      transition: var(--transition);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+    }
+    .res-card:hover {
+      border-color: var(--primary);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      transform: translateY(-4px);
+    }
+    .res-icon { font-size: 32px; margin-bottom: 12px; }
+    .res-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .res-desc { font-size: 12px; color: var(--text-gray); line-height: 1.5; }
+
+    /* ===== NEWS ===== */
+    .news { background: var(--bg-light); }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .news-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(10,76,138,.07);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+    .news-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .news-img {
+      height: 200px;
+      background: linear-gradient(135deg, var(--bg-section) 0%, var(--border) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-gray); font-size: 13px;
+      position: relative; overflow: hidden;
+    }
+    .news-img img { width: 100%; height: 100%; object-fit: cover; }
+    .news-cat {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--primary);
+      color: var(--white); font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .news-body { padding: 20px; }
+    .news-date { font-size: 12px; color: var(--text-gray); margin-bottom: 8px; }
+    .news-title {
+      font-size: 15px; font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.5;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .news-excerpt {
+      font-size: 13px; color: var(--text-gray);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .news-footer { padding: 12px 20px; border-top: 1px solid var(--border); }
+    .news-link {
+      font-size: 13px; font-weight: 600; color: var(--primary);
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: var(--transition);
+    }
+    .news-link:hover { gap: 10px; color: var(--accent-dark); }
+    .view-all-wrap { text-align: center; margin-top: 36px; }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, #0d3a6b 100%);
+      padding: 72px 0;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-title {
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 800; color: var(--white);
+      margin-bottom: 16px; line-height: 1.3;
+    }
+    .cta-desc { font-size: 16px; color: rgba(255,255,255,.8); margin-bottom: 32px; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0d1e3a;
+      color: rgba(255,255,255,.75);
+      padding: 64px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo-text {
+      font-size: 26px; font-weight: 800;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .footer-brand p {
+      font-size: 13px; line-height: 1.8; margin-bottom: 20px;
+      color: rgba(255,255,255,.65);
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.08);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.7); font-size: 14px;
+      transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--accent); color: var(--white); }
+    .footer-col h4 {
+      font-size: 14px; font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a {
+      font-size: 13px; color: rgba(255,255,255,.65);
+      transition: var(--transition);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .footer-col ul li a:hover { color: var(--accent); padding-left: 4px; }
+    .footer-contact { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item { display: flex; gap: 10px; align-items: flex-start; }
+    .contact-icon { color: var(--accent); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+    .contact-text { font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.5; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 20px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .footer-bottom-text { font-size: 12px; color: rgba(255,255,255,.45); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { display: none; }
+      .solutions-visual-grid { grid-template-columns: repeat(2, 1fr); }
+      .solutions-visual-row2 { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+      .training-cards { grid-template-columns: 1fr; }
+      .resources-grid { grid-template-columns: repeat(3, 1fr); }
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .solutions-visual-grid { grid-template-columns: 1fr; }
+      .solutions-visual-row2 { grid-template-columns: 1fr; }
+      .resources-grid { grid-template-columns: repeat(2, 1fr); }
+      .news-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-slide { height: 500px; }
+      section { padding: 52px 0; }
+      .topbar-contact span:not(:first-child) { display: none; }
+    }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav {
+      display: none;
+      position: fixed; inset: 0; z-index: 2000;
+      background: var(--white);
+      overflow-y: auto;
+      padding: 24px;
+      flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px;
+    }
+    .mobile-close {
+      background: none; border: none;
+      font-size: 24px; cursor: pointer; color: var(--text-dark);
+    }
+    .mobile-menu { display: flex; flex-direction: column; gap: 4px; }
+    .mobile-menu a {
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+      font-size: 15px; color: var(--text-dark); font-weight: 600;
+      display: block;
+    }
+    .mobile-menu .sub-item {
+      padding-left: 20px; font-weight: 400; font-size: 14px;
+      color: var(--text-gray); border-bottom-color: transparent;
+    }
+    .mobile-menu .sub-group-label {
+      padding: 8px 20px 4px;
+      font-size: 11px; font-weight: 700; color: var(--primary);
+      text-transform: uppercase; letter-spacing: .5px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-contact">
+      <span>📞 <a href="tel:0908728002">0908.728.002</a></span>
+      <span>✉️ <a href="mailto:info@anpha-co.vn">info@anpha-co.vn</a></span>
+      <span>📍 31B Đường số 5, Bình Thạnh, TP.HCM</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#" title="Facebook">f</a>
+      <a href="#" title="Zalo">Z</a>
+      <a href="#" title="LinkedIn">in</a>
+      <a href="#" title="YouTube">▶</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <!-- Thay bằng thẻ img khi upload logo -->
+      <!-- <img src="/wp-content/uploads/2025/09/logo-anpha-remove.png" alt="Anpha" /> -->
+      <span>Anpha</span>
+    </a>
+
+    <nav>
+      <ul>
+        <li class="active"><a href="/">Trang chủ</a></li>
+
+        <li>
+          <a href="/gioi-thieu/">Giới thiệu <span class="caret">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="/gioi-thieu/">Giới thiệu chung</a></li>
+            <li><a href="/gioi-thieu/doi-ngu/">Đội ngũ</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/giai-phap/">Giải pháp <span class="caret">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="/giai-phap/danh-gia-phat-trien-quan-ly-trung-gian/">Đánh giá &amp; Phát triển Quản lý Trung gian</a></li>
+            <li><a href="/giai-phap/tu-van-xay-dung-he-thong-hr/">Tư vấn Xây dựng Hệ thống HR</a></li>
+            <li><a href="/giai-phap/he-thong-luong-thuong/">Xây dựng Hệ thống Lương thưởng</a></li>
+            <li><a href="/giai-phap/quan-ly-hieu-suat-bsc-kpi/">Xây dựng Hệ thống Quản lý Hiệu suất</a></li>
+            <li><a href="/giai-phap/tu-van-chuyen-mon-hr/">Tư vấn Chuyên môn HR</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/dao-tao/">Đào tạo <span class="caret">▾</span></a>
+          <ul class="dropdown" style="min-width:280px">
+            <li class="sub-group-title">Đào tạo Doanh nghiệp</li>
+            <li><a href="/dao-tao/nang-luc-quan-ly-trung-gian/">Năng lực Quản lý Trung gian</a></li>
+            <li><a href="/dao-tao/xay-dung-he-thong-bsc-kpi-inhouse/">Xây dựng Hệ thống BSC/KPI</a></li>
+            <li><a href="/dao-tao/moi-truong-lam-viec-tich-cuc/">Xây dựng Môi trường Làm việc Tích cực</a></li>
+            <li class="sub-group-title">Đào tạo Mở</li>
+            <li><a href="/dao-tao/bsc-kpi/">Xây dựng Hệ thống BSC/KPI</a></li>
+            <li><a href="/dao-tao/he-thong-luong-thuong/">Hệ thống Lương thưởng</a></li>
+            <li><a href="/dao-tao/truong-phong-hrbp/">Trưởng phòng Đối tác Nhân sự</a></li>
+            <li><a href="/dao-tao/phat-trien-nhan-tai/">Phát triển Nhân tài</a></li>
+            <li class="sub-group-title">Dịch vụ Khác</li>
+            <li><a href="/dao-tao/thue-ngoai-dao-tao/">Thuê ngoài Đào tạo</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/tai-nguyen-hr/">Tài nguyên HR <span class="caret">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="/tai-nguyen-hr/nen-tang-hr/">Nền tảng HR</a></li>
+            <li><a href="/tai-nguyen-hr/to-chuc/">Tổ chức</a></li>
+            <li><a href="/tai-nguyen-hr/chuyen-doanh-nghiep/">Chuyện Doanh nghiệp</a></li>
+            <li><a href="/tai-nguyen-hr/goc-nhin-hr-podcast/">Góc nhìn HR – Podcast</a></li>
+            <li><a href="/tai-nguyen-hr/video/">Video</a></li>
+          </ul>
+        </li>
+
+        <li><a href="/tin-tuc/">Tin Tức</a></li>
+        <li><a href="/lien-he/">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <span style="font-size:20px;font-weight:800;color:var(--primary)">Anpha</span>
+    <button class="mobile-close" onclick="closeMobileNav()">✕</button>
+  </div>
+  <nav class="mobile-menu">
+    <a href="/">Trang chủ</a>
+    <a href="/gioi-thieu/">Giới thiệu</a>
+    <a href="/gioi-thieu/" class="sub-item">— Giới thiệu chung</a>
+    <a href="/gioi-thieu/doi-ngu/" class="sub-item">— Đội ngũ</a>
+    <a href="/giai-phap/">Giải pháp</a>
+    <div class="sub-group-label">Các giải pháp</div>
+    <a href="/giai-phap/danh-gia-phat-trien-quan-ly-trung-gian/" class="sub-item">— Đánh giá &amp; Phát triển Quản lý Trung gian</a>
+    <a href="/giai-phap/tu-van-xay-dung-he-thong-hr/" class="sub-item">— Tư vấn Xây dựng Hệ thống HR</a>
+    <a href="/giai-phap/he-thong-luong-thuong/" class="sub-item">— Xây dựng Hệ thống Lương thưởng</a>
+    <a href="/giai-phap/quan-ly-hieu-suat-bsc-kpi/" class="sub-item">— Xây dựng Hệ thống Quản lý Hiệu suất</a>
+    <a href="/giai-phap/tu-van-chuyen-mon-hr/" class="sub-item">— Tư vấn Chuyên môn HR</a>
+    <a href="/dao-tao/">Đào tạo</a>
+    <div class="sub-group-label">Đào tạo Doanh nghiệp</div>
+    <a href="/dao-tao/nang-luc-quan-ly-trung-gian/" class="sub-item">— Năng lực Quản lý Trung gian</a>
+    <a href="/dao-tao/xay-dung-he-thong-bsc-kpi-inhouse/" class="sub-item">— Xây dựng Hệ thống BSC/KPI</a>
+    <a href="/dao-tao/moi-truong-lam-viec-tich-cuc/" class="sub-item">— Môi trường Làm việc Tích cực</a>
+    <div class="sub-group-label">Đào tạo Mở</div>
+    <a href="/dao-tao/bsc-kpi/" class="sub-item">— Xây dựng Hệ thống BSC/KPI</a>
+    <a href="/dao-tao/he-thong-luong-thuong/" class="sub-item">— Hệ thống Lương thưởng</a>
+    <a href="/dao-tao/truong-phong-hrbp/" class="sub-item">— Trưởng phòng Đối tác Nhân sự</a>
+    <a href="/dao-tao/phat-trien-nhan-tai/" class="sub-item">— Phát triển Nhân tài</a>
+    <a href="/dao-tao/thue-ngoai-dao-tao/" class="sub-item">— Thuê ngoài Đào tạo</a>
+    <a href="/tai-nguyen-hr/">Tài nguyên HR</a>
+    <a href="/tai-nguyen-hr/nen-tang-hr/" class="sub-item">— Nền tảng HR</a>
+    <a href="/tai-nguyen-hr/to-chuc/" class="sub-item">— Tổ chức</a>
+    <a href="/tai-nguyen-hr/chuyen-doanh-nghiep/" class="sub-item">— Chuyện Doanh nghiệp</a>
+    <a href="/tai-nguyen-hr/goc-nhin-hr-podcast/" class="sub-item">— Góc nhìn HR – Podcast</a>
+    <a href="/tai-nguyen-hr/video/" class="sub-item">— Video</a>
+    <a href="/tin-tuc/">Tin Tức</a>
+    <a href="/lien-he/">Liên hệ</a>
+  </nav>
+</div>
+
+<!-- ==================== HERO SLIDER ==================== -->
+<section class="hero">
+  <div class="hero-slider" id="heroSlider">
+
+    <!-- SLIDE 1 – Tổng quan -->
+    <div class="hero-slide">
+      <div class="slide-bg" style="background: linear-gradient(135deg,#0a4c8a 0%,#1565c0 100%);"></div>
+      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-content">
+        <span class="slide-tag">Giải pháp HR chiến lược</span>
+        <h1 class="slide-title">Thay đổi vị thế Bộ phận Nhân sự trong doanh nghiệp</h1>
+        <p class="slide-desc">Anpha cung cấp giải pháp HR toàn diện – từ tư vấn xây dựng hệ thống đến đào tạo chuyên sâu, giúp HR trở thành đối tác chiến lược của Ban lãnh đạo.</p>
+        <div class="slide-btns">
+          <a href="/giai-phap/" class="btn-primary">Xem giải pháp</a>
+          <a href="/lien-he/" class="btn-outline">Liên hệ tư vấn</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 – Đào tạo mở: BSC/KPI -->
+    <div class="hero-slide">
+      <div class="slide-bg" style="background: linear-gradient(135deg,#0d3a6b 0%,#0a4c8a 100%);"></div>
+      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-content">
+        <span class="slide-tag" style="background:#0d5c3a">Đào tạo mở</span>
+        <h1 class="slide-title">Xây dựng Hệ thống Quản lý Hiệu suất BSC/KPI</h1>
+        <p class="slide-desc">Khoá học thực chiến – xây dựng hệ thống BSC/KPI phù hợp thực tiễn doanh nghiệp, ứng dụng ngay sau khoá học.</p>
+        <div class="slide-btns">
+          <a href="/dao-tao/bsc-kpi/" class="btn-primary">Đăng ký ngay</a>
+          <a href="/dao-tao/bsc-kpi/" class="btn-outline">Xem chi tiết</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 – Đào tạo mở: Lương thưởng -->
+    <div class="hero-slide">
+      <div class="slide-bg" style="background: linear-gradient(135deg,#5b2d8f 0%,#7c3aed 100%);"></div>
+      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-content">
+        <span class="slide-tag" style="background:#e8a020">Đào tạo mở – Khai giảng 04, 11/07/2026</span>
+        <h1 class="slide-title">Xây dựng Hệ thống Lương thưởng</h1>
+        <p class="slide-desc">Thiết kế cơ cấu lương 3P, xây dựng hệ thống thưởng hiệu suất gắn kết nhân viên và thúc đẩy kết quả kinh doanh.</p>
+        <div class="slide-btns">
+          <a href="/dao-tao/he-thong-luong-thuong/" class="btn-primary">Đăng ký khoá học</a>
+          <a href="/dao-tao/he-thong-luong-thuong/" class="btn-outline">Xem chương trình</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 – HRBP Manager -->
+    <div class="hero-slide">
+      <div class="slide-bg" style="background: linear-gradient(135deg,#0d5c3a 0%,#1a8c5a 100%);"></div>
+      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-content">
+        <span class="slide-tag" style="background:#e8a020">Đào tạo mở – Khai giảng 20, 27/06/2026</span>
+        <h1 class="slide-title">HRBP Manager – Trưởng phòng Đối tác Nhân sự</h1>
+        <p class="slide-desc">Chương trình đào tạo chuyên sâu cho HR Manager sẵn sàng chuyển đổi vai trò thành đối tác chiến lược trong tổ chức.</p>
+        <div class="slide-btns">
+          <a href="/dao-tao/truong-phong-hrbp/" class="btn-primary">Đăng ký khoá học</a>
+          <a href="/dao-tao/truong-phong-hrbp/" class="btn-outline">Xem chương trình</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 – Inhouse: Quản lý Trung gian -->
+    <div class="hero-slide">
+      <div class="slide-bg" style="background: linear-gradient(135deg,#1a2340 0%,#2a3a60 100%);"></div>
+      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-content">
+        <span class="slide-tag" style="background:#c8820a">Đào tạo Doanh nghiệp</span>
+        <h1 class="slide-title">Phát triển Năng lực Quản lý Trung gian</h1>
+        <p class="slide-desc">Chương trình đào tạo nội bộ được thiết kế riêng – giúp đội ngũ quản lý cấp trung nắm vững kỹ năng lãnh đạo, quản lý hiệu suất và phát triển nhân tài.</p>
+        <div class="slide-btns">
+          <a href="/dao-tao/nang-luc-quan-ly-trung-gian/" class="btn-primary">Tìm hiểu thêm</a>
+          <a href="/lien-he/" class="btn-outline">Liên hệ nhận báo giá</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 – Tư vấn Hệ thống HR -->
+    <div class="hero-slide">
+      <div class="slide-bg" style="background: linear-gradient(135deg,#7c2d12 0%,#c2410c 100%);"></div>
+      <div class="slide-overlay" style="background:none;"></div>
+      <div class="slide-content">
+        <span class="slide-tag" style="background:var(--primary)">Tư vấn Giải pháp</span>
+        <h1 class="slide-title">Tư vấn Xây dựng Hệ thống HR Toàn diện</h1>
+        <p class="slide-desc">Từ phân tích hiện trạng đến triển khai hệ thống HR phù hợp chiến lược doanh nghiệp – Anpha đồng hành cùng bạn từng bước.</p>
+        <div class="slide-btns">
+          <a href="/giai-phap/tu-van-xay-dung-he-thong-hr/" class="btn-primary">Xem giải pháp</a>
+          <a href="/lien-he/" class="btn-outline">Đặt lịch tư vấn</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /hero-slider -->
+
+  <button class="hero-prev" onclick="slideChange(-1)">&#8249;</button>
+  <button class="hero-next" onclick="slideChange(1)">&#8250;</button>
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active" onclick="goToSlide(0)"></div>
+    <div class="hero-dot" onclick="goToSlide(1)"></div>
+    <div class="hero-dot" onclick="goToSlide(2)"></div>
+    <div class="hero-dot" onclick="goToSlide(3)"></div>
+    <div class="hero-dot" onclick="goToSlide(4)"></div>
+    <div class="hero-dot" onclick="goToSlide(5)"></div>
+  </div>
+</section>
+
+<!-- ==================== STATS BAR ==================== -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">500<span style="font-size:24px">+</span></div>
+      <div class="stat-label">Học viên đã tốt nghiệp</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">50<span style="font-size:24px">+</span></div>
+      <div class="stat-label">Doanh nghiệp được tư vấn</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">10<span style="font-size:24px">+</span></div>
+      <div class="stat-label">Chương trình đào tạo</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">3<span style="font-size:24px">+</span></div>
+      <div class="stat-label">Năm kinh nghiệm thực chiến</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ABOUT ==================== -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">
+        <div class="about-img-placeholder">
+          [ Ảnh đội ngũ / hình ảnh công ty ]
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">2023</div>
+          <div class="about-badge-text">Năm thành lập</div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <div class="section-header">
+          <span class="section-tag">Về chúng tôi</span>
+          <h2 class="section-title">Phát triển nguồn lực thiết yếu,<br/>tăng giá trị cho tổ chức</h2>
+          <div class="divider"></div>
+        </div>
+        <p class="about-text">
+          Anpha được thành lập với sứ mệnh <strong>nâng tầm vai trò của Bộ phận Nhân sự</strong> trong mỗi doanh nghiệp – khẳng định HR là nguồn lực chiến lược tạo nên sự khác biệt và lợi thế cạnh tranh bền vững.
+        </p>
+        <p class="about-text">
+          Đội ngũ chuyên gia Anpha từng giữ vị trí lãnh đạo tại các tập đoàn đa quốc gia trong nhiều lĩnh vực: bán lẻ, thương mại điện tử, FMCG, bảo hiểm, giáo dục và sản xuất.
+        </p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="feature-icon">🎯</div>
+            <div>
+              <div class="feature-title">Giải pháp thực chiến</div>
+              <div class="feature-desc">Linh hoạt, gọn nhẹ, ứng dụng cao – phù hợp đặc thù từng doanh nghiệp.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feature-icon">🤝</div>
+            <div>
+              <div class="feature-title">Đồng hành triển khai</div>
+              <div class="feature-desc">Không chỉ tư vấn – Anpha đồng hành cùng doanh nghiệp xuyên suốt quá trình.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feature-icon">📊</div>
+            <div>
+              <div class="feature-title">Gắn kết chiến lược</div>
+              <div class="feature-desc">Giải pháp HR phản ánh định hướng chiến lược của Ban lãnh đạo.</div>
+            </div>
+          </div>
+        </div>
+        <a href="/gioi-thieu/" class="btn-solid">Tìm hiểu về Anpha ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SOLUTIONS ==================== -->
+<section class="solutions">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Giải pháp</span>
+      <h2 class="section-title">Tư vấn &amp; Giải pháp HR Chiến lược</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Anpha cung cấp các giải pháp HR thực chiến, linh hoạt và phù hợp chiến lược – giúp doanh nghiệp xây dựng hệ thống quản trị nhân sự vững chắc.</p>
+    </div>
+
+    <div class="solutions-visual-grid">
+      <a href="/giai-phap/danh-gia-phat-trien-quan-ly-trung-gian/" class="sol-card s1">
+        <div class="sol-card-img">
+          <div class="sol-card-icon-big">📈</div>
+        </div>
+        <div class="sol-card-body">
+          <div class="sol-num">Giải pháp 01</div>
+          <div class="sol-title">Đánh giá &amp; Phát triển Quản lý Trung gian</div>
+          <div class="sol-desc">Xây dựng khung năng lực và lộ trình phát triển cho đội ngũ quản lý cấp trung – đòn bẩy tăng trưởng bền vững.</div>
+          <span class="sol-link">Tìm hiểu thêm →</span>
+        </div>
+      </a>
+      <a href="/giai-phap/tu-van-xay-dung-he-thong-hr/" class="sol-card s2">
+        <div class="sol-card-img">
+          <div class="sol-card-icon-big">🏗️</div>
+        </div>
+        <div class="sol-card-body">
+          <div class="sol-num">Giải pháp 02</div>
+          <div class="sol-title">Tư vấn Xây dựng Hệ thống HR</div>
+          <div class="sol-desc">Thiết kế toàn bộ hệ thống quản trị nhân sự từ cơ bản đến nâng cao, phù hợp quy mô và ngành nghề.</div>
+          <span class="sol-link">Tìm hiểu thêm →</span>
+        </div>
+      </a>
+      <a href="/giai-phap/he-thong-luong-thuong/" class="sol-card s3">
+        <div class="sol-card-img">
+          <div class="sol-card-icon-big">💰</div>
+        </div>
+        <div class="sol-card-body">
+          <div class="sol-num">Giải pháp 03</div>
+          <div class="sol-title">Xây dựng Hệ thống Lương thưởng</div>
+          <div class="sol-desc">Thiết kế cơ cấu lương 3P, hệ thống phúc lợi và thưởng hiệu suất thu hút và giữ chân nhân tài.</div>
+          <span class="sol-link">Tìm hiểu thêm →</span>
+        </div>
+      </a>
+    </div>
+    <div class="solutions-visual-row2">
+      <a href="/giai-phap/quan-ly-hieu-suat-bsc-kpi/" class="sol-card s4">
+        <div class="sol-card-img">
+          <div class="sol-card-icon-big">🎯</div>
+        </div>
+        <div class="sol-card-body">
+          <div class="sol-num">Giải pháp 04</div>
+          <div class="sol-title">Xây dựng Hệ thống Quản lý Hiệu suất</div>
+          <div class="sol-desc">Triển khai BSC/KPI gắn kết mục tiêu cá nhân với chiến lược tổ chức, tạo văn hoá hiệu suất cao.</div>
+          <span class="sol-link">Tìm hiểu thêm →</span>
+        </div>
+      </a>
+      <a href="/giai-phap/tu-van-chuyen-mon-hr/" class="sol-card s5">
+        <div class="sol-card-img">
+          <div class="sol-card-icon-big">🧑‍💼</div>
+        </div>
+        <div class="sol-card-body">
+          <div class="sol-num">Giải pháp 05</div>
+          <div class="sol-title">Tư vấn Chuyên môn HR</div>
+          <div class="sol-desc">Hỗ trợ chuyên sâu các vấn đề HR đặc thù: tuyển dụng, đào tạo, văn hoá tổ chức, pháp lý lao động.</div>
+          <span class="sol-link">Tìm hiểu thêm →</span>
+        </div>
+      </a>
+    </div>
+    <div class="solutions-cta-row">
+      <a href="/giai-phap/" class="btn-solid">Xem tất cả giải pháp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TRAINING CARDS ==================== -->
+<section class="training">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Đào tạo</span>
+      <h2 class="section-title">Chương trình Đào tạo HR Chuyên nghiệp</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Anpha thiết kế chương trình phù hợp từng nhu cầu – đào tạo nội bộ riêng cho doanh nghiệp hoặc lớp học mở đăng ký cá nhân.</p>
+    </div>
+
+    <div class="training-cards">
+
+      <!-- INHOUSE -->
+      <div class="training-card tc-inhouse">
+        <div class="training-card-banner">
+          <div class="training-card-banner-icon">🏢</div>
+          <div class="training-card-banner-title">Đào tạo Doanh nghiệp</div>
+          <div class="training-card-banner-sub">Chương trình thiết kế riêng theo yêu cầu tổ chức</div>
+        </div>
+        <div class="training-card-body">
+          <p class="training-card-desc">Anpha thiết kế chương trình đào tạo nội bộ phù hợp với văn hoá, quy mô và chiến lược riêng của từng doanh nghiệp.</p>
+          <div class="training-card-features">
+            <div class="training-card-feature">
+              <div class="training-card-feature-icon">📋</div>
+              <span>Phát triển Năng lực Quản lý Trung gian</span>
+            </div>
+            <div class="training-card-feature">
+              <div class="training-card-feature-icon">🎯</div>
+              <span>Xây dựng Hệ thống BSC/KPI Inhouse</span>
+            </div>
+            <div class="training-card-feature">
+              <div class="training-card-feature-icon">🌟</div>
+              <span>Môi trường Làm việc Tích cực</span>
+            </div>
+          </div>
+          <div class="training-card-badges">
+            <span class="training-badge">Thiết kế riêng</span>
+            <span class="training-badge">Tại doanh nghiệp</span>
+            <span class="training-badge">Linh hoạt lịch học</span>
+          </div>
+          <a href="dao-tao.html#inhouse" class="btn-training">Yêu cầu báo giá Inhouse →</a>
+        </div>
+      </div>
+
+      <!-- PUBLIC -->
+      <div class="training-card tc-public">
+        <div class="training-card-banner">
+          <div class="training-card-banner-icon">🎓</div>
+          <div class="training-card-banner-title">Đào tạo Mở</div>
+          <div class="training-card-banner-sub">Lớp học công khai – đăng ký theo từng cá nhân</div>
+        </div>
+        <div class="training-card-body">
+          <p class="training-card-desc">Các lớp đào tạo mở đang tuyển sinh và sắp khai giảng – cơ hội nâng cao chuyên môn HR ngay hôm nay.</p>
+          <div class="training-card-features">
+            <div class="training-card-feature">
+              <div class="training-card-feature-icon">🔥</div>
+              <span><strong>Đang tuyển sinh:</strong> Lương thưởng – 04 &amp; 11/07/2026</span>
+            </div>
+            <div class="training-card-feature">
+              <div class="training-card-feature-icon">🔥</div>
+              <span><strong>Đang tuyển sinh:</strong> HRBP Manager – 20 &amp; 27/06/2026</span>
+            </div>
+            <div class="training-card-feature">
+              <div class="training-card-feature-icon">📋</div>
+              <span>Sắp khai giảng: BSC/KPI &amp; Phát triển Nhân tài</span>
+            </div>
+          </div>
+          <div class="training-card-badges">
+            <span class="training-badge">Lớp quy mô nhỏ</span>
+            <span class="training-badge">TP.HCM &amp; Online</span>
+            <span class="training-badge">Cuối tuần</span>
+          </div>
+          <a href="dao-tao.html" class="btn-training">Xem các lớp đang hoạt động →</a>
+        </div>
+      </div>
+
+    </div><!-- /training-cards -->
+  </div>
+</section>
+
+<!-- ==================== HR RESOURCES ==================== -->
+<section class="hr-resources">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Tài nguyên HR</span>
+      <h2 class="section-title">Kho Tài nguyên HR Miễn phí</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Kiến thức, công cụ và câu chuyện thực tiễn dành cho cộng đồng HR Việt Nam.</p>
+    </div>
+
+    <div class="resources-grid">
+      <a href="/tai-nguyen-hr/nen-tang-hr/" class="res-card">
+        <div class="res-icon">📚</div>
+        <div class="res-title">Nền tảng HR</div>
+        <div class="res-desc">Kiến thức HR cơ bản đến nâng cao</div>
+      </a>
+      <a href="/tai-nguyen-hr/to-chuc/" class="res-card">
+        <div class="res-icon">🏛️</div>
+        <div class="res-title">Tổ chức</div>
+        <div class="res-desc">Thiết kế cơ cấu &amp; văn hoá tổ chức</div>
+      </a>
+      <a href="/tai-nguyen-hr/chuyen-doanh-nghiep/" class="res-card">
+        <div class="res-icon">💬</div>
+        <div class="res-title">Chuyện Doanh nghiệp</div>
+        <div class="res-desc">Case study thực tế từ doanh nghiệp</div>
+      </a>
+      <a href="/tai-nguyen-hr/goc-nhin-hr-podcast/" class="res-card">
+        <div class="res-icon">🎙️</div>
+        <div class="res-title">Góc nhìn HR – Podcast</div>
+        <div class="res-desc">Phỏng vấn chuyên gia &amp; lãnh đạo HR</div>
+      </a>
+      <a href="/tai-nguyen-hr/video/" class="res-card">
+        <div class="res-icon">▶️</div>
+        <div class="res-title">Video</div>
+        <div class="res-desc">Bài giảng &amp; chia sẻ ngắn trên YouTube</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== NEWS ==================== -->
+<section class="news">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Tin tức</span>
+      <h2 class="section-title">Tin Tức &amp; Kiến Thức HR</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="news-grid">
+
+      <div class="news-card">
+        <div class="news-img">
+          <span>[ Hình ảnh bài viết ]</span>
+          <span class="news-cat">Quản lý</span>
+        </div>
+        <div class="news-body">
+          <div class="news-date">📅 Tháng 5, 2026</div>
+          <div class="news-title">Phát triển Middle Manager – Chìa khoá tăng trưởng bền vững cho doanh nghiệp</div>
+          <div class="news-excerpt">Quản lý cấp trung đóng vai trò then chốt trong việc hiện thực hoá chiến lược công ty. Vậy doanh nghiệp cần làm gì để phát triển đội ngũ này?</div>
+        </div>
+        <div class="news-footer"><a href="/tin-tuc/" class="news-link">Đọc thêm →</a></div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-img">
+          <span>[ Hình ảnh bài viết ]</span>
+          <span class="news-cat">HR Insight</span>
+        </div>
+        <div class="news-body">
+          <div class="news-date">📅 Tháng 4, 2026</div>
+          <div class="news-title">Thiếu hụt Quản lý Trung gian – Bài toán nan giải của doanh nghiệp Việt</div>
+          <div class="news-excerpt">Nhiều doanh nghiệp đang gặp phải tình trạng "khoảng trống quản lý" khi thiếu đội ngũ trung gian đủ năng lực đảm nhận vai trò cầu nối.</div>
+        </div>
+        <div class="news-footer"><a href="/tin-tuc/" class="news-link">Đọc thêm →</a></div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-img">
+          <span>[ Hình ảnh bài viết ]</span>
+          <span class="news-cat">Tư duy</span>
+        </div>
+        <div class="news-body">
+          <div class="news-date">📅 Tháng 3, 2026</div>
+          <div class="news-title">Tư duy Hệ thống trong Quản trị Nhân sự – Nhìn xa hơn từng vấn đề đơn lẻ</div>
+          <div class="news-excerpt">Áp dụng tư duy hệ thống giúp HR nhìn nhận toàn cảnh tổ chức, từ đó đưa ra quyết định chính xác và bền vững hơn.</div>
+        </div>
+        <div class="news-footer"><a href="/tin-tuc/" class="news-link">Đọc thêm →</a></div>
+      </div>
+
+    </div>
+
+    <div class="view-all-wrap">
+      <a href="/tin-tuc/" class="btn-solid">Xem tất cả bài viết →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA BANNER ==================== -->
+<div class="cta-banner">
+  <div class="container cta-inner">
+    <h2 class="cta-title">Sẵn sàng nâng tầm Bộ phận Nhân sự của bạn?</h2>
+    <p class="cta-desc">Hãy để Anpha đồng hành cùng bạn trên hành trình xây dựng HR chiến lược.</p>
+    <div class="cta-btns">
+      <a href="/lien-he/" class="btn-primary">Đặt lịch tư vấn miễn phí</a>
+      <a href="/dao-tao/" class="btn-outline">Xem khoá học</a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="logo-text">Anpha</div>
+        <p>Công ty TNHH Anpha Giải Pháp và Đào Tạo – Đơn vị tư vấn và đào tạo HR hàng đầu, đồng hành cùng doanh nghiệp Việt Nam xây dựng hệ thống quản trị nhân sự chiến lược.</p>
+        <div class="footer-social">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Zalo">Z</a>
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="YouTube">▶</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Giải pháp</h4>
+        <ul>
+          <li><a href="/giai-phap/danh-gia-phat-trien-quan-ly-trung-gian/">› Đánh giá &amp; Phát triển QL Trung gian</a></li>
+          <li><a href="/giai-phap/tu-van-xay-dung-he-thong-hr/">› Tư vấn Xây dựng Hệ thống HR</a></li>
+          <li><a href="/giai-phap/he-thong-luong-thuong/">› Hệ thống Lương thưởng</a></li>
+          <li><a href="/giai-phap/quan-ly-hieu-suat-bsc-kpi/">› Quản lý Hiệu suất BSC/KPI</a></li>
+          <li><a href="/giai-phap/tu-van-chuyen-mon-hr/">› Tư vấn Chuyên môn HR</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Đào tạo</h4>
+        <ul>
+          <li><a href="/dao-tao/bsc-kpi/">› Xây dựng BSC/KPI</a></li>
+          <li><a href="/dao-tao/he-thong-luong-thuong/">› Hệ thống Lương thưởng</a></li>
+          <li><a href="/dao-tao/truong-phong-hrbp/">› HRBP Manager</a></li>
+          <li><a href="/dao-tao/phat-trien-nhan-tai/">› Phát triển Nhân tài</a></li>
+          <li><a href="/dao-tao/thue-ngoai-dao-tao/">› Thuê ngoài Đào tạo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span class="contact-text">31B Đường số 5, Phường Bình Thạnh, TP. Hồ Chí Minh</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <span class="contact-text"><a href="tel:0908728002" style="color:inherit">0908.728.002</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <span class="contact-text"><a href="mailto:info@anpha-co.vn" style="color:inherit">info@anpha-co.vn</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🌐</span>
+            <span class="contact-text"><a href="https://anpha-co.vn" style="color:inherit">anpha-co.vn</a></span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /footer-grid -->
+
+    <div class="footer-bottom">
+      <span class="footer-bottom-text">© 2018–2026 Anpha. All rights reserved.</span>
+      <span class="footer-bottom-text">Web Design &amp; Support by <a href="https://matbao.net" style="color:rgba(255,255,255,.6)">Mắt Bão WS</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+  /* ====== HERO SLIDER ====== */
+  let currentSlide = 0;
+  const totalSlides = 6;
+  let autoSlideTimer;
+
+  function updateSlider() {
+    const slider = document.getElementById('heroSlider');
+    slider.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    const dots = document.querySelectorAll('.hero-dot');
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+
+  function slideChange(dir) {
+    currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+    updateSlider();
+    resetAutoSlide();
+  }
+
+  function goToSlide(idx) {
+    currentSlide = idx;
+    updateSlider();
+    resetAutoSlide();
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(() => slideChange(1), 5000);
+  }
+
+  resetAutoSlide();
+
+  /* ====== MOBILE NAV ====== */
+  function openMobileNav() {
+    document.getElementById('mobileNav').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ====== STICKY HEADER SHADOW ====== */
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    header.style.boxShadow = window.scrollY > 10
+      ? '0 4px 20px rgba(10,76,138,.18)'
+      : '0 2px 12px rgba(10,76,138,.12)';
+  });
+</script>
+
+</body>
+</html>
