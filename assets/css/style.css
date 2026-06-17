@@ -177,12 +177,14 @@ nav > ul > li:hover .dropdown { opacity: 1; visibility: visible; transform: tran
    BUTTONS (dùng chung)
    ============================================================ */
 .btn-primary {
-  background: var(--accent); color: var(--white);
+  background: var(--accent) !important; 
+  border-color: var(--accent) !important; 
+  color: var(--white) !important;
   padding: 12px 28px; border-radius: 6px;
   font-size: 14px; font-weight: 700;
   transition: var(--transition); border: 2px solid transparent; display: inline-block;
 }
-.btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+.btn-primary:hover { background: var(--accent-dark) !important; transform: translateY(-2px); }
 
 .btn-outline {
   background: transparent; color: var(--white);
@@ -398,14 +400,10 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 }
 .sol-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(10,76,138,.16); border-color: var(--primary); }
 
-/* Homepage icon variant */
-.sol-card-img { height: 120px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.sol-card.s1 .sol-card-img { background: linear-gradient(135deg, #0a4c8a 0%, #1565c0 100%); }
-.sol-card.s2 .sol-card-img { background: linear-gradient(135deg, #0d3a6b 0%, #1a5fa8 100%); }
-.sol-card.s3 .sol-card-img { background: linear-gradient(135deg, #0d5c3a 0%, #1a8c5a 100%); }
-.sol-card.s4 .sol-card-img { background: linear-gradient(135deg, #6b3a8f 0%, #9b59b6 100%); }
-.sol-card.s5 .sol-card-img { background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%); }
-.sol-card-icon-big { font-size: 52px; filter: drop-shadow(0 4px 12px rgba(0,0,0,.2)); }
+/* Homepage image variant */
+.sol-card-img { height: 200px; position: relative; overflow: hidden; }
+.sol-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; display: block; }
+.sol-card:hover .sol-card-img img { transform: scale(1.06); }
 .sol-card-body { padding: 22px 20px 20px; flex: 1; display: flex; flex-direction: column; }
 .sol-num { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 6px; }
 .sol-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; line-height: 1.4; }
@@ -417,27 +415,18 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
    TRAINING TABS  (index.html)
    ============================================================ */
 .training { background: var(--bg-light); }
-.training-tabs { display: flex; gap: 16px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+.training-tabs-wrap { text-align: center; }
+.training-tabs { display: inline-flex; padding: 5px; gap: 4px; margin: 0 auto 40px; }
 .tr-tab {
-  flex: 1; min-width: 200px; max-width: 280px;
-  background: var(--white); border: 2px solid var(--border); border-radius: 14px;
-  padding: 24px 20px; text-align: center; cursor: pointer;
-  transition: var(--transition); position: relative; overflow: hidden;
+  padding: 10px 28px; border-radius: 50px; cursor: pointer;
+  font-size: 15px; font-weight: 600; color: var(--text-gray);
+  transition: var(--transition); white-space: nowrap;
 }
-.tr-tab::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; transition: var(--transition); }
-.tr-tab.t-inhouse::before   { background: var(--primary); }
-.tr-tab.t-public::before    { background: #0d5c3a; }
-.tr-tab.t-outsource::before { background: #6b3a8f; }
-.tr-tab:hover, .tr-tab.active { box-shadow: 0 8px 28px rgba(10,76,138,.15); transform: translateY(-3px); }
-.tr-tab.t-inhouse.active    { border-color: var(--primary); }
-.tr-tab.t-public.active     { border-color: #0d5c3a; }
-.tr-tab.t-outsource.active  { border-color: #6b3a8f; }
-.tr-tab-icon  { font-size: 40px; margin-bottom: 10px; }
-.tr-tab-title { font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 4px; }
-.tr-tab-sub   { font-size: 12px; color: var(--text-gray); line-height: 1.5; }
-.tr-tab.t-inhouse.active  .tr-tab-title { color: var(--primary); }
-.tr-tab.t-public.active   .tr-tab-title { color: #0d5c3a; }
-.tr-tab.t-outsource.active .tr-tab-title { color: #6b3a8f; }
+.tr-tab:hover { color: var(--text-dark); background: var(--bg-light); }
+.tr-tab.active { color: var(--white); }
+.tr-tab.t-inhouse.active   { background: var(--primary); }
+.tr-tab.t-public.active    { background: #0d5c3a; }
+.tr-tab.t-outsource.active { background: #6b3a8f; }
 
 /* Tab panels */
 @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
