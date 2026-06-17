@@ -21,8 +21,8 @@ ul { list-style: none; }
 
 /* ===== VARIABLES ===== */
 :root {
-  --primary:       #0a4c8a;
-  --primary-light: #1565c0;
+  --primary:       #f95f00;
+  --primary-light: #ff7a29;
   --accent:        #e8a020;
   --accent-dark:   #c8820a;
   --green:         #0d5c3a;
