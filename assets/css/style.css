@@ -418,7 +418,7 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 }
 .tr-tab:hover { color: var(--text-dark); background: var(--bg-light); }
 .tr-tab.active { color: var(--white); }
-.tr-tab.t-inhouse.active   { background: var(--primary); }
+.tr-tab.t-inhouse.active   { background: #f95f00; }
 .tr-tab.t-public.active    { background: #0d5c3a; }
 .tr-tab.t-outsource.active { background: #6b3a8f; }
 
@@ -428,7 +428,7 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 .tr-panel.active { display: block; }
 .tr-panel-inner { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(10,76,138,.1); display: grid; grid-template-columns: 1fr 1fr; }
 .tr-panel-banner { padding: 48px 36px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
-.tr-panel.p-inhouse  .tr-panel-banner { background: linear-gradient(135deg,#0a4c8a 0%,#1565c0 100%); }
+.tr-panel.p-inhouse  .tr-panel-banner { background: linear-gradient(135deg,#f95f00 0%,#ff7a2a 100%); }
 .tr-panel.p-public   .tr-panel-banner { background: linear-gradient(135deg,#0d5c3a 0%,#1a8c5a 100%); }
 .tr-panel.p-outsource .tr-panel-banner { background: linear-gradient(135deg,#6b3a8f 0%,#9b59b6 100%); }
 .tr-panel-banner-icon  { font-size: 64px; }
@@ -437,19 +437,19 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 .tr-panel-content { padding: 36px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
 .tr-item { display: flex; align-items: flex-start; gap: 12px; }
 .tr-item-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
-.p-inhouse  .tr-item-dot { background: var(--primary); }
+.p-inhouse  .tr-item-dot { background: #f95f00; }
 .p-public   .tr-item-dot { background: #0d5c3a; }
 .p-outsource .tr-item-dot { background: #6b3a8f; }
 .tr-item-text { font-size: 14px; color: var(--text-dark); line-height: 1.6; }
 .tr-item-text strong { font-weight: 700; }
 .tr-badges { display: flex; flex-wrap: wrap; gap: 8px; }
 .tr-badge { font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
-.p-inhouse  .tr-badge { background: var(--bg-section); color: var(--primary); }
+.p-inhouse  .tr-badge { background: #fef0e6; color: #f95f00; }
 .p-public   .tr-badge { background: #e8f5ee; color: #0d5c3a; }
 .p-outsource .tr-badge { background: #f3e8ff; color: #6b3a8f; }
 .tr-cta { display: inline-block; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 700; transition: var(--transition); align-self: flex-start; }
-.p-inhouse  .tr-cta { background: var(--primary); color:#fff; }
-.p-inhouse  .tr-cta:hover { background: var(--primary-light); }
+.p-inhouse  .tr-cta { background: #f95f00; color:#fff; }
+.p-inhouse  .tr-cta:hover { background: #ff7a2a; }
 .p-public   .tr-cta { background: #0d5c3a; color:#fff; }
 .p-public   .tr-cta:hover { background: #1a8c5a; }
 .p-outsource .tr-cta { background: #6b3a8f; color:#fff; }
@@ -688,6 +688,32 @@ div.anpha-popup-overlay.open {
   height: 100% !important;
   transform: none !important;
   margin: 0 !important;
+}
+
+/* Override Mắt Bão focus/active cho hero slider buttons */
+button.anpha-hero-btn,
+button.anpha-hero-btn:focus,
+button.anpha-hero-btn:focus-visible,
+button.anpha-hero-btn:active {
+  position: absolute !important;
+  top: 50% !important;
+  bottom: auto !important;
+  background: rgba(255,255,255,.2) !important;
+  color: white !important;
+  border: 2px solid rgba(255,255,255,.4) !important;
+  outline: none !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+}
+button.hero-prev.anpha-hero-btn,
+button.hero-prev.anpha-hero-btn:focus,
+button.hero-prev.anpha-hero-btn:active { left: 16px !important; right: auto !important; }
+button.hero-next.anpha-hero-btn,
+button.hero-next.anpha-hero-btn:focus,
+button.hero-next.anpha-hero-btn:active { right: 16px !important; left: auto !important; }
+button.anpha-hero-btn:hover {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
 }
 
 /* ============================================================
