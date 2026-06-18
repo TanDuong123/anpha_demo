@@ -24,9 +24,11 @@ ul { list-style: none; }
    VARIABLES
    ============================================================ */
 :root {
-  --primary:       #0a4c8a;
-  --primary-light: #1565c0;
-  --accent:        #e8a020;
+  --primary:       #f95f00;  /* cam – màu hành động chủ đạo */
+  --primary-light: #ff7a2a;  /* cam nhạt */
+  --blue:          #0a4c8a;  /* xanh – màu nền section */
+  --blue-light:    #1565c0;  /* xanh nhạt */
+  --accent:        #e8a020;  /* vàng đồng */
   --accent-dark:   #c8820a;
   --green:         #0d5c3a;
   --purple:        #6b3a8f;
@@ -51,7 +53,7 @@ section { padding: 72px 0; }
    TOP BAR
    ============================================================ */
 .topbar {
-  background: var(--primary);
+  background: var(--blue);
   color: rgba(255,255,255,.85);
   font-size: 13px;
   padding: 6px 0;
@@ -164,7 +166,7 @@ nav > ul > li:hover .dropdown { opacity: 1; visibility: visible; transform: tran
 
 /* PAGE HERO (nội trang) */
 .page-hero {
-  background: linear-gradient(135deg, var(--primary) 0%, #0d3a6b 100%);
+  background: linear-gradient(135deg, var(--blue) 0%, #0d3a6b 100%);
   padding: 60px 0; color: var(--white); text-align: center;
 }
 .page-hero-breadcrumb { font-size: 13px; opacity: .7; margin-bottom: 12px; }
@@ -231,7 +233,7 @@ nav > ul > li:hover .dropdown { opacity: 1; visibility: visible; transform: tran
    CTA BANNER
    ============================================================ */
 .cta-banner {
-  background: linear-gradient(135deg, var(--primary) 0%, #0d3a6b 100%);
+  background: linear-gradient(135deg, var(--blue) 0%, #0d3a6b 100%);
   padding: 72px 0; text-align: center;
   position: relative; overflow: hidden;
 }
@@ -246,7 +248,7 @@ nav > ul > li:hover .dropdown { opacity: 1; visibility: visible; transform: tran
 .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
 /* contact-cta variant */
-.contact-cta { background: var(--primary); padding: 56px 0; text-align: center; }
+.contact-cta { background: var(--blue); padding: 56px 0; text-align: center; }
 .contact-cta h2 { font-size: clamp(22px,3vw,32px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
 .contact-cta p { font-size: 16px; color: rgba(255,255,255,.85); margin-bottom: 28px; }
 .contact-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -310,7 +312,7 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 /* ============================================================
    HERO SLIDER  (index.html)
    ============================================================ */
-.hero { position: relative; width: 100%; overflow: hidden; background: var(--primary); }
+.hero { position: relative; width: 100%; overflow: hidden; background: var(--blue); }
 .hero-slider { display: flex; transition: transform .6s cubic-bezier(.4,0,.2,1); }
 .hero-slide { min-width: 100%; height: 640px; position: relative; display: flex; align-items: center; }
 .slide-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
@@ -339,11 +341,6 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 /* ============================================================
    STATS BAR  (index.html)
    ============================================================ */
-.stats-bar { background: var(--primary); padding: 32px 0; }
-.stats-grid { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.stat-item { text-align: center; color: var(--white); }
-.stat-number { font-size: 38px; font-weight: 800; color: var(--accent); line-height: 1; }
-.stat-label { font-size: 13px; opacity: .85; margin-top: 6px; }
 
 /* ============================================================
    ABOUT  (index.html)
@@ -351,7 +348,9 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 .about { background: var(--white); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .about-img { position: relative; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
-.about-img-placeholder { height: 420px; background: linear-gradient(135deg, var(--bg-section) 0%, var(--border) 100%); display: flex; align-items: center; justify-content: center; color: var(--text-gray); font-size: 14px; }
+.about-img-placeholder { height: 420px; overflow: hidden; }
+.about-img-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.about-img:hover .about-img-placeholder img { transform: scale(1.04); }
 .about-badge { position: absolute; bottom: -1px; right: -1px; background: var(--accent); color: var(--white); padding: 18px 24px; border-radius: 12px 0 0 0; text-align: center; }
 .about-badge-num { font-size: 32px; font-weight: 800; line-height: 1; }
 .about-badge-text { font-size: 12px; opacity: .9; }
@@ -371,7 +370,7 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .course-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); border: 1px solid var(--border); }
 .course-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(10,76,138,.15); }
-.course-header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); padding: 20px; color: var(--white); }
+.course-header { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); padding: 20px; color: var(--white); }
 .course-type { display: inline-block; background: rgba(255,255,255,.2); color: var(--white); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: .5px; }
 .course-card.inhouse .course-header { background: linear-gradient(135deg, #1a4f7a 0%, #2a6496 100%); }
 .course-card.open    .course-header { background: linear-gradient(135deg, #0d5c3a 0%, #1a8c5a 100%); }
@@ -537,7 +536,7 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 .training-section-header { padding: 48px 0 0; }
 .ts-inner { display: flex; align-items: center; gap: 20px; padding: 28px 32px; border-radius: 14px; margin-bottom: 48px; }
 .ts-inner.ts-public    { background: linear-gradient(135deg,var(--green) 0%,#1a8c5a 100%); }
-.ts-inner.ts-inhouse   { background: linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%); }
+.ts-inner.ts-inhouse   { background: linear-gradient(135deg,var(--blue) 0%,var(--blue-light) 100%); }
 .ts-inner.ts-outsource { background: linear-gradient(135deg,var(--purple) 0%,#9b59b6 100%); }
 .ts-icon { font-size: 48px; flex-shrink: 0; }
 .ts-text h2 { font-size: clamp(22px,3vw,30px); font-weight: 800; color: #fff; margin-bottom: 6px; }
@@ -597,7 +596,7 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 .btn-ipc { display: block; text-align: center; background: var(--bg-section); color: var(--primary); padding: 10px; border-radius: 6px; font-size: 13px; font-weight: 700; transition: var(--transition); border: none; cursor: pointer; font-family: inherit; width: 100%; }
 .btn-ipc:hover { background: var(--primary); color: #fff; }
 
-.inhouse-contact { background: var(--primary); border-radius: 16px; padding: 36px 40px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+.inhouse-contact { background: var(--blue); border-radius: 16px; padding: 36px 40px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
 .ic-text h3 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; }
 .ic-text p  { font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.6; }
 .ic-btns    { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
@@ -657,8 +656,44 @@ footer { background: #0d1e3a; color: rgba(255,255,255,.75); padding: 64px 0 0; }
 .popup-contacts { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
 .popup-contacts a { color: var(--primary); font-weight: 600; font-size: 13px; }
 
-.float-btn { position: fixed; bottom: 28px; right: 28px; z-index: 2000; background: var(--accent); color: #fff; border: none; border-radius: 50px; padding: 13px 22px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; box-shadow: 0 6px 24px rgba(232,160,32,.4); transition: var(--transition); display: flex; align-items: center; gap: 8px; }
-.float-btn:hover { background: var(--accent-dark); transform: translateY(-3px); }
+.float-btn { position: fixed; bottom: 28px; right: 28px; z-index: 2000; background: var(--primary); color: #fff; border: none; border-radius: 50px; padding: 13px 22px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; box-shadow: 0 6px 24px rgba(249,95,0,.35); transition: var(--transition); display: flex; align-items: center; gap: 8px; }
+.float-btn:hover { background: var(--primary-light); transform: translateY(-3px); }
+
+/* Override Mắt Bão button:focus/active – chặn position:relative; top:1px; background:#414141 */
+button.anpha-float-btn,
+button.anpha-float-btn:hover,
+button.anpha-float-btn:focus,
+button.anpha-float-btn:focus-visible,
+button.anpha-float-btn:active {
+  position: fixed !important;
+  top: auto !important;
+  left: auto !important;
+  bottom: 28px !important;
+  right: 28px !important;
+  background: var(--primary) !important;
+  color: #fff !important;
+  border: none !important;
+  outline: none !important;
+  transform: none !important;
+  margin: 0 !important;
+  box-shadow: 0 6px 24px rgba(249,95,0,.35) !important;
+}
+button.anpha-float-btn:hover {
+  background: var(--primary-light) !important;
+  transform: translateY(-3px) !important;
+}
+div.anpha-popup-overlay,
+div.anpha-popup-overlay.open {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+  margin: 0 !important;
+}
 
 /* ============================================================
    FEATURED ARTICLE  (tai-nguyen-hr.html)

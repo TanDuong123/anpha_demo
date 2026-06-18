@@ -428,9 +428,9 @@
 </section>
 
 <!-- FLOATING BTN -->
-<button class="float-btn" onclick="openPopup('')">💬 Liên hệ tư vấn</button>
+<button class="float-btn anpha-float-btn" onclick="openPopup('')">💬 Liên hệ tư vấn</button>
 <!-- CONTACT POPUP -->
-<div class="popup-overlay" id="contactPopup" onclick="if(event.target.id==='contactPopup')closePopup()">
+<div class="popup-overlay anpha-popup-overlay" id="contactPopup" onclick="if(event.target.id==='contactPopup')closePopup()">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup()">✕</button>
     <div class="popup-title">Liên hệ &amp; Đăng ký</div>
@@ -506,8 +506,11 @@
 <script src="assets/js/main.js" defer></script>
 <script>
 function openPopup(hint) {
-  document.getElementById('contactPopup').classList.add('open');
+  // Bù scrollbar trước khi ẩn scroll – tránh trang bị giật/lệch trên WordPress
+  var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.paddingRight = scrollbarW + 'px';
   document.body.style.overflow = 'hidden';
+  document.getElementById('contactPopup').classList.add('open');
   var sub = document.getElementById('popupSubtitle');
   sub.textContent = hint ? 'Bạn đang hỏi về: ' + hint : 'Để lại thông tin – Anpha phản hồi trong 24 giờ làm việc.';
   if (hint) {
@@ -524,6 +527,7 @@ function openPopup(hint) {
 function closePopup() {
   document.getElementById('contactPopup').classList.remove('open');
   document.body.style.overflow = '';
+  document.body.style.paddingRight = '';
 }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePopup(); });
 </script>
