@@ -76,6 +76,17 @@
   </div>
 </div>
 
+<!-- TRAINING TAB NAV -->
+<div class="training-tab-nav" id="trainingTabNav">
+  <div class="container">
+    <div class="ttn-tabs">
+      <a href="#public"    class="ttn-tab active" data-target="public">🎓 Đào tạo Mở</a>
+      <a href="#inhouse"   class="ttn-tab"        data-target="inhouse">🏢 Đào tạo Doanh nghiệp</a>
+      <a href="#outsource" class="ttn-tab"        data-target="outsource">🤝 Thuê ngoài L&amp;D</a>
+    </div>
+  </div>
+</div>
+
 <!-- ===================== ĐÀO TẠO MỞ ===================== -->
 <section id="public" style="background:var(--white)">
   <div class="container">
@@ -530,6 +541,59 @@ function closePopup() {
   document.body.style.paddingRight = '';
 }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePopup(); });
+
+// Training tab nav – scroll + active state
+(function() {
+  var nav  = document.getElementById('trainingTabNav');
+  var tabs = document.querySelectorAll('.ttn-tab');
+  var stickyTop = 0;
+
+  function getStickyOffset() {
+    var bar    = document.querySelector('.fl-page-bar');
+    var header = document.querySelector('.fl-page-header');
+    // fallback sang header native khi không chạy trên WordPress
+    if (!bar && !header) header = document.querySelector('header');
+    return (bar ? bar.offsetHeight : 0) + (header ? header.offsetHeight : 0);
+  }
+
+  function updateTop() {
+    stickyTop = getStickyOffset();
+    nav.style.top = stickyTop + 'px';
+  }
+
+  updateTop();
+  window.addEventListener('resize', updateTop);
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(this.dataset.target);
+      if (target) {
+        var offset = stickyTop + nav.offsetHeight;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+      setActive(this.dataset.target);
+    });
+  });
+
+  function setActive(id) {
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.dataset.target === id);
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  ['public', 'inhouse', 'outsource'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
