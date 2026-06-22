@@ -76,6 +76,17 @@
   </div>
 </div>
 
+<!-- TRAINING TAB NAV -->
+<div class="training-tab-nav" id="trainingTabNav">
+  <div class="container">
+    <div class="ttn-tabs">
+      <a href="#public"    class="ttn-tab active" data-target="public">🎓 Đào tạo Mở</a>
+      <a href="#inhouse"   class="ttn-tab"        data-target="inhouse">🏢 Đào tạo Doanh nghiệp</a>
+      <a href="#outsource" class="ttn-tab"        data-target="outsource">🤝 Thuê ngoài L&amp;D</a>
+    </div>
+  </div>
+</div>
+
 <!-- ===================== ĐÀO TẠO MỞ ===================== -->
 <section id="public" style="background:var(--white)">
   <div class="container">
@@ -435,9 +446,9 @@
 </section>
 
 <!-- FLOATING BTN -->
-<button class="float-btn" onclick="openPopup('')">💬 Liên hệ tư vấn</button>
+<button class="float-btn anpha-float-btn" onclick="openPopup('')">💬 Liên hệ tư vấn</button>
 <!-- CONTACT POPUP -->
-<div class="popup-overlay" id="contactPopup" onclick="if(event.target.id==='contactPopup')closePopup()">
+<div class="popup-overlay anpha-popup-overlay" id="contactPopup" onclick="if(event.target.id==='contactPopup')closePopup()">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup()">✕</button>
     <div class="popup-title">Liên hệ &amp; Đăng ký</div>
@@ -513,8 +524,11 @@
 <script src="assets/js/main.js" defer></script>
 <script>
 function openPopup(hint) {
-  document.getElementById('contactPopup').classList.add('open');
+  // Bù scrollbar trước khi ẩn scroll – tránh trang bị giật/lệch trên WordPress
+  var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.paddingRight = scrollbarW + 'px';
   document.body.style.overflow = 'hidden';
+  document.getElementById('contactPopup').classList.add('open');
   var sub = document.getElementById('popupSubtitle');
   sub.textContent = hint ? 'Bạn đang hỏi về: ' + hint : 'Để lại thông tin – Anpha phản hồi trong 24 giờ làm việc.';
   if (hint) {
@@ -531,8 +545,62 @@ function openPopup(hint) {
 function closePopup() {
   document.getElementById('contactPopup').classList.remove('open');
   document.body.style.overflow = '';
+  document.body.style.paddingRight = '';
 }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePopup(); });
+
+// Training tab nav – scroll + active state
+(function() {
+  var nav  = document.getElementById('trainingTabNav');
+  var tabs = document.querySelectorAll('.ttn-tab');
+  var stickyTop = 0;
+
+  function getStickyOffset() {
+    var bar    = document.querySelector('.fl-page-bar');
+    var header = document.querySelector('.fl-page-header');
+    // fallback sang header native khi không chạy trên WordPress
+    if (!bar && !header) header = document.querySelector('header');
+    return (bar ? bar.offsetHeight : 0) + (header ? header.offsetHeight : 0);
+  }
+
+  function updateTop() {
+    stickyTop = getStickyOffset();
+    nav.style.top = stickyTop + 'px';
+  }
+
+  updateTop();
+  window.addEventListener('resize', updateTop);
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(this.dataset.target);
+      if (target) {
+        var offset = stickyTop + nav.offsetHeight;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+      setActive(this.dataset.target);
+    });
+  });
+
+  function setActive(id) {
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.dataset.target === id);
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  ['public', 'inhouse', 'outsource'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
