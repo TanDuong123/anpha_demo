@@ -8,6 +8,88 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ===== SHARED ===== */
+    .tr-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #1A5FA8; border: 1px solid #C9DDF0; padding: 5px 14px; border-radius: 100px; margin-bottom: 14px; }
+    .tr-eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: #E8672A; }
+    .tr-sec-head { margin-bottom: 32px; }
+    .tr-sec-head h2 { font-weight: 700; font-size: 18px; color: #1A5FA8; margin-bottom: 8px; line-height: 1.5; border-left: 3px solid #E8672A; padding-left: 18px; }
+    .tr-sec-head p { font-size: 13.5px; color: #7A8694; line-height: 1.6; max-width: 520px; padding-left: 21px; }
+
+    /* ===== CARD GRID ===== */
+    .tr-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .tr-card { border: 2px solid #E3E8EE; border-radius: 16px; overflow: hidden; background: #fff; transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .tr-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(11,42,74,.10); }
+    .tr-blog-card:hover { border-color: #1A5FA8; }
+    .tr-case-card:hover { border-color: #E8672A; }
+    .tr-podcast-card:hover { border-color: #0F8A72; }
+    .tr-video-card:hover { border-color: #1A5FA8; }
+
+    .tr-card-img { height: 150px; background: linear-gradient(160deg, #D0DDE8, #E8EFF5); overflow: hidden; }
+    .tr-card-img.green { background: linear-gradient(160deg, #D5E4D0, #E8F0E5); }
+    .tr-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+    .tr-card:hover .tr-card-img img { transform: scale(1.05); }
+    .tr-card-thumb { height: 150px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .tr-podcast-thumb { background: linear-gradient(160deg, #0B2A4A, #1A5FA8); }
+    .tr-video-thumb { background: linear-gradient(160deg, #1A3A60, #2E6090); }
+    .tr-play-btn { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,.18); border: 1.5px solid rgba(255,255,255,.45); display: flex; align-items: center; justify-content: center; }
+    .tr-play-btn::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent #fff; margin-left: 2px; }
+    .tr-dur { position: absolute; bottom: 8px; right: 10px; font-size: 10px; font-weight: 700; color: #fff; background: rgba(0,0,0,.55); padding: 2px 7px; border-radius: 4px; }
+
+    .tr-card-body { padding: 14px 16px 16px; }
+    .tr-card-body h3 { font-size: 13px; font-weight: 700; color: #101820; line-height: 1.4; margin-bottom: 6px; }
+    .tr-card-excerpt { font-size: 11.5px; color: #7A8694; line-height: 1.6; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .tr-card-divider { height: 1px; background: #E3E8EE; margin-bottom: 10px; }
+    .tr-card-meta { display: flex; align-items: center; justify-content: space-between; }
+    .tr-card-date { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: #7A8694; }
+    .tr-card-date svg, .tr-card-views svg { width: 12px; height: 12px; opacity: .6; flex-shrink: 0; }
+    .tr-card-views { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: #7A8694; }
+    .tr-card-link { font-size: 11.5px; font-weight: 700; color: #E8672A; text-decoration: none; }
+    .tr-card-link:hover { text-decoration: underline; }
+
+    /* ===== SECTION WRAPPERS ===== */
+    .tr-blog-sec { background: #fff; }
+    .tr-case-sec { background: #FAFAF8; }
+    .tr-podcast-sec { background: #fff; }
+    .tr-video-sec { background: #FAFAF8; }
+    .tr-cta-sec { background: #fff; }
+    .tr-divider { height: 1px; background: #E3E8EE; }
+
+    /* ===== SEC FOOTER BUTTON ===== */
+    .tr-sec-footer { text-align: center; margin-top: 32px; }
+    .tr-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(120deg, #1A5FA8, #2E86C8); color: #fff; border: none; padding: 13px 28px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; box-shadow: 0 8px 22px rgba(26,95,168,.25); transition: transform .2s, box-shadow .2s; text-decoration: none; }
+    .tr-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(26,95,168,.35); color: #fff; }
+    .tr-btn-primary svg { width: 14px; height: 14px; }
+    .tr-btn-primary strong { font-weight: 800; }
+
+    /* ===== CTA BOX ===== */
+    .tr-bottom-box { border: 2px solid #E3E8EE; border-radius: 20px; padding: 36px 40px; background: #fff; display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; position: relative; overflow: hidden; }
+    .tr-bottom-box::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #1A5FA8; }
+    .tr-bb-left h2 { font-weight: 700; font-size: 18px; color: #1A5FA8; border-left: 3px solid #E8672A; padding-left: 18px; line-height: 1.5; margin-bottom: 8px; }
+    .tr-bb-left p { font-size: 13.5px; color: #7A8694; line-height: 1.7; padding-left: 21px; }
+    .tr-bb-right { display: flex; flex-direction: column; gap: 12px; }
+    .tr-cta-row { display: flex; align-items: center; gap: 14px; border: 1.5px solid #E3E8EE; border-radius: 14px; padding: 13px 16px; background: #fff; text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .15s; }
+    .tr-cta-row:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(11,42,74,.08); }
+    .tr-cr-blue:hover { border-color: #1A5FA8; }
+    .tr-cr-orange:hover { border-color: #E8672A; }
+    .tr-cr-teal:hover { border-color: #0F8A72; }
+    .tr-cta-icon { width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .tr-ci-blue { background: #EAF2FA; } .tr-ci-orange { background: #FDEEE5; } .tr-ci-teal { background: #E7F5F1; }
+    .tr-cta-icon svg { width: 18px; height: 18px; }
+    .tr-cta-label { font-size: 13px; font-weight: 800; margin-bottom: 2px; }
+    .tr-cr-blue .tr-cta-label { color: #1A5FA8; }
+    .tr-cr-orange .tr-cta-label { color: #E8672A; }
+    .tr-cr-teal .tr-cta-label { color: #0F8A72; }
+    .tr-cta-sub { font-size: 11px; color: #7A8694; line-height: 1.4; }
+    .tr-cta-arrow { font-size: 15px; color: #E3E8EE; flex-shrink: 0; transition: color .2s, transform .2s; }
+    .tr-cr-blue:hover .tr-cta-arrow { color: #1A5FA8; transform: translateX(3px); }
+    .tr-cr-orange:hover .tr-cta-arrow { color: #E8672A; transform: translateX(3px); }
+    .tr-cr-teal:hover .tr-cta-arrow { color: #0F8A72; transform: translateX(3px); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) { .tr-card-grid { grid-template-columns: repeat(2, 1fr); } .tr-bottom-box { grid-template-columns: 1fr; } }
+    @media (max-width: 560px) { .tr-card-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 
@@ -77,299 +159,298 @@
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="container">
-    <div class="page-hero-breadcrumb"><a href="index.html">Trang chủ</a><span>›</span>Tài nguyên HR</div>
     <h1 class="page-hero-title">Kho Tài nguyên HR</h1>
     <p class="page-hero-desc">Kiến thức nền tảng, case study thực tiễn, podcast chuyên gia và video chia sẻ – dành riêng cho cộng đồng HR Việt Nam.</p>
   </div>
 </div>
 
-<!-- ===== BÀI VIẾT NỔI BẬT ===== -->
-<section class="featured-section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Bài viết nổi bật</span>
-      <h2 class="section-title">Đọc nhiều nhất tuần này</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="featured-card">
-      <div class="featured-photo">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Middle Manager" />
-        <div class="featured-photo-badge">🔥 Nhiều lượt đọc</div>
-      </div>
-      <div class="featured-content">
-        <div class="featured-cat">Nền tảng HR · Quản lý Trung gian</div>
-        <div class="featured-title">Tại sao Middle Manager là "chìa khoá" tăng trưởng – mà hầu hết doanh nghiệp đang bỏ ngỏ?</div>
-        <div class="featured-excerpt">Quản lý cấp trung đóng vai trò then chốt trong việc hiện thực hoá chiến lược công ty. Nhưng thực tế cho thấy, đây cũng là tầng lớp ít được đầu tư phát triển nhất. Bài viết phân tích nguyên nhân và giải pháp toàn diện.</div>
-        <div class="featured-meta">
-          <span class="featured-meta-item">📅 Tháng 5, 2026</span>
-          <span class="featured-meta-item">⏱️ 8 phút đọc</span>
-          <span class="featured-meta-item">👁️ 4.2K lượt xem</span>
-        </div>
-        <a href="#" class="btn-read">Đọc bài viết →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== NỀN TẢNG HR ===== -->
-<section id="nen-tang" style="background:var(--white)">
+<section id="nen-tang" class="tr-blog-sec">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">📚 Nền tảng HR</span>
-      <h2 class="section-title">Kiến thức HR từ cơ bản đến nâng cao</h2>
-      <div class="divider"></div>
-      <p class="section-desc">Thư viện bài viết chuyên sâu về các lĩnh vực HR cốt lõi – được viết bởi chuyên gia từ thực tiễn doanh nghiệp.</p>
+    <div class="tr-sec-head">
+      <span class="tr-eyebrow"><span class="tr-eyebrow-dot"></span>Nền tảng HR</span>
+      <h2>Kiến thức HR từ cơ bản đến nâng cao</h2>
+      <p>Thư viện bài viết với các lĩnh vực HR cốt lõi — được viết bởi chuyên gia có kinh nghiệm thực tiễn doanh nghiệp.</p>
     </div>
+    <div class="tr-card-grid">
 
-    <div class="articles-grid">
-
-      <div class="article-card">
-        <div class="article-photo">
-          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&q=80" alt="Lương thưởng" />
-          <div class="article-cat-badge">Lương thưởng</div>
+      <div class="tr-card tr-blog-card">
+        <div class="tr-card-img">
+          <!-- Thay URL ảnh bên dưới -->
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Lương 3P" />
         </div>
-        <div class="article-body">
-          <div class="article-title">Lương 3P là gì? Hướng dẫn xây dựng từng bước cho doanh nghiệp Việt</div>
-          <div class="article-excerpt">Mô hình lương 3P (Position – Person – Performance) là nền tảng để xây dựng hệ thống lương công bằng, minh bạch và gắn với hiệu suất.</div>
-          <div class="article-meta-row">
-            <span>📅 Tháng 4, 2026 · 6 phút đọc</span>
-            <a href="#" class="article-read-link">Đọc thêm →</a>
+        <div class="tr-card-body">
+          <h3>Lương 3P là gì? Hướng dẫn xây dựng từng bước cho doanh nghiệp Việt</h3>
+          <p class="tr-card-excerpt">Mô hình lương 3P (Position – Person – Performance) là cách tiếp cận khoa học giúp doanh nghiệp xây dựng hệ thống lương công bằng, minh bạch và gắn với hiệu suất...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Tháng 4, 2026</span>
+            <a class="tr-card-link" href="#">Đọc thêm →</a>
           </div>
         </div>
       </div>
 
-      <div class="article-card">
-        <div class="article-photo">
-          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&q=80" alt="KPI" />
-          <div class="article-cat-badge">Quản lý Hiệu suất</div>
+      <div class="tr-card tr-blog-card">
+        <div class="tr-card-img">
+          <!-- Thay URL ảnh bên dưới -->
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt="KPI" />
         </div>
-        <div class="article-body">
-          <div class="article-title">5 sai lầm phổ biến khi xây dựng KPI – và cách khắc phục</div>
-          <div class="article-excerpt">Nhiều doanh nghiệp triển khai KPI nhưng không tạo được văn hoá hiệu suất. Bài viết phân tích 5 sai lầm hay gặp nhất.</div>
-          <div class="article-meta-row">
-            <span>📅 Tháng 3, 2026 · 7 phút đọc</span>
-            <a href="#" class="article-read-link">Đọc thêm →</a>
+        <div class="tr-card-body">
+          <h3>5 sai lầm phổ biến khi xây dựng KPI — và cách khắc phục</h3>
+          <p class="tr-card-excerpt">Nhiều doanh nghiệp xây KPI theo cảm tính, giao chỉ tiêu không có cơ sở dữ liệu, hoặc KPI không gắn với chiến lược tổng thể — đây là những lỗi phổ biến nhất...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Tháng 3, 2026</span>
+            <a class="tr-card-link" href="#">Đọc thêm →</a>
           </div>
         </div>
       </div>
 
-      <div class="article-card">
-        <div class="article-photo">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80" alt="HRBP" />
-          <div class="article-cat-badge">HRBP</div>
+      <div class="tr-card tr-blog-card">
+        <div class="tr-card-img">
+          <!-- Thay URL ảnh bên dưới -->
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="HRBP" />
         </div>
-        <div class="article-body">
-          <div class="article-title">Từ HR Admin đến HRBP – Lộ trình chuyển đổi thực tế trong 12 tháng</div>
-          <div class="article-excerpt">HRBP không phải chức danh mà là vai trò. Bài viết chia sẻ lộ trình cụ thể mà một HR Manager cần đi qua để trở thành đối tác chiến lược.</div>
-          <div class="article-meta-row">
-            <span>📅 Tháng 2, 2026 · 9 phút đọc</span>
-            <a href="#" class="article-read-link">Đọc thêm →</a>
+        <div class="tr-card-body">
+          <h3>Từ HR Admin đến HRBP — lộ trình thăng tiến 12 tháng</h3>
+          <p class="tr-card-excerpt">HRBP không phải chức danh — là tư duy. Lộ trình cụ thể để một HR Admin có thể chủ động phát triển lên vị trí HRBP trong vòng 12 tháng...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Tháng 2, 2026</span>
+            <a class="tr-card-link" href="#">Đọc thêm →</a>
           </div>
         </div>
       </div>
 
     </div>
-
-    <div style="text-align:center;margin-top:32px">
-      <a href="#" class="btn-read" style="background:var(--bg-section);color:var(--primary)">Xem tất cả bài viết Nền tảng HR →</a>
+    <div class="tr-sec-footer">
+      <a href="#" class="tr-btn-primary">Xem tất cả bài viết <strong>Nền tảng HR</strong><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- ===== CHUYỆN DOANH NGHIỆP – CASE STUDY ===== -->
-<section id="case-study" class="case-section">
+<!-- ===== CASE STUDY ===== -->
+<section id="case-study" class="tr-case-sec">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag purple">💬 Chuyện Doanh nghiệp</span>
-      <h2 class="section-title">Case Study thực tế từ doanh nghiệp</h2>
-      <div class="divider"></div>
-      <p class="section-desc">Câu chuyện có thật – bài học thực chiến từ hành trình xây dựng hệ thống HR của các doanh nghiệp Việt Nam.</p>
+    <div class="tr-sec-head">
+      <span class="tr-eyebrow"><span class="tr-eyebrow-dot"></span>Chuyện doanh nghiệp</span>
+      <h2>Case Study thực tế từ doanh nghiệp</h2>
+      <p>Câu chuyện có thật — bài học thực chiến từ hành trình xây dựng hệ thống HR với các doanh nghiệp Việt Nam.</p>
     </div>
+    <div class="tr-card-grid">
 
-    <div class="case-grid">
-
-      <div class="case-card">
-        <div class="case-card-top">
-          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&q=80" alt="Case 1" />
-          <div class="case-card-overlay"><span class="case-num">Case Study 01</span></div>
+      <div class="tr-card tr-case-card">
+        <div class="tr-card-img green">
+          <!-- Thay URL ảnh bên dưới -->
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Case Study 01" />
         </div>
-        <div class="case-body">
-          <div class="case-title">Xây dựng Hệ thống Lương 3P từ đầu cho doanh nghiệp thương mại điện tử</div>
-          <div class="case-company">Công ty TMĐT – 500 nhân sự, TP.HCM</div>
-          <div class="case-tags">
-            <span class="case-tag">Lương 3P</span><span class="case-tag">C&amp;B</span><span class="case-tag">6 tháng triển khai</span>
+        <div class="tr-card-body">
+          <h3>Xây dựng hệ thống Lương 3P từ đầu cho doanh nghiệp thương mại điện tử</h3>
+          <p class="tr-card-excerpt">Một công ty TMĐT 500 nhân sự tại TP.HCM — chưa có hệ thống lương chuẩn, mỗi bộ phận tự thỏa thuận theo cảm tính. Anpha đồng hành xây từ đầu trong 3 tháng...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Tháng 5, 2026</span>
+            <a class="tr-card-link" href="#">Đọc thêm →</a>
           </div>
-          <a href="#" class="case-link">Đọc câu chuyện →</a>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-card-top">
-          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500&q=80" alt="Case 2" />
-          <div class="case-card-overlay"><span class="case-num">Case Study 02</span></div>
+      <div class="tr-card tr-case-card">
+        <div class="tr-card-img green">
+          <!-- Thay URL ảnh bên dưới -->
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80" alt="Case Study 02" />
         </div>
-        <div class="case-body">
-          <div class="case-title">Triển khai KPI từ đầu cho công ty sản xuất chưa từng có hệ thống đánh giá</div>
-          <div class="case-company">Công ty sản xuất vừa – 200 nhân sự, Bình Dương</div>
-          <div class="case-tags">
-            <span class="case-tag">KPI</span><span class="case-tag">BSC</span><span class="case-tag">Sản xuất</span>
+        <div class="tr-card-body">
+          <h3>Triển khai KPI từ đầu cho công ty sản xuất — chốt hệ thống trong 60 ngày</h3>
+          <p class="tr-card-excerpt">Công ty sản xuất 400 người tại Bình Dương — KPI có nhưng rời rạc, không ai hiểu mình đang bị đo theo tiêu chí gì. Hành trình 60 ngày chuẩn hóa toàn bộ...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Tháng 3, 2026</span>
+            <a class="tr-card-link" href="#">Đọc thêm →</a>
           </div>
-          <a href="#" class="case-link">Đọc câu chuyện →</a>
         </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-card-top">
-          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&q=80" alt="Case 3" />
-          <div class="case-card-overlay"><span class="case-num">Case Study 03</span></div>
+      <div class="tr-card tr-case-card">
+        <div class="tr-card-img green">
+          <!-- Thay URL ảnh bên dưới -->
+          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80" alt="Case Study 03" />
         </div>
-        <div class="case-body">
-          <div class="case-title">Hành trình chuyển đổi HR sang mô hình HRBP trong 12 tháng</div>
-          <div class="case-company">Tập đoàn bán lẻ – 1.200 nhân sự, Hà Nội &amp; TP.HCM</div>
-          <div class="case-tags">
-            <span class="case-tag">HRBP</span><span class="case-tag">Chuyển đổi HR</span><span class="case-tag">Bán lẻ</span>
+        <div class="tr-card-body">
+          <h3>Hành trình đội HR từ 5 người sang mô hình HRBP trong 12 tháng</h3>
+          <p class="tr-card-excerpt">Tập đoàn bán lẻ 1.200 nhân sự — HR đang vận hành thuần hành chính, không có tiếng nói trong họp ban lãnh đạo. 12 tháng chuyển đổi tư duy và hệ thống...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Tháng 1, 2026</span>
+            <a class="tr-card-link" href="#">Đọc thêm →</a>
           </div>
-          <a href="#" class="case-link">Đọc câu chuyện →</a>
         </div>
       </div>
 
+    </div>
+    <div class="tr-sec-footer">
+      <a href="#" class="tr-btn-primary">Xem tất cả <strong>Case Study</strong><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
 
 <!-- ===== PODCAST ===== -->
-<section id="podcast" class="podcast-section">
+<section id="podcast" class="tr-podcast-sec">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag" style="background:#fff7f0;color:#c2410c">🎙️ Góc nhìn HR – Podcast</span>
-      <h2 class="section-title">Chuyên gia chia sẻ – Thực tiễn HR Việt Nam</h2>
-      <div class="divider"></div>
+    <div class="tr-sec-head">
+      <span class="tr-eyebrow"><span class="tr-eyebrow-dot"></span>Góc nhìn HR · Podcast</span>
+      <h2>Chuyên gia chia sẻ — Thực tiễn HR Việt Nam</h2>
+      <p>Podcast chia sẻ chuyên sâu từ những người đã làm HR thực chiến — không lý thuyết, không sáo rỗng.</p>
     </div>
+    <div class="tr-card-grid">
 
-    <div class="ep-grid">
-
-      <div class="ep-sq-card">
-        <div class="ep-sq-thumb">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80" alt="Tập 1" />
-          <span class="ep-sq-num">Tập 1</span>
-        </div>
-        <div class="ep-sq-body">
-          <div class="ep-sq-title">HR có thực sự là đối tác chiến lược? – Góc nhìn từ CHRO tập đoàn bán lẻ</div>
-          <div class="ep-sq-meta">📅 Tháng 5, 2026 · 45 phút</div>
-          <a href="#" class="ep-sq-yt" target="_blank" rel="noopener">▶ Xem trên YouTube</a>
+      <div class="tr-card tr-podcast-card">
+        <!-- YouTube Podcast Tập 1: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <div class="tr-card-thumb tr-podcast-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div></div>
+        <div class="tr-card-body">
+          <h3>HR có thực sự là bộ phận chiến lược? Nhìn từ góc độ CEO tập đoàn bán lẻ</h3>
+          <p class="tr-card-excerpt">CEO thường kỳ vọng gì ở HR? Góc nhìn thẳng thắn từ người đã từng ngồi cả hai ghế — HR Director và CEO — trong cùng một tổ chức...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Tháng 5, 2026</span>
+            <a class="tr-card-link" href="#">Xem thêm →</a>
+          </div>
         </div>
       </div>
 
-      <div class="ep-sq-card">
-        <div class="ep-sq-thumb">
-          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=80" alt="Tập 2" />
-          <span class="ep-sq-num">Tập 2</span>
-        </div>
-        <div class="ep-sq-body">
-          <div class="ep-sq-title">Bẫy KPI – Tại sao hầu hết doanh nghiệp triển khai sai và cách thoát ra</div>
-          <div class="ep-sq-meta">📅 Tháng 4, 2026 · 38 phút</div>
-          <a href="#" class="ep-sq-yt" target="_blank" rel="noopener">▶ Xem trên YouTube</a>
-        </div>
-      </div>
-
-      <div class="ep-sq-card">
-        <div class="ep-sq-thumb">
-          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80" alt="Tập 3" />
-          <span class="ep-sq-num">Tập 3</span>
-        </div>
-        <div class="ep-sq-body">
-          <div class="ep-sq-title">Lương thưởng trong thời đại mới – Công bằng, minh bạch và gắn với hiệu suất</div>
-          <div class="ep-sq-meta">📅 Tháng 3, 2026 · 42 phút</div>
-          <a href="#" class="ep-sq-yt" target="_blank" rel="noopener">▶ Xem trên YouTube</a>
+      <div class="tr-card tr-podcast-card">
+        <!-- YouTube Podcast Tập 2: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <div class="tr-card-thumb tr-podcast-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div></div>
+        <div class="tr-card-body">
+          <h3>Bẫy KPI — Tại sao làm hết mà KPI vẫn không tăng? Nhìn từ kinh nghiệm thực tế</h3>
+          <p class="tr-card-excerpt">KPI không phải công cụ để kiểm soát — mà là ngôn ngữ để HR và ban lãnh đạo nói chuyện với nhau. Phân tích những lý do thực sự khiến KPI thất bại...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Tháng 4, 2026</span>
+            <a class="tr-card-link" href="#">Xem thêm →</a>
+          </div>
         </div>
       </div>
 
+      <div class="tr-card tr-podcast-card">
+        <!-- YouTube Podcast Tập 3: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <div class="tr-card-thumb tr-podcast-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div></div>
+        <div class="tr-card-body">
+          <h3>Lương thưởng trong thời đại mới — Công bằng, minh bạch và gắn với hiệu suất</h3>
+          <p class="tr-card-excerpt">Lương thưởng không chỉ là con số — đó là thông điệp tổ chức muốn gửi đến nhân viên. Cách thiết kế hệ thống đãi ngộ phù hợp với SME Việt Nam...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Tháng 3, 2026</span>
+            <a class="tr-card-link" href="#">Xem thêm →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="tr-sec-footer">
+      <a href="#" class="tr-btn-primary">Xem tất cả <strong>Podcast</strong><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
 
 <!-- ===== VIDEO ===== -->
-<section id="video" class="video-section">
+<section id="video" class="tr-video-sec">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag" style="background:#0d1e3a15;color:#0d1e3a">▶ Video</span>
-      <h2 class="section-title">Bài giảng ngắn &amp; Chia sẻ thực chiến</h2>
-      <div class="divider"></div>
-      <p class="section-desc">Video giải thích nhanh các khái niệm HR phức tạp – dễ hiểu, ứng dụng được ngay.</p>
+    <div class="tr-sec-head">
+      <span class="tr-eyebrow"><span class="tr-eyebrow-dot"></span>Video</span>
+      <h2>Chuyên môn &amp; Thực tiễn</h2>
+      <p>Video chia sẻ kiến thức, bài giảng ngắn, case study, kinh nghiệm triển khai.</p>
     </div>
+    <div class="tr-card-grid">
 
-    <div class="video-grid">
-
-      <div class="video-card">
-        <div class="video-thumb">
-          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&q=80" alt="Video 1" />
-          <div class="video-play-overlay"><div class="vpo-btn">▶</div></div>
-          <div class="video-duration">12:34</div>
-        </div>
-        <div class="video-body">
-          <div class="video-title">Lương 3P là gì? Tại sao doanh nghiệp cần áp dụng ngay?</div>
-          <div class="video-views">👁️ 3.2K lượt xem</div>
+      <div class="tr-card tr-video-card">
+        <!-- YouTube Video 1: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <div class="tr-card-thumb tr-video-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div><span class="tr-dur">4:35</span></div>
+        <div class="tr-card-body">
+          <h3>Lương 3P là gì? Tại sao doanh nghiệp Việt cần áp dụng ngay?</h3>
+          <p class="tr-card-excerpt">Giải thích nhanh mô hình lương 3P bằng ví dụ thực tế — dành cho HR và chủ doanh nghiệp muốn xây hệ thống lương có căn cứ, không còn thỏa thuận cảm tính...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-views"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>4.7K lượt xem</span>
+            <a class="tr-card-link" href="#">Xem thêm →</a>
+          </div>
         </div>
       </div>
 
-      <div class="video-card">
-        <div class="video-thumb">
-          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&q=80" alt="Video 2" />
-          <div class="video-play-overlay"><div class="vpo-btn">▶</div></div>
-          <div class="video-duration">18:21</div>
-        </div>
-        <div class="video-body">
-          <div class="video-title">5 sai lầm phổ biến khi xây dựng KPI trong doanh nghiệp Việt</div>
-          <div class="video-views">👁️ 5.1K lượt xem</div>
+      <div class="tr-card tr-video-card">
+        <!-- YouTube Video 2: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <div class="tr-card-thumb tr-video-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div><span class="tr-dur">6:12</span></div>
+        <div class="tr-card-body">
+          <h3>5 sai lầm phổ biến khi xây dựng KPI trong doanh nghiệp Việt</h3>
+          <p class="tr-card-excerpt">Từ KPI copy-paste từ JD đến KPI không ai hiểu — video phân tích 5 lỗi thường gặp và cách tránh để hệ thống KPI thực sự hoạt động trong tổ chức...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-views"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>9.1K lượt xem</span>
+            <a class="tr-card-link" href="#">Xem thêm →</a>
+          </div>
         </div>
       </div>
 
-      <div class="video-card">
-        <div class="video-thumb">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80" alt="Video 3" />
-          <div class="video-play-overlay"><div class="vpo-btn">▶</div></div>
-          <div class="video-duration">20:05</div>
-        </div>
-        <div class="video-body">
-          <div class="video-title">HRBP là gì và làm thế nào để trở thành HRBP hiệu quả?</div>
-          <div class="video-views">👁️ 7.8K lượt xem</div>
+      <div class="tr-card tr-video-card">
+        <!-- YouTube Video 3: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <div class="tr-card-thumb tr-video-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div><span class="tr-dur">7:06</span></div>
+        <div class="tr-card-body">
+          <h3>HRBP và tư duy chiến lược: HR cần làm gì để ngồi đúng bàn?</h3>
+          <p class="tr-card-excerpt">3 thay đổi tư duy cốt lõi để HR chuyển từ người thực thi sang đối tác chiến lược — có ví dụ thực tế từ doanh nghiệp Việt Nam...</p>
+          <div class="tr-card-divider"></div>
+          <div class="tr-card-meta">
+            <span class="tr-card-views"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>7.8K lượt xem</span>
+            <a class="tr-card-link" href="#">Xem thêm →</a>
+          </div>
         </div>
       </div>
 
     </div>
-
-    <div class="video-section-cta">
-      <a href="https://youtube.com/@anpha" target="_blank" class="btn-yt">▶ Xem thêm trên kênh YouTube Anpha</a>
+    <div class="tr-sec-footer">
+      <a href="https://youtube.com/@anpha" target="_blank" class="tr-btn-primary">Xem tất cả <strong>Video</strong><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- ===== ĐĂNG KÝ NHẬN TÀI LIỆU ===== -->
-<section class="email-section">
+<!-- ===== CTA CUỐI ===== -->
+<section class="tr-cta-sec">
   <div class="container">
-    <div class="email-inner">
-      <div class="email-text">
-        <h2>Nhận tài liệu HR miễn phí vào hộp thư</h2>
-        <p>Đăng ký để nhận bộ tài liệu BSC/KPI Starter Kit, templates lương thưởng và cập nhật bài viết HR chuyên sâu từ Anpha.</p>
-        <div class="email-gifts">
-          <div class="email-gift">✅ Bộ tài liệu BSC/KPI Starter Kit (PDF)</div>
-          <div class="email-gift">✅ Template Mô tả Công việc (JD) chuẩn</div>
-          <div class="email-gift">✅ Bản tin kiến thức HR hàng tháng</div>
-        </div>
+    <div class="tr-bottom-box">
+      <div class="tr-bb-left">
+        <h2>Từ góc nhìn chuyên môn đến triển khai thực tế</h2>
+        <p>Anpha đồng hành cùng doanh nghiệp bằng các giải pháp tư vấn và đào tạo. Hãy cùng khám phá:</p>
       </div>
-      <div class="email-form-wrap">
-        <form class="popup-form" onsubmit="event.preventDefault();alert('Cảm ơn! Tài liệu sẽ được gửi đến email của bạn.')">
-          <div class="popup-field">
-            <label style="color:rgba(255,255,255,.9)">Tên của bạn</label>
-            <input type="text" placeholder="Nguyễn Văn A" />
+      <div class="tr-bb-right">
+        <a href="giai-phap.html" class="tr-cta-row tr-cr-blue">
+          <div class="tr-cta-icon tr-ci-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
           </div>
-          <div class="popup-field">
-            <label style="color:rgba(255,255,255,.9)">Email *</label>
-            <input type="email" placeholder="email@company.vn" required />
+          <div class="tr-cta-text">
+            <div class="tr-cta-label">Giải pháp</div>
+            <div class="tr-cta-sub">Dành cho doanh nghiệp cần tư vấn và xây dựng hệ thống HR</div>
           </div>
-          <button type="submit" style="background:var(--primary);color:#fff;border:none;padding:13px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:var(--transition)">Nhận tài liệu miễn phí →</button>
-          <div class="email-note" style="margin-top:8px">🔒 Anpha cam kết bảo mật thông tin. Không spam.</div>
-        </form>
+          <span class="tr-cta-arrow">→</span>
+        </a>
+        <a href="dao-tao.html" class="tr-cta-row tr-cr-orange">
+          <div class="tr-cta-icon tr-ci-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E8672A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="tr-cta-text">
+            <div class="tr-cta-label">Chương trình đào tạo</div>
+            <div class="tr-cta-sub">Dành cho HR và quản lý muốn nâng cao năng lực chuyên môn</div>
+          </div>
+          <span class="tr-cta-arrow">→</span>
+        </a>
+        <a href="gioi-thieu.html" class="tr-cta-row tr-cr-teal">
+          <div class="tr-cta-icon tr-ci-teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F8A72" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="tr-cta-text">
+            <div class="tr-cta-label">Liên hệ với Anpha</div>
+            <div class="tr-cta-sub">Tư vấn trực tiếp về nhu cầu HR của doanh nghiệp bạn</div>
+          </div>
+          <span class="tr-cta-arrow">→</span>
+        </a>
       </div>
     </div>
   </div>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giới Thiệu Về Anpha — Anpha Solutions & Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Be Vietnam Pro', sans-serif; background: #fff; }
+
+  :root {
+    --blue-deep: #0B2A4A;
+    --blue: #1A5FA8;
+    --blue-mid: #2E86C8;
+    --orange: #E8672A;
+    --teal: #0F8A72;
+    --ink: #101820;
+    --text-body: #3F4A56;
+    --text-muted: #7A8694;
+    --line: #E3E8EE;
+    --cream: #FAFAF8;
+  }
+
+  .page { max-width: 1040px; margin: 0 auto; background: #fff; }
+
+  .hero { background: linear-gradient(120deg, #F2F7F5 0%, #E9F2EF 50%, #F5F9F7 100%); padding: 56px 56px 48px; text-align: center; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+  .hero h1 { font-weight: 800; font-size: 26px; color: var(--blue); line-height: 1.3; margin-bottom: 14px; }
+  .hero p { font-size: 14px; color: var(--blue); opacity: 0.7; line-height: 1.6; max-width: 600px; margin: 0 auto; font-weight: 500; }
+
+  .story { padding: 48px 56px; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: center; }
+  .story-visual { background: linear-gradient(160deg, var(--blue-deep), var(--blue)); border-radius: 16px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .story-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(232,103,42,0.18), transparent 60%); }
+  .play-btn { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.16); border: 1.5px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; cursor: pointer; }
+  .play-btn::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent #fff; margin-left: 3px; }
+  .video-caption { position: absolute; bottom: 16px; left: 16px; font-size: 12px; color: rgba(255,255,255,0.7); }
+
+  .story-text h2 { font-weight: 700; font-size: 18px; color: var(--blue); margin-bottom: 14px; line-height: 1.5; border-left: 3px solid var(--orange); padding-left: 18px; }
+  .story-text p { font-size: 13.5px; color: var(--text-body); line-height: 1.75; margin-bottom: 12px; padding-left: 21px; }
+  .story-text p:last-child { margin-bottom: 0; }
+  .story-text p strong { color: var(--blue-deep); font-weight: 700; }
+
+  .values { padding: 48px 56px 56px; background: var(--cream); }
+  .eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); border: 1px solid #C9DDF0; padding: 5px 14px; border-radius: 100px; margin-bottom: 28px; }
+  .eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+
+  .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .value-card { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 22px 22px 24px; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .value-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .vc-1::before { background: var(--blue); }
+  .vc-2::before { background: var(--orange); }
+  .vc-3::before { background: var(--teal); }
+  .value-card:hover { transform: translateY(-5px); box-shadow: 0 18px 36px rgba(11,42,74,0.10); }
+  .vc-1:hover { border-color: var(--blue); }
+  .vc-2:hover { border-color: var(--orange); }
+  .vc-3:hover { border-color: var(--teal); }
+
+  .value-icon { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; flex-shrink: 0; }
+  .vi-1 { background: #EAF2FA; }
+  .vi-2 { background: #FDEEE5; }
+  .vi-3 { background: #E7F5F1; }
+  .value-icon svg { width: 22px; height: 22px; }
+  .value-card h3 { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+  .value-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+  .founder-sec { padding: 48px 56px; }
+  .founder-box { border: 2px solid var(--line); border-radius: 20px; overflow: hidden; display: grid; grid-template-columns: 280px 1fr; }
+  .founder-photo { background: linear-gradient(160deg, var(--blue-deep), var(--blue)); display: flex; align-items: center; justify-content: center; position: relative; min-height: 360px; }
+  .founder-photo::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(232,103,42,0.18), transparent 60%); }
+  .founder-photo-placeholder { font-family: 'DM Serif Display', serif; font-size: 15px; color: rgba(255,255,255,0.45); text-align: center; position: relative; z-index: 1; line-height: 1.6; }
+
+  .founder-content { padding: 32px 40px; display: flex; flex-direction: column; justify-content: center; }
+  .founder-content h3 { font-weight: 800; font-size: 22px; color: var(--blue); margin-bottom: 5px; }
+  .founder-content .role { font-size: 13px; color: var(--orange); font-weight: 600; margin-bottom: 18px; }
+
+  .founder-quote { font-weight: 700; font-size: 17px; color: var(--ink); line-height: 1.55; border-left: 3px solid var(--orange); padding-left: 18px; margin-bottom: 16px; }
+  .founder-quote .highlight { font-weight: 800; color: var(--blue); }
+
+  .founder-extra { font-size: 13px; color: var(--text-body); line-height: 1.75; margin-bottom: 8px; }
+  .founder-extra strong { color: var(--ink); font-weight: 700; }
+
+  .expand-line { display: flex; align-items: center; gap: 14px; border: 1.5px solid var(--line); border-radius: 100px; padding: 14px 24px; margin-top: 24px; }
+  .expand-line .icon { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid #BFE5DC; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .expand-line p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+  .expand-line strong { color: var(--ink); font-weight: 700; }
+
+  .partner { padding: 0 56px 48px; }
+  .partner-box { background: #fff; border: 2px solid var(--line); border-radius: 20px; padding: 32px; position: relative; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+  .partner-box::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--blue); }
+  .partner-box:hover { border-color: var(--blue); box-shadow: 0 18px 36px rgba(11,42,74,0.08); }
+  .partner-top { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 18px; }
+  .partner-logo { width: 56px; height: 56px; border-radius: 14px; border: 2px solid #C9DDF0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #EAF2FA; }
+  .partner-logo span { font-family: 'DM Serif Display', serif; font-size: 18px; font-weight: 700; color: var(--blue); font-style: italic; }
+  .partner-content { flex: 1; }
+  .partner-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .partner-content h4 { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 6px; line-height: 1.4; }
+  .partner-content .sub { font-size: 13px; color: var(--orange); font-weight: 600; margin-bottom: 10px; }
+  .partner-content p { font-size: 13.5px; color: var(--text-body); line-height: 1.7; }
+  .partner-bottom { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .partner-note { font-size: 13px; color: var(--text-muted); line-height: 1.6; max-width: 560px; }
+  .partner-note strong { color: var(--blue); font-weight: 700; }
+  .partner-cta { font-size: 12.5px; font-weight: 700; color: #fff; white-space: nowrap; border: none; padding: 11px 22px; border-radius: 100px; background: var(--blue); flex-shrink: 0; cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif; }
+
+  .explore-cta { padding: 0 56px 56px; }
+  .explore-box { border: 2px solid var(--line); border-radius: 20px; padding: 28px 32px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
+  .explore-box::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--blue); }
+  .explore-text { flex: 1; min-width: 260px; }
+  .explore-box h2 { font-weight: 800; font-size: 20px; color: var(--blue); line-height: 1.35; margin-bottom: 6px; }
+  .explore-box p { font-size: 13px; color: var(--text-body); line-height: 1.6; max-width: 480px; }
+  .explore-btn { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; background: linear-gradient(120deg, var(--blue) 0%, var(--blue-mid) 100%); color: #fff; border: none; padding: 13px 26px; border-radius: 100px; font-size: 13px; font-weight: 700; letter-spacing: .02em; font-family: 'Be Vietnam Pro', sans-serif; cursor: pointer; box-shadow: 0 10px 24px rgba(26,95,168,0.22); transition: transform .2s, box-shadow .2s; }
+  .explore-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(26,95,168,0.3); }
+  .explore-btn svg { width: 14px; height: 14px; }
+
+  @media (max-width: 760px) {
+    .story { grid-template-columns: 1fr; }
+    .value-grid { grid-template-columns: 1fr; }
+    .founder-box { grid-template-columns: 1fr; }
+    .founder-photo { min-height: 220px; }
+    .partner-top { flex-direction: column; }
+    .partner-bottom { flex-direction: column; align-items: flex-start; }
+    .explore-box { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .hero, .story, .values, .founder-sec, .partner, .explore-cta { padding-left: 24px; padding-right: 24px; }
+    .hero h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <section class="story">
+    <div class="story-visual">
+      <div class="play-btn"></div>
+      <div class="video-caption">Video giới thiệu Anpha</div>
+    </div>
+    <div class="story-text">
+      <h2>Anpha được thành lập bởi những chuyên gia HR giàu kinh nghiệm, từng giữ vị trí lãnh đạo nhân sự tại các tập đoàn đa quốc gia.</h2>
+      <p>Trải dài qua nhiều lĩnh vực: bán lẻ, thương mại điện tử, FMCG, bảo hiểm, giáo dục và sản xuất — chúng tôi mang vào mỗi dự án sự thấu hiểu thực tế, không chỉ lý thuyết.</p>
+      <p>Chúng tôi tin rằng để doanh nghiệp Việt Nam vươn xa, bộ phận Nhân sự cần được trang bị tư duy và công cụ đúng tầm — <strong>không chỉ vận hành quy trình, mà thực sự dẫn dắt sự phát triển bền vững của tổ chức.</strong></p>
+    </div>
+  </section>
+
+  <section class="values">
+    <span class="eyebrow"><span class="dot"></span>Giá trị cốt lõi</span>
+    <div class="value-grid">
+
+      <div class="value-card vc-1">
+        <div class="value-icon vi-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="#1A5FA8"/>
+          </svg>
+        </div>
+        <h3>Khách hàng là trọng tâm</h3>
+        <p>Mọi giải pháp đều thiết kế riêng theo bối cảnh và mục tiêu thực tế của từng doanh nghiệp.</p>
+      </div>
+
+      <div class="value-card vc-2">
+        <div class="value-icon vi-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8672A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.4 1 1.1 1 2.3h6c0-1.2.4-1.9 1-2.3A7 7 0 0 0 12 2Z"/>
+          </svg>
+        </div>
+        <h3>Sáng tạo có hệ thống</h3>
+        <p>Kết hợp tư duy mới với phương pháp luận đã được kiểm chứng trong thực tế vận hành.</p>
+      </div>
+
+      <div class="value-card vc-3">
+        <div class="value-icon vi-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0F8A72" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Chuyên nghiệp</h3>
+        <p>Cam kết chất lượng và đạo đức nghề nghiệp trong từng dự án tư vấn và đào tạo.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="founder-sec">
+    <div class="founder-box">
+      <div class="founder-photo">
+        <div class="founder-photo-placeholder">Ảnh<br>Mai Anh Trần</div>
+      </div>
+      <div class="founder-content">
+        <h3>Mai Anh Trần</h3>
+        <p class="role">Founder &amp; CEO — Anpha Giải Pháp và Đào Tạo</p>
+        <p class="founder-quote">"Tôi tin HR là <span class="highlight">bộ phận chiến lược</span> mang lại <span class="highlight">giá trị không thể thiếu</span> cho doanh nghiệp."</p>
+        <p class="founder-extra"><strong>Hơn 26 năm kinh nghiệm</strong> quản lý nhân sự cấp cao tại các tập đoàn đa quốc gia trong lĩnh vực bán lẻ, FMCG, bảo hiểm, sản xuất.</p>
+        <p class="founder-extra">Từng đảm nhiệm vai trò <strong>Giám đốc Nhân sự chiến lược</strong> tại các tập đoàn trong và ngoài nước, chị đã dẫn dắt nhiều dự án xây dựng hệ thống quản trị nhân sự hiện đại, đồng hành cùng ban lãnh đạo trong phát triển tổ chức, nâng cao năng lực đội ngũ và xây dựng nền tảng tăng trưởng bền vững.</p>
+      </div>
+    </div>
+
+    <div class="expand-line">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#0F8A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </span>
+      <p><strong>Anpha đang mở rộng đội ngũ chuyên gia</strong> — quy tụ thêm những chuyên gia thực chiến để đồng hành cùng nhiều doanh nghiệp hơn.</p>
+    </div>
+  </section>
+
+  <section class="partner">
+    <div class="partner-box">
+      <div class="partner-top">
+        <div class="partner-logo"><span>I</span></div>
+        <div class="partner-content">
+          <div class="partner-label">Đối tác đào tạo</div>
+          <h4>Đối tác chính thức của Viện IDEAS</h4>
+          <p class="sub">Hỗ trợ kết nối giáo dục toàn cầu</p>
+          <p>IDEAS là viện chuyên đào tạo các chương trình Thạc sĩ Quản trị Kinh doanh (MBA) và Tiến sĩ Quản trị Kinh doanh (DBA) liên kết với các trường đại học quốc tế — đồng hành cùng Anpha trong việc nâng tầm năng lực lãnh đạo cho học viên Việt Nam.</p>
+        </div>
+      </div>
+      <div class="partner-bottom">
+        <p class="partner-note">Bạn có thể liên hệ trực tiếp <strong>Anpha</strong> để được tư vấn về chương trình và lộ trình học phù hợp nhất.</p>
+        <button class="partner-cta">Liên hệ tư vấn →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="explore-cta">
+    <div class="explore-box">
+      <div class="explore-text">
+        <h2>Khám phá các giải pháp của Anpha</h2>
+        <p>Từ tư vấn quản trị nhân sự, đào tạo năng lực đến đồng hành phát triển tổ chức — giải pháp thực tiễn cho từng giai đoạn doanh nghiệp.</p>
+      </div>
+      <button class="explore-btn">
+        Tìm hiểu thêm
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
