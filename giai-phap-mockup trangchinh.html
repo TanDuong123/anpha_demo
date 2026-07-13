@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giải pháp HR toàn diện — Anpha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #14324D;
+    --navy-soft: #3E5871;
+    --navy-mist: #EAF1F8;
+    --navy-line: #D7E3EE;
+    --orange: #E8622C;
+    --orange-dark: #C94E1E;
+    --teal-mist: #E6F5F3;
+    --amber-mist: #FDF1E6;
+    --purple-mist: #F0EAF8;
+    --blue: #1D6FC4;
+    --blue-dark: #14568F;
+    --ink: #16232E;
+    --muted: #64748B;
+    --border: #E2E8F0;
+    --bg: #FBFCFD;
+    --card: #FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(180deg,#EEF4FA 0%, var(--bg) 100%);
+    padding:56px 0 40px;
+    text-align:center;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero h1{
+    font-size:34px;
+    font-weight:800;
+    letter-spacing:0.5px;
+    color:var(--navy-soft);
+    margin:0;
+  }
+  .hero p{
+    margin:16px auto 0;
+    max-width:620px;
+    color:var(--muted);
+    font-size:15.5px;
+    line-height:1.75;
+  }
+
+  /* SECTION HEAD (căn giữa, dùng cho Quy trình & Giải pháp) */
+  .section{padding:56px 0;}
+  .section + .section{border-top:1px solid var(--border);}
+  .section-head-center{text-align:center;margin-bottom:32px;}
+  .section-head-center h2{
+    font-size:24px;font-weight:700;color:var(--blue);margin:0 0 10px;
+  }
+  .section-head-center p{
+    margin:0 auto;max-width:560px;color:var(--muted);font-size:14.5px;line-height:1.75;
+  }
+
+  /* QUY TRÌNH TƯ VẤN */
+  .process-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    position:relative;
+    margin-top:40px;
+  }
+  .process-row::before{
+    content:"";
+    position:absolute;
+    top:36px;left:12.5%;right:12.5%;
+    height:2px;
+    background:var(--orange);
+    z-index:0;
+  }
+  .step{
+    display:flex;flex-direction:column;align-items:center;
+    text-align:center;position:relative;z-index:1;
+    padding:0 10px;
+  }
+  .step-icon{
+    width:76px;height:76px;border-radius:50%;
+    background:var(--navy-mist);
+    border:3px solid #fff;
+    box-shadow:0 2px 8px rgba(20,50,77,0.12);
+    display:flex;align-items:center;justify-content:center;
+    font-size:26px;margin-bottom:14px;
+    color:var(--navy);
+  }
+  .step-title{font-size:14px;font-weight:700;color:var(--ink);}
+
+  /* GIẢI PHÁP CARDS */
+  .solution-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+  }
+  .solution-card{
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--card);
+    overflow:hidden;
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .solution-card:hover{box-shadow:0 6px 18px rgba(20,50,77,0.08);transform:translateY(-2px);}
+
+  .solution-poster{
+    position:relative;
+    height:150px;
+    overflow:hidden;
+  }
+  .poster-navy{background:var(--navy-mist);}
+  .poster-teal{background:var(--teal-mist);}
+  .poster-amber{background:var(--amber-mist);}
+  .poster-purple{background:var(--purple-mist);}
+  .poster-icon{
+    position:absolute;right:-10px;bottom:-16px;
+    font-size:92px;opacity:0.35;
+  }
+  .poster-overlay{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    padding:0 12px;
+  }
+  .poster-box{
+    background:rgba(10,20,35,0.82);
+    border-radius:8px;
+    padding:9px 12px;
+    text-align:center;
+    max-width:94%;
+  }
+  .poster-box .t{color:#fff;font-size:12.5px;font-weight:700;line-height:1.3;margin:0 0 3px;}
+  .poster-box .s{color:var(--orange);font-size:10.5px;font-style:italic;margin:0;}
+
+  .solution-body{padding:12px 14px;text-align:right;}
+  .solution-link{
+    font-size:12.5px;font-weight:600;color:var(--orange);
+    text-decoration:none;
+  }
+  .solution-link:hover{color:var(--orange-dark);}
+
+  /* CTA CUỐI TRANG */
+  .closing-cta{
+    background:#fff;
+    border:2.5px solid var(--blue);
+    border-left:8px solid var(--blue);
+    border-radius:12px;
+    padding:32px 28px;
+    text-align:center;
+  }
+  .closing-cta .title{font-size:19px;font-weight:800;color:var(--blue);margin:0 0 8px;}
+  .closing-cta .sub{font-size:14px;color:var(--muted);margin:0 0 20px;}
+  .closing-cta .btn{
+    display:inline-block;
+    background:var(--orange);color:#fff;
+    padding:13px 28px;border-radius:24px;
+    font-size:14px;font-weight:700;
+    text-decoration:none;
+  }
+  .closing-cta .btn:hover{background:var(--orange-dark);}
+
+  @media (max-width: 760px){
+    .process-row{grid-template-columns:repeat(2,1fr);row-gap:28px;}
+    .process-row::before{display:none;}
+    .solution-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>GIẢI PHÁP HR TOÀN DIỆN</h1>
+      <p>Giải pháp tư vấn nhân sự được thiết kế phù hợp với doanh nghiệp Việt Nam, giúp chuẩn hóa hệ thống, nâng cao năng lực tổ chức và tối ưu hiệu quả vận hành.</p>
+    </div>
+  </section>
+
+  <!-- QUY TRÌNH TƯ VẤN -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head-center">
+        <h2>Quy trình Tư vấn</h2>
+        <p>Anpha áp dụng quy trình tư vấn bài bản, giúp doanh nghiệp xác định đúng vấn đề, xây dựng giải pháp phù hợp và triển khai hiệu quả trong thực tế.</p>
+      </div>
+
+      <div class="process-row">
+        <div class="step">
+          <div class="step-icon">📋</div>
+          <div class="step-title">Khảo sát &amp; Chẩn đoán</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">💡</div>
+          <div class="step-title">Thiết kế Giải pháp</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">🎓</div>
+          <div class="step-title">Triển khai &amp; Đào tạo</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">⭐</div>
+          <div class="step-title">Đánh giá &amp; Cải tiến</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÁC GIẢI PHÁP HR -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head-center">
+        <h2>Các giải pháp HR của Anpha</h2>
+      </div>
+
+      <div class="solution-grid">
+
+        <div class="solution-card">
+          <div class="solution-poster poster-navy">
+            <span class="poster-icon">👥</span>
+            <div class="poster-overlay">
+              <div class="poster-box">
+                <p class="t">Giải pháp nhân sự<br>toàn diện</p>
+                <p class="s">HR System Design</p>
+              </div>
+            </div>
+          </div>
+          <div class="solution-body"><a href="#" class="solution-link">Xem thêm →</a></div>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-poster poster-teal">
+            <span class="poster-icon">💰</span>
+            <div class="poster-overlay">
+              <div class="poster-box">
+                <p class="t">Xây dựng hệ thống<br>lương thưởng</p>
+                <p class="s">Total Rewards System</p>
+              </div>
+            </div>
+          </div>
+          <div class="solution-body"><a href="#" class="solution-link">Xem thêm →</a></div>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-poster poster-amber">
+            <span class="poster-icon">📊</span>
+            <div class="poster-overlay">
+              <div class="poster-box">
+                <p class="t">Hệ thống quản lý<br>hiệu suất (BSC/KPI)</p>
+                <p class="s">Performance Management</p>
+              </div>
+            </div>
+          </div>
+          <div class="solution-body"><a href="#" class="solution-link">Xem thêm →</a></div>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-poster poster-purple">
+            <span class="poster-icon">🧭</span>
+            <div class="poster-overlay">
+              <div class="poster-box">
+                <p class="t">Phát triển năng lực<br>quản lý cấp trung</p>
+                <p class="s">Middle Management Development</p>
+              </div>
+            </div>
+          </div>
+          <div class="solution-body"><a href="#" class="solution-link">Xem thêm →</a></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CUỐI TRANG -->
+  <section class="section">
+    <div class="wrap">
+      <div class="closing-cta">
+        <p class="title">Doanh nghiệp bạn đang cần giải pháp HR nào?</p>
+        <p class="sub">Đặt lịch tư vấn miễn phí — Anpha sẽ phân tích hiện trạng và đề xuất giải pháp phù hợp nhất.</p>
+        <a href="#lien-he" class="btn">Liên hệ tư vấn</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

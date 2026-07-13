@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương trình Đào tạo HR — Anpha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #14324D;
+    --navy-soft: #3E5871;
+    --navy-mist: #EAF1F8;
+    --navy-line: #D7E3EE;
+    --orange: #E8622C;
+    --orange-dark: #C94E1E;
+    --teal: #0F766E;
+    --teal-mist: #E6F5F3;
+    --blue: #1D6FC4;
+    --blue-dark: #14568F;
+    --blue-mist: #EAF3FC;
+    --ink: #16232E;
+    --muted: #64748B;
+    --border: #E2E8F0;
+    --bg: #FBFCFD;
+    --card: #FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(180deg,#EEF4FA 0%, var(--bg) 100%);
+    padding:56px 0 40px;
+    text-align:center;
+    border-bottom:1px solid var(--navy-line);
+  }
+  .hero h1{
+    font-size:34px;
+    font-weight:800;
+    letter-spacing:0.5px;
+    color:var(--navy-soft);
+    margin:0;
+    text-transform:uppercase;
+  }
+  .hero p{
+    margin:16px auto 0;
+    max-width:620px;
+    color:var(--muted);
+    font-size:15.5px;
+    line-height:1.75;
+  }
+
+  /* PROCESS */
+  .process{padding:56px 0 48px;}
+  .section-head{
+    border-left:3px solid var(--navy);
+    padding-left:16px;
+    margin-bottom:32px;
+  }
+  .section-head h2{
+    font-size:24px;font-weight:700;color:var(--ink);margin:0 0 6px;
+  }
+  .section-head p{margin:0;color:var(--muted);font-size:15px;}
+
+  .process-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    position:relative;
+  }
+  .process-row::before{
+    content:"";
+    position:absolute;
+    top:34px;left:12.5%;right:12.5%;
+    height:2px;
+    background:var(--navy-line);
+    z-index:0;
+  }
+  .step{
+    display:flex;flex-direction:column;align-items:center;
+    text-align:center;position:relative;z-index:1;
+    padding:0 8px;
+  }
+  .step-icon{
+    width:68px;height:68px;border-radius:50%;
+    background:var(--navy-mist);
+    border:2px solid var(--navy-line);
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;margin-bottom:14px;
+    color:var(--navy);
+  }
+  .step-num{
+    font-size:11px;font-weight:700;color:var(--orange);
+    letter-spacing:1px;margin-bottom:4px;
+  }
+  .step-title{font-size:14px;font-weight:600;color:var(--ink);}
+
+  /* TABS */
+  .courses{padding:16px 0 56px;}
+  .tabs{
+    display:flex;justify-content:center;gap:8px;
+    margin-bottom:32px;
+  }
+  .tab-pill{
+    padding:10px 22px;
+    border-radius:20px;
+    border:none;background:transparent;
+    font-family:inherit;font-size:14px;font-weight:600;
+    color:var(--muted);cursor:pointer;
+    transition:all .15s ease;
+  }
+  .tab-pill:hover{color:var(--ink);}
+  .tab-pill.active{background:var(--orange);color:#fff;}
+
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  /* COURSE GRID */
+  .course-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+  .course-card{
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--card);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .course-card:hover{box-shadow:0 6px 18px rgba(20,50,77,0.08);transform:translateY(-2px);}
+
+  .course-poster{
+    position:relative;
+    height:150px;
+    overflow:hidden;
+  }
+  .poster-navy{background:var(--navy-mist);}
+  .poster-teal{background:var(--teal-mist);}
+  .poster-icon{
+    position:absolute;right:-10px;bottom:-16px;
+    font-size:96px;opacity:0.35;
+  }
+  .poster-overlay{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    padding:0 16px;
+  }
+  .poster-box{
+    background:rgba(10,20,35,0.82);
+    border-radius:8px;
+    padding:10px 16px;
+    text-align:center;
+    max-width:92%;
+  }
+  .poster-box .t{color:#fff;font-size:13.5px;font-weight:700;line-height:1.35;margin:0 0 3px;}
+  .poster-box .s{color:var(--orange);font-size:11px;font-style:italic;margin:0;}
+
+  .course-body{padding:18px 20px 16px;flex:1;display:flex;flex-direction:column;}
+  .course-title{font-size:16px;font-weight:700;color:var(--ink);margin:0 0 8px;line-height:1.35;display:none;}
+  .course-desc{font-size:13px;color:var(--muted);margin:0 0 12px;}
+
+  .schedule-row{
+    display:flex;align-items:center;gap:6px;
+    font-size:12.5px;color:var(--ink);margin-bottom:6px;
+  }
+  .schedule-row .label{color:var(--muted);}
+  .schedule-row .value{font-weight:600;}
+
+  .course-link-row{margin-top:auto;text-align:right;padding-top:6px;}
+  .course-link{
+    font-size:13px;font-weight:600;color:var(--orange);
+    text-decoration:none;
+  }
+  .course-link:hover{color:var(--orange-dark);}
+
+  /* ACCENT CARD — dùng cho khối L&D Partner và CTA cuối trang */
+  .accent-card{
+    background:#fff;
+    border:1.5px solid var(--blue);
+    border-left:5px solid var(--blue);
+    border-radius:12px;
+    padding:20px 26px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:24px;flex-wrap:wrap;
+  }
+  .accent-card .accent-title{font-size:18px;font-weight:800;color:var(--blue);margin:0 0 4px;}
+  .accent-card .accent-sub{font-size:13.5px;color:var(--muted);margin:0;max-width:540px;line-height:1.6;}
+  .btn-blue{
+    background:var(--blue);color:#fff;
+    padding:11px 22px;border-radius:24px;
+    font-size:13.5px;font-weight:700;white-space:nowrap;
+    text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+    flex-shrink:0;border:none;font-family:inherit;cursor:pointer;
+  }
+  .btn-blue:hover{background:var(--blue-dark);}
+
+  /* L&D PANEL */
+  .ld-grid{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:28px;
+    margin-top:28px;align-items:start;
+  }
+  .ld-grid h3{font-size:19px;font-weight:700;color:var(--ink);margin:0 0 14px;}
+  .ld-grid p{font-size:14px;color:var(--muted);margin:0 0 14px;line-height:1.7;}
+  .ld-image-slot{
+    background:#FAFBFC;
+    border:1.5px dashed var(--border);
+    border-radius:12px;
+    min-height:220px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  }
+  .ld-image-slot span{font-size:13px;color:var(--muted);}
+  .ld-image-slot .icon{font-size:28px;opacity:0.5;}
+
+  /* CLOSING CTA */
+  .closing-cta{margin-top:8px;}
+
+  @media (max-width: 760px){
+    .process-row{grid-template-columns:repeat(2,1fr);row-gap:28px;}
+    .process-row::before{display:none;}
+    .course-grid{grid-template-columns:1fr;}
+    .ld-grid{grid-template-columns:1fr;}
+    .tabs{flex-wrap:wrap;}
+    .accent-card{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>Chương trình Đào tạo HR</h1>
+      <p>Các chương trình đào tạo được thiết kế theo định hướng thực chiến, kết hợp giữa tư duy quản trị, công cụ ứng dụng và kinh nghiệm triển khai thực tế, giúp nâng cao năng lực đội ngũ và tạo giá trị bền vững cho doanh nghiệp.</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Quy trình triển khai</h2>
+        <p>4 bước Anpha áp dụng cho mọi hình thức đào tạo — từ khảo sát đến đánh giá kết quả.</p>
+      </div>
+
+      <div class="process-row">
+        <div class="step">
+          <div class="step-icon">🔍</div>
+          <div class="step-num">BƯỚC 1</div>
+          <div class="step-title">Khảo sát nhu cầu</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">📐</div>
+          <div class="step-num">BƯỚC 2</div>
+          <div class="step-title">Thiết kế chương trình</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">🎓</div>
+          <div class="step-num">BƯỚC 3</div>
+          <div class="step-title">Triển khai đào tạo</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">📊</div>
+          <div class="step-num">BƯỚC 4</div>
+          <div class="step-title">Đánh giá &amp; Hỗ trợ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section class="courses">
+    <div class="wrap">
+
+      <div class="tabs">
+        <button class="tab-pill active" onclick="switchTab('inhouse', this)">In-house</button>
+        <button class="tab-pill" onclick="switchTab('public', this)">Public</button>
+        <button class="tab-pill" onclick="switchTab('ld', this)">L&amp;D Partner</button>
+      </div>
+
+      <!-- IN-HOUSE -->
+      <div class="tab-panel active" id="panel-inhouse">
+        <div class="course-grid">
+
+          <div class="course-card">
+            <div class="course-poster poster-navy">
+              <span class="poster-icon">🧭</span>
+              <div class="poster-overlay">
+                <div class="poster-box">
+                  <p class="t">Phát triển năng lực<br>quản lý cấp trung</p>
+                  <p class="s">Mid-Manager Leadership</p>
+                </div>
+              </div>
+            </div>
+            <div class="course-body">
+              <p class="course-desc">Kỹ năng lãnh đạo và huấn luyện đội nhóm cho quản lý cấp trung.</p>
+              <div class="course-link-row"><a href="#" class="course-link">Xem thêm →</a></div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-poster poster-navy">
+              <span class="poster-icon">📊</span>
+              <div class="poster-overlay">
+                <div class="poster-box">
+                  <p class="t">Hệ thống quản lý<br>hiệu suất BSC/KPI</p>
+                  <p class="s">Performance System</p>
+                </div>
+              </div>
+            </div>
+            <div class="course-body">
+              <p class="course-desc">Triển khai BSC/KPI theo chiến lược và đặc thù doanh nghiệp.</p>
+              <div class="course-link-row"><a href="#" class="course-link">Xem thêm →</a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PUBLIC -->
+      <div class="tab-panel" id="panel-public">
+        <div class="course-grid">
+
+          <div class="course-card">
+            <div class="course-poster poster-teal">
+              <span class="poster-icon">💰</span>
+              <div class="poster-overlay">
+                <div class="poster-box">
+                  <p class="t">Xây dựng hệ thống<br>lương thưởng</p>
+                  <p class="s">C&amp;B System Design</p>
+                </div>
+              </div>
+            </div>
+            <div class="course-body">
+              <div class="schedule-row"><span>🗓</span><span class="label">Khai giảng:</span><span class="value">15 &amp; 22/08/2026</span></div>
+              <div class="schedule-row"><span>📍</span><span class="label">Hình thức:</span><span class="value">Offline TP.HCM &amp; Online</span></div>
+              <div class="course-link-row"><a href="#" class="course-link">Xem thêm →</a></div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <div class="course-poster poster-teal">
+              <span class="poster-icon">🤝</span>
+              <div class="poster-overlay">
+                <div class="poster-box">
+                  <p class="t">HRBP Manager — đối<br>tác nhân sự</p>
+                  <p class="s">Strategic HR Partner</p>
+                </div>
+              </div>
+            </div>
+            <div class="course-body">
+              <p class="course-desc">Tư duy và công cụ để HR trở thành đối tác chiến lược của Ban lãnh đạo.</p>
+              <div class="course-link-row"><a href="#" class="course-link">Xem thêm →</a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- L&D PARTNER -->
+      <div class="tab-panel" id="panel-ld">
+
+        <div class="accent-card">
+          <div>
+            <p class="accent-title">L&amp;D Partner</p>
+            <p class="accent-sub">Anpha đồng hành xây dựng và vận hành hệ thống đào tạo doanh nghiệp — từ chiến lược, chương trình đến triển khai, giúp doanh nghiệp phát triển đội ngũ với chi phí tối ưu và nguồn lực linh hoạt.</p>
+          </div>
+          <a href="#" class="btn-blue">Xem thêm →</a>
+        </div>
+
+        <div class="ld-grid">
+          <div>
+            <h3>Tại sao doanh nghiệp lựa chọn Đối tác L&amp;D của Anpha?</h3>
+            <p>Thay vì đầu tư xây dựng một bộ phận L&amp;D nội bộ với nhiều chi phí về tuyển dụng, đào tạo và vận hành, doanh nghiệp có thể hợp tác cùng Anpha để tiếp cận đội ngũ chuyên gia và hệ thống đào tạo bài bản ngay từ đầu.</p>
+            <p>Mô hình L&amp;D Partner đặc biệt phù hợp với doanh nghiệp vừa và nhỏ đang trong giai đoạn phát triển, chưa có phòng L&amp;D chuyên trách hoặc cần nâng cao năng lực đào tạo nội bộ nhưng chưa cần đầu tư nguồn lực toàn thời gian.</p>
+          </div>
+          <div class="ld-image-slot">
+            <span class="icon">🖼️</span>
+            <span>Vị trí hình ảnh minh họa</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CLOSING CTA -->
+      <div class="accent-card closing-cta" style="margin-top:48px;">
+        <div>
+          <p class="accent-title">Đặt lịch tư vấn 30 phút</p>
+          <p class="accent-sub">Anpha sẽ giúp bạn chọn đúng hướng đào tạo phù hợp.</p>
+        </div>
+        <a href="#" class="btn-blue">Đặt lịch tư vấn →</a>
+      </div>
+
+    </div>
+  </section>
+
+<script>
+function switchTab(name, btn){
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-pill').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>
