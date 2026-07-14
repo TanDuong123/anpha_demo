@@ -1545,53 +1545,57 @@ footer {
 .sol-grid-4 .sol-card:nth-child(4) .sol-card-photo-overlay {
   background: linear-gradient(135deg, rgba(234, 88, 12, 0.22) 0%, rgba(234, 88, 12, 0.82) 100%);
 }
-/* Ảnh 2 — restyle sol-grid-4: khối banner nền màu đặc, nút nằm trong banner */
+/* Ảnh 3 — sol-grid-4: ảnh giữ nguyên, ô chip nhạt/trong suốt nằm trong ảnh + footer trắng riêng có link */
 .sol-grid-4 {
-  row-gap: 20px;
+  row-gap: 24px;
 }
 .sol-grid-4 .sol-card {
-  height: 340px;
+  display: flex;
   flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-end;
-  overflow: hidden;
+  height: auto;
+  background: var(--card, #fff);
 }
-.sol-card-info {
-  width: 100%;
+.sol-grid-4 .sol-photo {
+  position: relative;
+  display: block;
+  height: 210px;
+  background-size: cover;
+  background-position: center;
 }
-.sol-card-banner {
-  background: linear-gradient(115deg, #0d1f4d 0%, #1d47a0 45%, #6a95d6 100%);
-  padding: 16px 18px 14px;
-  text-align: center;
+.sol-grid-4 .sol-card-chip {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  background: rgba(20, 40, 90, 0.42);
+  border-radius: 10px;
+  padding: 12px 16px;
+  text-align: left;
+  transition: background 0.2s;
+}
+.sol-grid-4 .sol-card:hover .sol-card-chip {
+  background: rgba(20, 40, 90, 0.58);
 }
 .sol-grid-4 .sol-title {
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 .sol-grid-4 .sol-subtitle {
   display: block;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.9);
 }
-.sol-card-btn-wrap {
-  padding: 14px 18px;
-  text-align: center;
+.sol-card-footer {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  text-align: left;
 }
-.sol-card-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #fff;
-  color: var(--blue);
-  padding: 10px 22px;
-  border-radius: 24px;
-  font-size: 13px;
+.sol-card-link {
+  font-size: 13.5px;
   font-weight: 700;
-  white-space: nowrap;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
-  transition: background 0.2s, color 0.2s;
+  color: var(--primary);
+  transition: color 0.2s;
 }
-.sol-grid-4 .sol-card:hover .sol-card-btn {
-  background: var(--primary);
-  color: #fff;
+.sol-card-link:hover {
+  color: var(--primary-light);
 }
 .sol-num-badge {
   display: inline-block;
@@ -3225,4 +3229,253 @@ button.anpha-hero-btn:hover {
   .ep-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ============================================================
+   DAO-TAO.HTML — lớp phong cách theo file mockup (Inter, navy/orange/blue)
+   Chỉ áp dụng bên trong .dt-mockup, không ảnh hưởng các trang khác.
+   ============================================================ */
+.dt-mockup {
+  font-family: "Inter", "Be Vietnam Pro", sans-serif;
+  --dt-navy: #14324d;
+  --dt-navy-soft: #3e5871;
+  --dt-navy-mist: #eaf1f8;
+  --dt-navy-line: #d7e3ee;
+  --dt-orange: #e8622c;
+  --dt-orange-dark: #c94e1e;
+  --dt-teal: #0f766e;
+  --dt-teal-mist: #e6f5f3;
+  --dt-blue: #1d6fc4;
+  --dt-blue-dark: #14568f;
+  --dt-blue-mist: #eaf3fc;
+  --dt-ink: #16232e;
+  --dt-muted: #64748b;
+  --dt-border: #e2e8f0;
+}
+.dt-mockup h1,
+.dt-mockup h2,
+.dt-mockup h3,
+.dt-mockup h4 {
+  font-family: "Inter", "Be Vietnam Pro", sans-serif;
+}
+
+/* HERO — chữ theo mockup, nền xanh giữ nguyên theo yêu cầu riêng */
+.dt-mockup .page-hero-title {
+  letter-spacing: 0.5px;
+}
+
+/* TAB NAV — dạng pill cam như mockup, bấm để ẩn/hiện nội dung (không cuộn trang) */
+.dt-mockup .ttn-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 36px;
+  overflow-x: auto;
+}
+.dt-tab-panel {
+  display: none;
+  animation: dtFadeIn 0.25s ease;
+}
+.dt-tab-panel.active {
+  display: block;
+}
+@keyframes dtFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.dt-mockup .ttn-tab {
+  padding: 10px 22px;
+  border-radius: 20px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dt-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.dt-mockup .ttn-tab:hover {
+  color: var(--dt-ink);
+  background: var(--dt-navy-mist);
+}
+.dt-mockup .ttn-tab.active {
+  background: var(--dt-orange);
+  color: #fff;
+}
+
+/* COURSE POSTER — khối màu nhạt + icon mờ + hộp tiêu đề tối (thay ảnh chụp) */
+.dt-poster {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+.dt-poster.mist-navy {
+  background: var(--dt-navy-mist);
+}
+.dt-poster.mist-teal {
+  background: var(--dt-teal-mist);
+}
+.dt-poster.mist-blue {
+  background: var(--dt-blue-mist);
+}
+.dt-poster-icon {
+  position: absolute;
+  right: -10px;
+  bottom: -16px;
+  font-size: 96px;
+  opacity: 0.35;
+}
+.dt-poster-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+.dt-poster-box {
+  background: rgba(10, 20, 35, 0.82);
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-align: center;
+  max-width: 92%;
+}
+.dt-poster-box .t {
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 3px;
+}
+.dt-poster-box .s {
+  color: var(--dt-orange);
+  font-size: 11px;
+  font-style: italic;
+  margin: 0;
+}
+.dt-poster-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  background: var(--dt-orange);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ACCENT CARD — khối "Đối tác Đào tạo" viền xanh như mockup */
+.dt-mockup .outsource-intro {
+  display: block;
+}
+.dt-accent-card {
+  background: #fff;
+  border: 1.5px solid var(--dt-blue);
+  border-left: 5px solid var(--dt-blue);
+  border-radius: 12px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.dt-accent-card .dt-accent-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--dt-blue);
+  margin: 0 0 8px;
+}
+.dt-accent-card .dt-accent-sub {
+  font-size: 14.5px;
+  color: var(--dt-muted);
+  margin: 0;
+  max-width: 640px;
+  line-height: 1.75;
+}
+.dt-accent-card .dt-accent-sub + .dt-accent-sub {
+  margin-top: 10px;
+}
+.dt-btn-blue {
+  background: var(--dt-blue);
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dt-btn-blue:hover {
+  background: var(--dt-blue-dark);
+}
+
+@media (max-width: 640px) {
+  .dt-accent-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* course-bg-card (tab Public) — chuyển sang bố cục poster + thân trắng như mockup */
+.dt-mockup .course-bg-card {
+  position: relative;
+  min-height: 0;
+  background: #fff;
+  border: 1px solid var(--dt-border);
+  box-shadow: 0 4px 20px rgba(20, 50, 77, 0.06);
+}
+.dt-mockup .course-bg-card:hover {
+  box-shadow: 0 10px 30px rgba(20, 50, 77, 0.14);
+}
+.dt-mockup .course-bg-badge {
+  top: 14px;
+  left: 14px;
+}
+.dt-mockup .course-bg-body {
+  position: relative;
+  margin-top: 0;
+  padding: 18px 20px 20px;
+}
+.dt-mockup .course-bg-name {
+  color: var(--dt-ink);
+}
+.dt-mockup .course-bg-row {
+  color: var(--dt-muted);
+}
+.dt-mockup .cbg-tag {
+  background: var(--dt-navy-mist);
+  color: var(--dt-navy);
+}
+.dt-mockup .btn-enroll-w {
+  background: var(--dt-orange);
+  color: #fff;
+}
+.dt-mockup .btn-enroll-w:hover {
+  background: var(--dt-orange-dark);
+  color: #fff;
+}
+
+/* ipc-photo (tab Inhouse) — poster mist + icon thay ảnh chụp */
+.dt-mockup .inhouse-photo-card:hover {
+  border-color: var(--dt-orange);
 }

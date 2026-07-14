@@ -6,7 +6,7 @@
   <title>Đào tạo HR – Anpha</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -67,6 +67,8 @@
   </div>
 </header>
 
+<div class="dt-mockup">
+
 <!-- PAGE HERO -->
 <div class="page-hero page-hero-blue">
   <div class="container">
@@ -75,20 +77,18 @@
   </div>
 </div>
 
-<!-- TRAINING TAB NAV -->
-<div class="training-tab-nav" id="trainingTabNav">
+<!-- COURSES -->
+<section class="dt-courses">
   <div class="container">
+
     <div class="ttn-tabs">
-      <a href="#inhouse"   class="ttn-tab active" data-target="inhouse">🏢 In-house</a>
-      <a href="#public"    class="ttn-tab"        data-target="public">🎓 Public</a>
-      <a href="#outsource" class="ttn-tab"        data-target="outsource">🤝 Đối tác Đào tạo</a>
+      <button class="ttn-tab active" data-target="inhouse" onclick="dtSwitchTab('inhouse', this)">🏢 In-house</button>
+      <button class="ttn-tab" data-target="public" onclick="dtSwitchTab('public', this)">🎓 Public</button>
+      <button class="ttn-tab" data-target="outsource" onclick="dtSwitchTab('outsource', this)">🤝 Đối tác Đào tạo</button>
     </div>
-  </div>
-</div>
 
 <!-- ===================== ĐÀO TẠO DOANH NGHIỆP ===================== -->
-<section id="inhouse" style="background:var(--bg-light)">
-  <div class="container">
+<div class="dt-tab-panel active" id="inhouse">
     <div class="training-section-header">
       <div class="ts-inner ts-inhouse">
         <div class="ts-icon">🏢</div>
@@ -159,9 +159,14 @@
     <div class="inhouse-grid">
 
       <div class="inhouse-photo-card">
-        <div class="ipc-photo">
-          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&q=80" alt="Quản lý Trung gian" />
-          <div class="ipc-overlay"><span class="ipc-tag">Inhouse – Thiết kế riêng</span></div>
+        <div class="dt-poster mist-navy" style="height:160px">
+          <span class="dt-poster-icon">🧭</span>
+          <div class="dt-poster-overlay">
+            <div class="dt-poster-box">
+              <p class="t">Phát triển Năng lực<br>Quản lý Trung gian</p>
+              <p class="s">Mid-Manager Leadership</p>
+            </div>
+          </div>
         </div>
         <div class="ipc-body">
           <div class="ipc-name">Phát triển Năng lực Quản lý Trung gian</div>
@@ -176,9 +181,14 @@
       </div>
 
       <div class="inhouse-photo-card">
-        <div class="ipc-photo">
-          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&q=80" alt="BSC KPI" />
-          <div class="ipc-overlay"><span class="ipc-tag">Inhouse – Thiết kế riêng</span></div>
+        <div class="dt-poster mist-blue" style="height:160px">
+          <span class="dt-poster-icon">📊</span>
+          <div class="dt-poster-overlay">
+            <div class="dt-poster-box">
+              <p class="t">Xây dựng Hệ thống Quản lý<br>Hiệu suất BSC/KPI</p>
+              <p class="s">Performance System</p>
+            </div>
+          </div>
         </div>
         <div class="ipc-body">
           <div class="ipc-name">Xây dựng Hệ thống Quản lý Hiệu suất BSC/KPI</div>
@@ -204,12 +214,10 @@
         <a href="tel:0908728002" class="btn-ic-call">📞 0908.728.002</a>
       </div>
     </div>
-  </div>
-</section>
+</div><!-- /panel inhouse -->
 
 <!-- ===================== ĐÀO TẠO MỞ ===================== -->
-<section id="public" style="background:var(--white)">
-  <div class="container">
+<div class="dt-tab-panel" id="public">
     <div class="training-section-header">
       <div class="ts-inner ts-public">
         <div class="ts-icon">🎓</div>
@@ -230,7 +238,15 @@
     <div class="courses-bg-grid" style="margin-bottom:40px">
 
       <div class="course-bg-card hot">
-        <div class="course-bg-photo" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=60');filter:brightness(.85)"></div>
+        <div class="dt-poster mist-navy">
+          <span class="dt-poster-icon">💰</span>
+          <div class="dt-poster-overlay">
+            <div class="dt-poster-box">
+              <p class="t">Xây dựng Hệ thống<br>Lương thưởng</p>
+              <p class="s">C&amp;B System Design</p>
+            </div>
+          </div>
+        </div>
         <div class="course-bg-badge">🔥 Đang tuyển sinh</div>
         <div class="course-bg-body">
           <div class="course-bg-name">Xây dựng Hệ thống Lương thưởng</div>
@@ -249,7 +265,15 @@
       </div>
 
       <div class="course-bg-card hot">
-        <div class="course-bg-photo" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=60');filter:brightness(.85)"></div>
+        <div class="dt-poster mist-teal">
+          <span class="dt-poster-icon">🤝</span>
+          <div class="dt-poster-overlay">
+            <div class="dt-poster-box">
+              <p class="t">HRBP Manager – Trưởng<br>phòng Đối tác Nhân sự</p>
+              <p class="s">Strategic HR Partner</p>
+            </div>
+          </div>
+        </div>
         <div class="course-bg-badge">🔥 Đang tuyển sinh</div>
         <div class="course-bg-body">
           <div class="course-bg-name">HRBP Manager – Trưởng phòng Đối tác Nhân sự</div>
@@ -268,7 +292,15 @@
       </div>
 
       <div class="course-bg-card">
-        <div class="course-bg-photo" style="background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=60');filter:brightness(.75)"></div>
+        <div class="dt-poster mist-blue">
+          <span class="dt-poster-icon">📊</span>
+          <div class="dt-poster-overlay">
+            <div class="dt-poster-box">
+              <p class="t">Xây dựng Hệ thống Quản lý<br>Hiệu suất BSC/KPI</p>
+              <p class="s">Performance System</p>
+            </div>
+          </div>
+        </div>
         <div class="course-bg-badge" style="background:rgba(10,76,138,.8)">📋 Sắp khai giảng</div>
         <div class="course-bg-body">
           <div class="course-bg-name">Xây dựng Hệ thống Quản lý Hiệu suất BSC/KPI</div>
@@ -297,7 +329,15 @@
     <div class="courses-bg-row2">
 
       <div class="course-bg-card">
-        <div class="course-bg-photo" style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=60');filter:brightness(.75)"></div>
+        <div class="dt-poster mist-navy">
+          <span class="dt-poster-icon">🌟</span>
+          <div class="dt-poster-overlay">
+            <div class="dt-poster-box">
+              <p class="t">Phát triển Nhân tài<br>(Talent Development)</p>
+              <p class="s">Talent &amp; Succession</p>
+            </div>
+          </div>
+        </div>
         <div class="course-bg-badge" style="background:rgba(107,58,143,.8)">📋 Sắp khai giảng</div>
         <div class="course-bg-body">
           <div class="course-bg-name">Phát triển Nhân tài (Talent Development)</div>
@@ -315,7 +355,15 @@
       </div>
 
       <div class="course-bg-card">
-        <div class="course-bg-photo" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=60');filter:brightness(.7)"></div>
+        <div class="dt-poster mist-teal">
+          <span class="dt-poster-icon">🔔</span>
+          <div class="dt-poster-overlay">
+            <div class="dt-poster-box">
+              <p class="t">Chương trình mới<br>– Sắp thông báo</p>
+              <p class="s">Coming soon</p>
+            </div>
+          </div>
+        </div>
         <div class="course-bg-badge" style="background:rgba(30,30,60,.7)">🔜 Đang lên kế hoạch</div>
         <div class="course-bg-body">
           <div class="course-bg-name">Chương trình mới – Sắp thông báo</div>
@@ -332,12 +380,10 @@
       </div>
 
     </div>
-  </div>
-</section>
+</div><!-- /panel public -->
 
 <!-- ===================== ĐỐI TÁC ĐÀO TẠO ===================== -->
-<section id="outsource" style="background:var(--white)">
-  <div class="container">
+<div class="dt-tab-panel" id="outsource">
     <div class="training-section-header">
       <div class="ts-inner ts-outsource">
         <div class="ts-icon">🤝</div>
@@ -348,24 +394,21 @@
       </div>
     </div>
 
-    <!-- Intro PPT-style -->
-    <div class="outsource-intro">
-      <div class="outsource-intro-text">
-        <h2>Tại sao doanh nghiệp chọn Đối tác Đào tạo của Anpha?</h2>
-        <p>Thay vì xây dựng bộ phận L&D nội bộ tốn kém, doanh nghiệp có thể hợp tác cùng Anpha – tiếp cận ngay đội ngũ chuyên gia và hệ thống đào tạo bài bản với chi phí tối ưu.</p>
-        <p>Phù hợp cho doanh nghiệp vừa và nhỏ chưa có bộ phận L&D, hoặc muốn nâng cấp chất lượng đào tạo nội bộ mà không cần tuyển thêm nhân sự.</p>
-        <a href="dao-tao-doi-tac.html" class="btn-primary" style="margin-top:8px">Xem chi tiết dịch vụ →</a>
+    <!-- Accent card kiểu mockup -->
+    <div class="dt-accent-card">
+      <div>
+        <p class="dt-accent-title">Tại sao doanh nghiệp chọn Đối tác Đào tạo của Anpha?</p>
+        <p class="dt-accent-sub">Thay vì xây dựng bộ phận L&D nội bộ tốn kém, doanh nghiệp có thể hợp tác cùng Anpha – tiếp cận ngay đội ngũ chuyên gia và hệ thống đào tạo bài bản với chi phí tối ưu. Phù hợp cho doanh nghiệp vừa và nhỏ chưa có bộ phận L&D, hoặc muốn nâng cấp chất lượng đào tạo nội bộ mà không cần tuyển thêm nhân sự.</p>
       </div>
-      <div class="outsource-intro-visual">
-        <div class="ov-overlay">
-          <span class="ov-badge">Mục tiêu của chúng tôi</span>
-          <p>Giúp doanh nghiệp có hệ thống đào tạo chuyên nghiệp như tập đoàn – với nguồn lực của doanh nghiệp vừa và nhỏ.</p>
-        </div>
-      </div>
+      <a href="dao-tao-doi-tac.html" class="dt-btn-blue">Xem chi tiết dịch vụ →</a>
     </div>
+
+  </div><!-- /panel outsource -->
 
   </div>
 </section>
+
+</div><!-- /.dt-mockup -->
 
 <!-- FLOATING BTN -->
 <button class="float-btn anpha-float-btn" onclick="openPopup('')">💬 Liên hệ tư vấn</button>
@@ -471,57 +514,25 @@ function closePopup() {
 }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePopup(); });
 
-// Training tab nav – scroll + active state
+// Training tabs – ẩn/hiện nội dung như file mockup (không cuộn trang)
+function dtSwitchTab(name, btn) {
+  document.querySelectorAll('.dt-tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.ttn-tab').forEach(function(t) { t.classList.remove('active'); });
+  var panel = document.getElementById(name);
+  if (panel) panel.classList.add('active');
+  if (btn) btn.classList.add('active');
+  else {
+    var tab = document.querySelector('.ttn-tab[data-target="' + name + '"]');
+    if (tab) tab.classList.add('active');
+  }
+  if (history.replaceState) history.replaceState(null, '', '#' + name);
+}
+
 (function() {
-  var nav  = document.getElementById('trainingTabNav');
-  var tabs = document.querySelectorAll('.ttn-tab');
-  var stickyTop = 0;
-
-  function getStickyOffset() {
-    var bar    = document.querySelector('.fl-page-bar');
-    var header = document.querySelector('.fl-page-header');
-    // fallback sang header native khi không chạy trên WordPress
-    if (!bar && !header) header = document.querySelector('header');
-    return (bar ? bar.offsetHeight : 0) + (header ? header.offsetHeight : 0);
+  var hash = window.location.hash.replace('#', '');
+  if (hash === 'inhouse' || hash === 'public' || hash === 'outsource') {
+    dtSwitchTab(hash);
   }
-
-  function updateTop() {
-    stickyTop = getStickyOffset();
-    nav.style.top = stickyTop + 'px';
-  }
-
-  updateTop();
-  window.addEventListener('resize', updateTop);
-
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function(e) {
-      e.preventDefault();
-      var target = document.getElementById(this.dataset.target);
-      if (target) {
-        var offset = stickyTop + nav.offsetHeight;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      }
-      setActive(this.dataset.target);
-    });
-  });
-
-  function setActive(id) {
-    tabs.forEach(function(t) {
-      t.classList.toggle('active', t.dataset.target === id);
-    });
-  }
-
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) setActive(entry.target.id);
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
-
-  ['inhouse', 'public', 'outsource'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) observer.observe(el);
-  });
 })();
 </script>
 </body>
