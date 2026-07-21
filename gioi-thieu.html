@@ -57,7 +57,7 @@
         padding-left: 18px;
       }
       .gt-story-text p {
-        font-size: 13.5px;
+        font-size: 15px;
         color: var(--gx-body);
         line-height: 1.75;
         margin-bottom: 12px;
@@ -107,6 +107,7 @@
         flex-direction: column;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 6px 20px rgba(11, 42, 74, 0.06);
         transition:
           transform 0.2s,
           box-shadow 0.2s,
@@ -118,8 +119,11 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
+        height: 6px;
       }
+      .gvc-1 { background: linear-gradient(180deg, #eaf2fa 0%, #fff 90px); border-color: #d7e6f5; }
+      .gvc-2 { background: linear-gradient(180deg, #fdeee5 0%, #fff 90px); border-color: #f7d9c4; }
+      .gvc-3 { background: linear-gradient(180deg, #e7f5f1 0%, #fff 90px); border-color: #cfe9e0; }
       .gvc-1::before {
         background: var(--gx-blue);
       }
@@ -131,7 +135,7 @@
       }
       .gt-value-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 18px 36px rgba(11, 42, 74, 0.1);
+        box-shadow: 0 18px 36px rgba(11, 42, 74, 0.14);
       }
       .gvc-1:hover {
         border-color: var(--gx-blue);
@@ -183,7 +187,7 @@
         background: var(--white);
       }
       .gt-founder-box {
-        border: 2px solid var(--gx-line);
+        border: 3px solid var(--gx-line);
         border-radius: 20px;
         overflow: hidden;
         display: grid;
@@ -310,7 +314,7 @@
       }
       .gt-partner-box {
         background: #fff;
-        border: 2px solid var(--gx-line);
+        border: 3px solid var(--gx-line);
         border-radius: 20px;
         padding: 32px;
         position: relative;
@@ -325,7 +329,7 @@
         left: 0;
         top: 0;
         bottom: 0;
-        width: 4px;
+        width: 6px;
         background: var(--gx-blue);
       }
       .gt-partner-box:hover {
@@ -347,16 +351,18 @@
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        background: #eaf2fa;
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--gx-blue);
-        font-style: italic;
+        background: #fff;
+        padding: 6px;
+      }
+      .gt-partner-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
       .gt-partner-label {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--gx-blue);
         margin-bottom: 6px;
@@ -390,14 +396,15 @@
         flex-wrap: wrap;
       }
       .gt-partner-note {
-        font-size: 13px;
-        color: var(--gx-muted);
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--gx-blue-deep);
         line-height: 1.6;
         max-width: 560px;
       }
       .gt-partner-note strong {
         color: var(--gx-blue);
-        font-weight: 700;
+        font-weight: 800;
       }
       .gt-partner-cta {
         font-size: 12.5px;
@@ -420,7 +427,7 @@
         background: var(--white);
       }
       .gt-explore-box {
-        border: 2px solid var(--gx-line);
+        border: 3px solid var(--gx-line);
         border-radius: 20px;
         padding: 28px 32px;
         position: relative;
@@ -437,7 +444,7 @@
         left: 0;
         top: 0;
         bottom: 0;
-        width: 4px;
+        width: 6px;
         background: var(--gx-blue);
       }
       .gt-explore-text {
@@ -768,7 +775,7 @@
               </div>
               <div class="gt-stat">
                 <div class="gt-stat-num green">18+</div>
-                <div class="gt-stat-label">Năm Giám đốc Nhân sự tại Tập đoàn Đa quốc gia</div>
+                <div class="gt-stat-label">Năm kinh nghiệm Giám đốc Nhân sự tại Tập đoàn Đa quốc gia</div>
               </div>
               <div class="gt-stat">
                 <div class="gt-stat-num orange">20+</div>
@@ -812,7 +819,7 @@
       <div class="container">
         <div class="gt-partner-box">
           <div class="gt-partner-top">
-            <div class="gt-partner-logo">I</div>
+            <div class="gt-partner-logo"><img src="assets/images/logo-ideas.png" alt="Viện IDEAS" /></div>
             <div>
               <div class="gt-partner-label">Đối tác đào tạo</div>
               <h4>Đối tác chính thức của Viện IDEAS</h4>
