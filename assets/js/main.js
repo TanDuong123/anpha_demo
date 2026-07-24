@@ -25,3 +25,18 @@ window.addEventListener('scroll', function () {
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeMobileNav();
 });
+
+/* ====== YOUTUBE THUMBNAILS ======
+ * Áp dụng cho mọi phần tử có data-youtube="VIDEO_ID".
+ * Tự lấy ảnh đại diện từ YouTube và mở video khi click. */
+document.querySelectorAll('[data-youtube]').forEach(function (el) {
+  const id = el.getAttribute('data-youtube');
+  if (!id || id === 'YOUR_VIDEO_ID') return;
+  el.style.backgroundImage = "url('https://img.youtube.com/vi/" + id + "/hqdefault.jpg')";
+  el.style.backgroundSize = 'cover';
+  el.style.backgroundPosition = 'center';
+  el.style.cursor = 'pointer';
+  el.addEventListener('click', function () {
+    window.open('https://www.youtube.com/watch?v=' + id, '_blank');
+  });
+});

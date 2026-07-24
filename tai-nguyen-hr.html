@@ -18,7 +18,7 @@
 
     /* ===== CARD GRID ===== */
     .tr-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .tr-card { border: 2px solid #D7DEE8; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 4px 16px rgba(11,42,74,.05); transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .tr-card { border: 5px solid #aab6c2; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 4px 16px rgba(11,42,74,.05); transition: transform .2s, box-shadow .2s, border-color .2s; }
     .tr-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(11,42,74,.14); }
     .tr-blog-card:hover { border-color: #1A5FA8; }
     .tr-case-card:hover { border-color: #E8672A; }
@@ -63,7 +63,7 @@
     .tr-btn-primary strong { font-weight: 800; }
 
     /* ===== CTA BOX ===== */
-    .tr-bottom-box { border: 2px solid #E3E8EE; border-radius: 20px; padding: 36px 40px; background: #fff; display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; position: relative; overflow: hidden; }
+    .tr-bottom-box { border: 5px solid #aab6c2; border-radius: 20px; padding: 36px 40px; background: #fff; display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; position: relative; overflow: hidden; }
     .tr-bottom-box::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #1A5FA8; }
     .tr-bb-left h2 { font-weight: 700; font-size: 18px; color: #1A5FA8; border-left: 3px solid #E8672A; padding-left: 18px; line-height: 1.5; margin-bottom: 8px; }
     .tr-bb-left p { font-size: 13.5px; color: #7A8694; line-height: 1.7; padding-left: 21px; }
@@ -305,7 +305,7 @@
     <div class="tr-card-grid">
 
       <div class="tr-card tr-podcast-card">
-        <!-- YouTube Podcast Tập 1: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <!-- Video Youtube: đổi YOUR_VIDEO_ID thành ID video (đoạn sau "v=" trong URL Youtube, VD: https://www.youtube.com/watch?v=dQw4w9WgXcQ → id là dQw4w9WgXcQ). Ảnh đại diện + link mở video sẽ tự động chạy nhờ assets/js/main.js -->
         <div class="tr-card-thumb tr-podcast-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div></div>
         <div class="tr-card-body">
           <h3>HR có thực sự là bộ phận chiến lược? Nhìn từ góc độ CEO tập đoàn bán lẻ</h3>
@@ -319,7 +319,7 @@
       </div>
 
       <div class="tr-card tr-podcast-card">
-        <!-- YouTube Podcast Tập 2: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <!-- Podcast Tập 2: đổi YOUR_VIDEO_ID thành ID video Youtube -->
         <div class="tr-card-thumb tr-podcast-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div></div>
         <div class="tr-card-body">
           <h3>Bẫy KPI — Tại sao làm hết mà KPI vẫn không tăng? Nhìn từ kinh nghiệm thực tế</h3>
@@ -333,7 +333,7 @@
       </div>
 
       <div class="tr-card tr-podcast-card">
-        <!-- YouTube Podcast Tập 3: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <!-- Podcast Tập 3: đổi YOUR_VIDEO_ID thành ID video Youtube -->
         <div class="tr-card-thumb tr-podcast-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div></div>
         <div class="tr-card-body">
           <h3>Lương thưởng trong thời đại mới — Công bằng, minh bạch và gắn với hiệu suất</h3>
@@ -378,7 +378,7 @@
       </div>
 
       <div class="tr-card tr-video-card">
-        <!-- YouTube Video 2: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <!-- Video 2: đổi YOUR_VIDEO_ID thành ID video Youtube -->
         <div class="tr-card-thumb tr-video-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div><span class="tr-dur">6:12</span></div>
         <div class="tr-card-body">
           <h3>5 sai lầm phổ biến khi xây dựng KPI trong doanh nghiệp Việt</h3>
@@ -392,7 +392,7 @@
       </div>
 
       <div class="tr-card tr-video-card">
-        <!-- YouTube Video 3: thay YOUR_VIDEO_ID → https://youtu.be/YOUR_VIDEO_ID -->
+        <!-- Video 3: đổi YOUR_VIDEO_ID thành ID video Youtube -->
         <div class="tr-card-thumb tr-video-thumb" data-youtube="YOUR_VIDEO_ID"><div class="tr-play-btn"></div><span class="tr-dur">7:06</span></div>
         <div class="tr-card-body">
           <h3>HRBP và tư duy chiến lược: HR cần làm gì để ngồi đúng bàn?</h3>
