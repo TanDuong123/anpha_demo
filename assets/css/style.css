@@ -1023,13 +1023,13 @@ footer {
 .about-pillars {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin: 36px auto 0;
-  max-width: 600px;
+  max-width: 760px;
 }
 .about-pillar {
   border-radius: 10px;
-  padding: 14px 20px;
+  padding: 18px 24px;
   border-left: 4px solid transparent;
   transition: transform 0.25s, box-shadow 0.25s;
 }
@@ -3155,7 +3155,7 @@ button.anpha-hero-btn:hover {
   }
 
   /* index */
-  .about-pillars { max-width: 100%; }
+  .about-pillars { max-width: 100%; grid-template-columns: 1fr; }
   .solutions-visual-grid {
     grid-template-columns: repeat(2, 1fr);
   }
